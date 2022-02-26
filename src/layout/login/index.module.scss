@@ -1,0 +1,36 @@
+$height-login: 710px;
+
+.login__layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #f7f8f8;
+}
+
+.sign__container {
+  display: flex;
+  height: 100%;
+  width: 850px;
+}
+
+.image {
+  background-size: cover;
+  background-position: 50% 50%;
+  height: $height-login;
+  width: 339px;
+  background-image: url('../../assets/images/loginImage.jpg');
+}
+
+.form__container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: $height-login;
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  box-sizing: border-box;
+}
