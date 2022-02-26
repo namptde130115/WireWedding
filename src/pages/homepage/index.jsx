@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { HomeLayout } from '../../layout/homepage/index.jsx';
 export const HomePage = () => {
   return (
@@ -6,3 +7,8 @@ export const HomePage = () => {
     </HomeLayout>
   );
 };
+=======
+export const Homepage = ()=>{
+    return (<div>aaaaaaaaa</div>)
+}
+>>>>>>> homepage
