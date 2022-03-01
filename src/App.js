@@ -7,6 +7,7 @@ import { SignIn } from './pages/signin';
 import { SignUp } from './pages/signup';
 import { Counter } from './features/counter/Counter';
 import { HomePage } from './pages/homepage';
+import { ProfilePage } from './pages/profile';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       {/* <SignIn /> */}
       {/* <SignUp /> */}
       <HomePage />
+      {/* <ProfilePage /> */}
     </div>
   );
 }
