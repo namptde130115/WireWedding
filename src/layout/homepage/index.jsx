@@ -2,17 +2,18 @@ import { Menu, Carousel } from 'antd';
 import { useState } from 'react';
 import styles from './index.module.scss';
 import { MailOutlined } from '@ant-design/icons';
+import clsx from 'clsx';
 
 export const HomeLayout = ({ children }) => {
   const [current, setCurrent] = useState('mail');
 
   const handleClick = (e) => {
     console.log('click ', e);
-    this.setState({ current: e.key });
+    setCurrent(e);
   };
 
   const contentStyle = {
-    height: '160px',
+    height: '300px',
     color: '#fff',
     lineHeight: '160px',
     textAlign: 'center',
@@ -22,19 +23,18 @@ export const HomeLayout = ({ children }) => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <Menu onClick={handleClick} selectedKeys={[current]} mode='horizontal'>
-          <Menu.Item key='mail' icon={<MailOutlined />}>
-            Navigation One
-          </Menu.Item>
-          <Menu.Item key='mail2' icon={<MailOutlined />}>
-            Navigation 2
-          </Menu.Item>
-          <Menu.Item key='mail3' icon={<MailOutlined />}>
-            Navigation 3
-          </Menu.Item>
-          <Menu.Item key='mail4' icon={<MailOutlined />}>
-            Navigation 4
-          </Menu.Item>
+        <div className={clsx(styles.logo)}>logo</div>
+        <Menu
+          mode='inline'
+          onClick={handleClick}
+          selectedKeys={[current]}
+          mode='horizontal'
+          className={clsx(styles.menu__container)}
+        >
+          <Menu.Item key='planning-tools'>Planning tools</Menu.Item>
+          <Menu.Item key='our-services'>Our services</Menu.Item>
+          <Menu.Item key='ideas'>Ideas</Menu.Item>
+          <Menu.Item key='about-us'>About us</Menu.Item>
         </Menu>
       </div>
       <div className={styles.carousel}>
