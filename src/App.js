@@ -6,30 +6,23 @@ import 'antd/dist/antd.css';
 import { SignIn } from './pages/signin';
 import { SignUp } from './pages/signup';
 import { Counter } from './features/counter/Counter';
-<<<<<<< HEAD
-import { HomePage } from './pages/homepage';
-<<<<<<< HEAD
-=======
-import {Homepage} from './pages/homepage'
->>>>>>> homepage
-=======
+
+import { HomePage } from './pages/homepage'
+import { HomePage_customer } from './pages/homepage/homepage_customer'
+import { HomePage_ideas } from './pages/homepage/homepage_ideas'
 import { ProfilePage } from './pages/profile';
->>>>>>> c651faaf3fc1602532b36c33d017fcbfa6ffcb17
+
 
 function App() {
   return (
     <div>
       {/* <SignIn /> */}
       {/* <SignUp /> */}
-<<<<<<< HEAD
-      <HomePage />
-<<<<<<< HEAD
-=======
-      <Homepage />
->>>>>>> homepage
-=======
+
+      {/* <HomePage /> */}
+      <HomePage_customer />
+      {/* <HomePage_ideas /> */}
       {/* <ProfilePage /> */}
->>>>>>> c651faaf3fc1602532b36c33d017fcbfa6ffcb17
     </div>
   );
 }
