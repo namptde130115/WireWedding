@@ -1,11 +1,10 @@
 import clsx from "clsx";
 import styles from "./index.module.scss";
 
-export const CardBlog = ({ imgUrl}) => {
+export const CardBlog = ({ imgUrl }) => {
   return (
     <div className={styles.card_blog}>
-      <div className={styles.blog_image}>
-      <img src={ imgUrl} /></div>
+      <img src={imgUrl} />
       <div className={styles.blog_content}>
         <p className={clsx(styles.blog_tittle)}>Title</p>
         <p>

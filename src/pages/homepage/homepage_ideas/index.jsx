@@ -1,6 +1,7 @@
 import { HomeCustomerLayout } from "../../../layout/homepage_customer/index.jsx";
 import { Feedback_Contact } from "../../../components/Feedback_Contact/index.jsx";
 import { CardBlog } from "../../../components/CardBlog/index.jsx";
+import { MyBlog } from "../../../components/MyBlog/index.jsx";
 import clsx from "clsx";
 import styles from "./index.module.scss";
 import { imageUrl } from "../../../assets/images-url/index.js";
@@ -19,6 +20,7 @@ export const HomePage_ideas = () => {
         <CardBlog imgUrl={imageUrl.invitation_02} />
       </div>
       <Pagination defaultCurrent={1} total={50} />
+      <MyBlog />
       <Feedback_Contact />
     </HomeCustomerLayout>
   );

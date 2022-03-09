@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
 
 .h2 {
   text-align: center;
@@ -11,10 +11,11 @@
 .feedback_child {
   width: 80%;
   margin: 0 auto;
-  // > div > div  > ul > li >button{
-  //   background: #987d3e;
+  // > div > div > ul > li.slick-active > button {
+  //   background: #987d3e!important;
   // }
 }
+
 .feedback_content {
   > img {
     display: block;

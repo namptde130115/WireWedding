@@ -62,3 +62,6 @@
     font-weight: 700 !important;
   }
 }
+.ant-carousel .slick-dots li.slick-active button {
+  background-color: var(--color-base-1) !important;
+}

@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap");
 .card_blog {
   position: relative;
-  width: 40%;
+  // width: 40%;
   display: flex;
   justify-content: center;
 }
-.blog_image > img {
+.card_blog > img {
   position: relative;
   border-radius: 15px;
   width: 28vw;
@@ -25,9 +25,9 @@
   padding: 10px;
   font-family: "Lora", serif;
   font-style: italic;
-  font-size: 1.1vw;
+  font-size: 1.2vw;
 }
 .blog_tittle {
-  font-size: 2.5vw;
+  font-size: 2.7vw;
   margin-bottom: 0;
 }
