@@ -1,0 +1,42 @@
+@import url("http://fonts.googleapis.com/css?family=Dancing+Script");
+@import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
+
+.h1 {
+  font-family: Dancing Script;
+  color: var(--color-tittle);
+  text-align: center;
+  font-size: 4.5vw;
+  margin-bottom: 25px;
+}
+.blog_detail {
+  justify-content: left;
+  margin-bottom: 10px;
+  > p {
+    margin-bottom: 0;
+    font-weight: bold;
+  }
+}
+.blog_child {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 2vw;
+  > p {
+    font-family: "Lora", serif;
+    font-style: italic;
+    font-size: 1.2vw;
+    text-align: justify;
+  }
+}
+.blog_share {
+  display: flex;
+  justify-content: right;
+  > span {
+    margin-left: 5px;
+    cursor: pointer;
+    > svg {
+      width: 1.6em;
+      height: 1.6em;
+      color: var(--color-base-1);
+    }
+  }
+}

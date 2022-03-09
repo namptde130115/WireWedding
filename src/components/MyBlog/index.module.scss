@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
+
+.h2 {
+  text-align: center;
+  font-family: Dancing Script;
+  font-size: 4vw;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  color: #a97037;
+}
+.carousel {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+.ideas_blog_button {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  // align-items: center;
+  > button {
+    width: 8vw;
+    height: 2.8vw;
+    font-size: 1.1vw;
+  }
+}
