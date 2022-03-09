@@ -24,10 +24,7 @@ export const HomeLayout = ({ children }) => {
       <div className={styles.header}>
         <div className={clsx(styles.logo)}>logo</div>
         <Menu
-<<<<<<< HEAD
           // mode="inline"
-=======
->>>>>>> 330b0961327440f2bd615b995fff677661795ce7
           onClick={handleClick}
           selectedKeys={[current]}
           mode="horizontal"
