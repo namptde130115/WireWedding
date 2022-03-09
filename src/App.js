@@ -10,11 +10,12 @@ import { Counter } from './features/counter/Counter';
 import { HomePage } from './pages/homepage';
 import { Service } from './pages/servicepage';
 import { ProfilePage } from './pages/profile';
+import { ServiceDetail } from './pages/service_detail'
 
 function App() {
   return (
     <div>
-      <Service />
+      <ServiceDetail/>
     </div>
   );
 }
