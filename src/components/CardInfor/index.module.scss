@@ -1,9 +1,20 @@
 .card {
   border-radius: 10px;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+  margin: 0 auto;
+  width: 200px;
+}
+
+.image {
+  height: 150px;
+  width: 200px;
+  object-fit: fill;
 }
 
 .icons {
   color: #fabb00;
   margin-right: 5px;
+}
+.icons_location {
+  width: 15%;
 }
