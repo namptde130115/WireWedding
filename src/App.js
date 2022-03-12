@@ -12,6 +12,10 @@ import { HomePage_customer } from './pages/homepage/homepage_customer'
 import { HomePage_ideas } from './pages/homepage/homepage_ideas'
 import { HomePage_blog } from './pages/homepage/homepage_blog'
 import { ProfilePage } from './pages/profile';
+import { Service } from './pages/servicepage'
+import { ServiceDetail } from './pages/service_detail'
+import { ServicePack } from './pages/servicepackpage'
+import { ServicePackDetail } from './pages/servicepackdetail'
 
 
 function App() {
@@ -21,7 +25,11 @@ function App() {
       {/* <SignUp /> */}
 
       {/* <HomePage /> */}
-      <HomePage_customer />
+      {/* <HomePage_customer /> */}
+      {/* <Service/> */}
+      {/* { <ServicePack/> } */}
+      { <ServicePackDetail/> }
+      {/* { < ServiceDetail />} */}
       {/* <HomePage_ideas /> */}
       {/* <HomePage_blog /> */}
       {/* <ProfilePage /> */}

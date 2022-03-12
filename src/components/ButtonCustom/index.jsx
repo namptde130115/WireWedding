@@ -15,6 +15,7 @@ export const ButtonCustom = ({
       type={type}
       className={clsx(className, styles.general, {
         [styles.primary]: type === 'primary',
+        [styles.like]: type === 'like',
         [styles.ghost]: type === 'ghost',
         [styles.link]: type === 'link',
         [styles.color]: color === 'red',

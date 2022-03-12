@@ -8,17 +8,38 @@
 }
 
 .primary {
+  color: var(--color-white);
   background: var(--color-base-1);
   border-color: var(--color-base-1);
   &:hover {
+    color: var(--color-white);
     background: var(--color-base-1);
     border-color: var(--color-base-1);
     opacity: 0.8;
   }
   &:focus {
+    color: var(--color-white);
     background: var(--color-base-1);
     border-color: var(--color-base-1);
     opacity: 0.8;
+  }
+}
+
+.like {
+  color: var(--color-like);
+  background: var(--color-white);
+  border-color: var(--color-like);
+  &:hover {
+    color: var(--color-white);
+    background: var(--color-like);
+    border-color: var(--color-like);
+    opacity: 0.8;
+  }
+  &:focus {
+    color: var(--color-white);
+    background: var(--color-like);
+    border-color: var(--color-like);
+    opacity: 1;
   }
 }
 

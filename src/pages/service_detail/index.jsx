@@ -1,19 +1,20 @@
 import { ServiceLayout } from "../../layout/servicepage/index.jsx"
 import { ButtonCustom } from "../../components/ButtonCustom/index.jsx";
 import { Feedback } from "../../components/Feedback/index.jsx";
+import { Rate } from 'antd';
 import styles from './index.module.scss';
 
 export const ServiceDetail = () => {
     return (
         <ServiceLayout>
             <div className={styles.info}>
-                <div>
+                <div className={styles.imageinfo}>
                     <img
                         className={styles.image}
                         src="https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Service%2Fdecoration_01.PNG?alt=media&token=cf7bdb9c-16cc-40ef-a90d-1395334ecee3"
                     />
                 </div>
-                <div>
+                <div className={styles.textinfo}>
                     <div className= {styles.title}>
                         ABC
                     </div>
@@ -28,14 +29,27 @@ export const ServiceDetail = () => {
                         120.000 VND
                     </div>
                     <div>
-                        aoeuhaohnutshoantuhoenatsuhnsaoehunstoeahuntsoeauntshoenstuhoaenstuaoenstuheonsuh
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque pretium dui vel gravida. 
+                    Vestibulum viverra porta magna, ut pellentesque augue interdum nec. Integer suscipit purus ac porttitor gravida. 
+                    Proin id urna nibh. Integer in maximus magna. Nam pulvinar magna et lectus sagittis, et dapibus dolor laoreet. 
                     </div>
+                </div>
+                <div className={styles.rateinfo}>
+                    <Rate disabled defaultValue={4} />
                 </div>
             </div>
             <div className= {styles.utility}>
                 <ButtonCustom
-                type="primary"
-                text="Add"
+                    type="primary"
+                    text="Add"
+                ></ButtonCustom>
+                <ButtonCustom
+                    type="primary"
+                    text="Hire"
+                ></ButtonCustom>
+                <ButtonCustom
+                    type="like"
+                    text="Like"
                 ></ButtonCustom>
             </div>
             <div className = {styles.feature}>

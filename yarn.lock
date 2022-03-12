@@ -8533,15 +8533,9 @@
     "shallowequal" "^1.1.0"
 
 "rc-tabs@~11.10.0":
-<<<<<<< HEAD
   "integrity" "sha512-7IKmcU7QU3CdYnJTabeXs2DDeLiXLyALC8fvOtgyWWFXUD47G5vG+4bFO3f9+AI+rcFAPpfwapZbXxgmiRuWYQ=="
   "resolved" "https://registry.npmjs.org/rc-tabs/-/rc-tabs-11.10.7.tgz"
   "version" "11.10.7"
-=======
-  "integrity" "sha512-DDuUdV6b9zGRYLtjI5hyejWLKoz1QiLWNgMeBzc3aMeQylZFhTYnFGdDc6HRqj5IYearNTsFPVSA+6VIT8g5cg=="
-  "resolved" "https://registry.npmjs.org/rc-tabs/-/rc-tabs-11.10.5.tgz"
-  "version" "11.10.5"
->>>>>>> 9de51a9cc15fd271d9fff5db3b316feadb0a5ac6
   dependencies:
     "@babel/runtime" "^7.11.2"
     "classnames" "2.x"
