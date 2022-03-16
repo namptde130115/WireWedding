@@ -49,9 +49,6 @@ export const ServicePack = () => {
                     location = "Da Nang"
                 />
             </div>
-            <div className={styles.paging}>
-                <Paging/>
-            </div>
         </ServiceLayout>
     );
 }

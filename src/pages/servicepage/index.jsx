@@ -16,6 +16,7 @@ export const Service = () => {
                     <Category/>  
                     <Location/>
             </div>
+            <div className={styles.cardholder}>
             <div className={styles.card}>
                 <CardInfor
                     imgUrl = "https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Service%2Fstudio_01.PNG?alt=media&token=1d0cfe71-8e3a-48ad-860e-6e0f0e816368"
@@ -58,8 +59,6 @@ export const Service = () => {
                     location = "Da Nang"
                 />
             </div>
-            <div className={styles.paging}>
-                <Paging/>
             </div>
         </ServiceLayout>
     );
