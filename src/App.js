@@ -25,10 +25,10 @@ function App() {
       {/* <SignUp /> */}
 
       {/* <HomePage /> */}
-      {/* <HomePage_customer /> */}
+      <HomePage_customer />
       {/* <Service/> */}
       {/* { <ServicePack/> } */}
-      { <ServicePackDetail/> }
+      {/* { <ServicePackDetail/> } */}
       {/* { < ServiceDetail />} */}
       {/* <HomePage_ideas /> */}
       {/* <HomePage_blog /> */}

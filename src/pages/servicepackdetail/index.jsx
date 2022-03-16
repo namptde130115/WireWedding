@@ -17,14 +17,14 @@ export const ServicePackDetail = () => {
                 </div>
                 <div className={styles.textinfo}>
                     <div className= {styles.title}>
-                        ABC
+                        dam cuoi starter pack
                     </div>
                     <div>
                         <img
                             className={styles.icons_location}
                             src="https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Icon%2Ficon_location.png?alt=media&token=29af5c96-9413-41aa-9b3b-67d2eba337af"
                         />
-                        Da Nang
+                        o dau con lau moi noi
                     </div>
                     <div>
                         120.000 VND
