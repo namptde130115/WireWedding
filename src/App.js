@@ -16,6 +16,7 @@ import { Service } from './pages/servicepage'
 import { ServiceDetail } from './pages/service_detail'
 import { ServicePack } from './pages/servicepackpage'
 import { ServicePackDetail } from './pages/servicepackdetail'
+import { ManageService } from './pages/manageservice';
 
 
 function App() {
@@ -25,11 +26,12 @@ function App() {
       {/* <SignUp /> */}
 
       {/* <HomePage /> */}
-      <HomePage_customer />
+      {/* <HomePage_customer /> */}
       {/* <Service/> */}
       {/* { <ServicePack/> } */}
       {/* { <ServicePackDetail/> } */}
       {/* { < ServiceDetail />} */}
+      { <ManageService/>}
       {/* <HomePage_ideas /> */}
       {/* <HomePage_blog /> */}
       {/* <ProfilePage /> */}
