@@ -36,8 +36,27 @@
 }
 
 .menu__container {
-  color: var(--color-base-2);
+  color: var(--color-base-1);
   border-bottom: none;
+  width: 100%;
+  > li {
+    font-size: 18px;
+    font-weight: bold;
+    &:hover {
+      > div > span {
+        color: var(--color-base-1) !important;
+      }
+    }
+  }
+  > li > div > span {
+    &:hover {
+      color: var(--color-base-1) !important;
+    }
+  }
+  > li > span {
+    font-size: 18px;
+    font-weight: bold;
+  }
 }
 
 // .carousel__container {

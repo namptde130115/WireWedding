@@ -28,7 +28,7 @@ export const HomePage_customer = () => {
             <Card bordered={false} className={styles.detail} hoverable>
               <div>
                 <img
-                  class="svgIcon svgIcon__notebook homeToolsLoggedTile__icon"
+                  className="svgIcon svgIcon__notebook homeToolsLoggedTile__icon"
                   src="https://cdn1.weddingwire.com/assets/svg/original/illustration/notebook.svg"
                 />
                 <div>
@@ -37,7 +37,7 @@ export const HomePage_customer = () => {
                   </p>
                   <a
                     href="https://www.weddingwire.com/tools/Vendors"
-                    class="app-tool-cards-tile-link"
+                    className="app-tool-cards-tile-link"
                     title="Services hired"
                   >
                     Services hired
@@ -50,7 +50,7 @@ export const HomePage_customer = () => {
             <Card bordered={false} className={styles.detail} hoverable>
               <div>
                 <img
-                  class="svgIcon svgIcon__to_do homeToolsLoggedTile__icon"
+                  className="svgIcon svgIcon__to_do homeToolsLoggedTile__icon"
                   src="https://cdn1.weddingwire.com/assets/svg/original/illustration/to_do.svg"
                 />
                 <div>
@@ -59,7 +59,7 @@ export const HomePage_customer = () => {
                   </p>
                   <a
                     href="https://www.weddingwire.com/tools/Checklist"
-                    class="app-tool-cards-tile-link"
+                    className="app-tool-cards-tile-link"
                     title="Tasks completed"
                   >
                     Tasks completed
@@ -72,7 +72,7 @@ export const HomePage_customer = () => {
             <Card bordered={false} className={styles.detail} hoverable>
               <div>
                 <img
-                  class="svgIcon svgIcon__calculator homeToolsLoggedTile__icon"
+                  className="svgIcon svgIcon__calculator homeToolsLoggedTile__icon"
                   src="https://cdn1.weddingwire.com/assets/svg/original/illustration/calculator.svg"
                 />
                 <div>
@@ -81,7 +81,7 @@ export const HomePage_customer = () => {
                   </p>
                   <a
                     href="https://www.weddingwire.com/tools/Budget"
-                    class="app-tool-cards-tile-link"
+                    className="app-tool-cards-tile-link"
                     title="Budget spent"
                   >
                     Budget spent
