@@ -1,0 +1,87 @@
+.container{
+   left: 0;
+   bottom: 0;
+   width: 100%;
+}
+
+.footer{
+    background-color: var(--color-footer);
+}
+
+a{
+    color: var(--color-title);
+}
+
+a:hover{
+    color: white;
+}
+
+p{
+    color: var(--color-title);
+}
+
+.container_inner{
+    -webkit-box-direction: normal;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    font-family: Averta-Regular;
+    color: #2a2a2a;
+    font-weight: 400;
+    max-width: 80vw;
+    display: flex;
+    margin: 0 auto;
+}
+
+.footer_column{
+    padding: 0 1.2vw;
+    width: 25%;
+    display: flex;
+    flex-flow: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+
+.inner_content{
+    width: 100%;
+    padding: 0;
+}
+
+.nav_footer{
+    width: 50%;
+}
+
+.footer_menu{
+    max-height: 10.15625vw;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: inline-flex;
+    flex-direction: inherit;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.header_menu{
+    padding-right: 70px;
+    font-size: 1rem;
+}
+
+.header_menu a{
+    font-weight: 800 !important;
+}
+
+
+.sub_menu{
+    font-size: .9vw;
+    line-height: 1.6vw;
+    padding: 0;
+    list-style-type: none;
+}
+
+.sub_menu a{
+    font-weight: 300 !important;
+}
+
+.fb_icon .insta_icon{
+    font-size: 130% !important;
+}
