@@ -10,10 +10,12 @@ import { Counter } from './features/counter/Counter';
 import { HomePage } from './pages/homepage';
 import { HomePage_customer } from './pages/homepage/homepage_customer';
 import { HomePage_ideas } from './pages/homepage/homepage_ideas';
-import { HomePage_blog } from './pages/homepage/homepage_blog';
+import { HomePageBlogDetail } from './pages/homepage/homepage_blogDetail';
 import { ProfilePage } from './pages/profile';
 import { PrivateRoute } from './router/privateRoute';
 import { Service } from './pages/servicepage';
+import { ServicePack } from './pages/servicepackpage';
+import { HomePageAboutUs } from './pages/homepage/homepage_aboutUs';
 
 function App() {
   const isAuthenticated = true;
@@ -40,8 +42,9 @@ function App() {
             />
           }
         />
+        <Route path='/services-packs' element={<ServicePack />} />
         <Route path='/services' element={<Service />} />
-        {/* <Route path='/services-packs' element={< />} /> */}
+        <Route path='/about-us' element={<HomePageAboutUs />} />
         <Route path='/' element={<HomePage />} />
         <Route path='/sign-in' element={<SignIn />} />
         <Route path='/sign-up' element={<SignUp />} />
@@ -54,7 +57,7 @@ function App() {
       {/* <HomePage /> */}
       {/* <HomePage_customer /> */}
 
-      <HomePage_ideas />
+      {/* <HomePage_ideas /> */}
       {/* <HomePage_blogDetail /> */}
       {/* <HomePage_myBlogs /> */}
       {/* <HomePage_aboutUs /> */}

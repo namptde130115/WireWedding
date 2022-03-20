@@ -6,7 +6,7 @@ import { ShareAltOutlined } from "@ant-design/icons";
 import { BlogComment } from "../../../components/BlogComment/index.jsx";
 import { ButtonCustom } from "../../../components/ButtonCustom/index.jsx";
 
-export const HomePage_blogDetail = () => {
+export const HomePageBlogDetail = () => {
   return (
     <HomeCustomerLayout>
       <div className={clsx(styles.h1)}>Blog title</div>

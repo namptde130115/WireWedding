@@ -1,6 +1,6 @@
 import { SearchBar } from '../../components/Search/index.jsx';
 import { Category } from '../../components/Category/index.jsx';
-import { ServiceLayout } from '../../layout/servicepage/index.jsx';
+import { CommonLayout } from '../../layout/common/index.jsx';
 import { CardInfor } from '../../components/CardInfor/index.jsx';
 import { Location } from '../../components/Location/index.jsx';
 import { Paging } from '../../components/Pagination/index.jsx';
@@ -8,7 +8,7 @@ import styles from './index.module.scss';
 
 export const Service = () => {
   return (
-    <ServiceLayout>
+    <CommonLayout>
       <div className={styles.utility}>
         <div className={styles.search}>
           <SearchBar />
@@ -60,6 +60,6 @@ export const Service = () => {
           />
         </div>
       </div>
-    </ServiceLayout>
+    </CommonLayout>
   );
 };
