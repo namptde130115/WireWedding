@@ -1,9 +1,11 @@
-import { Menu, Carousel } from "antd";
+import { Menu, Carousel, Statistic } from "antd";
 import { useState } from "react";
 import styles from "./index.module.scss";
 import clsx from "clsx";
 import { imageUrl } from "../../assets/images-url/index";
-export const HomeLayout = ({ children }) => {
+import { Countdown } from "../../components/Countdown/index.jsx";
+
+export const HomeCustomerLayout = ({ children }) => {
   const [current, setCurrent] = useState("mail");
 
   const handleClick = (e) => {
@@ -36,24 +38,29 @@ export const HomeLayout = ({ children }) => {
           <Menu.Item key="about-us">About us</Menu.Item>
         </Menu>
       </div>
-      <div className={styles.carousel}>
-        <Carousel autoplay dots={false}>
-          <div>
-            <img width="100%" height="60%" src={imageUrl.slider_img1} />
-          </div>
-          <div>
-            <img width="100%" height="60%" src={imageUrl.slider_img2} />
-          </div>
-          <div>
-            <img width="100%" height="60%" src={imageUrl.slider_img3} />
-          </div>
-          <div>
-            <img width="100%" height="60%" src={imageUrl.slider_img4} />
-          </div>
-          <div>
-            <img width="100%" height="60%" src={imageUrl.slider_img5} />
-          </div>
-        </Carousel>
+      <div className={styles.carousel_container}>
+        <div className={styles.countdown}>
+          <Countdown />
+        </div>
+        <div className={styles.carousel}>
+          <Carousel autoplay dots={false}>
+            <div>
+              <img width="100%" height="60%" src={imageUrl.slider_img1} />
+            </div>
+            <div>
+              <img width="100%" height="60%" src={imageUrl.slider_img2} />
+            </div>
+            <div>
+              <img width="100%" height="60%" src={imageUrl.slider_img3} />
+            </div>
+            <div>
+              <img width="100%" height="60%" src={imageUrl.slider_img4} />
+            </div>
+            <div>
+              <img width="100%" height="60%" src={imageUrl.slider_img5} />
+            </div>
+          </Carousel>
+        </div>
       </div>
       <div className={styles.body}>{children}</div>
       <div className={styles.footer}>this is footer</div>

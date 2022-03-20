@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
+
+.h2 {
+  text-align: center;
+  font-family: Dancing Script;
+  font-size: 4vw;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  color: #a97037;
+}
+.feedback_child {
+  width: 80%;
+  margin: 0 auto;
+  // > div > div > ul > li.slick-active > button {
+  //   background: #987d3e!important;
+  // }
+}
+
+.feedback_content {
+  > img {
+    display: block;
+    margin: 0 auto;
+    width: 20%;
+  }
+  > p {
+    font-family: "Lora", serif;
+    font-size: 1.2vw;
+    text-align: center;
+    font-style: italic;
+  }
+  > .userName {
+    font-family: "Lora", serif;
+    text-align: right;
+  }
+}
+.contact_container {
+  > iframe {
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,93 @@
+@import url("http://fonts.googleapis.com/css?family=Dancing+Script");
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap');
+
+.h1 {
+  font-family: Dancing Script;
+  color: #a97037;
+  text-align: center;
+  font-size: 4.5vw;
+  margin: 4vh 0 4vh 0;
+}
+.news_container {
+  display: inline-block;
+  vertical-align: middle;
+  > .news_child {
+    width: 50%;
+    float: left;
+    padding: 15px;
+    margin-top: 30px;
+    > img {
+      margin-bottom: 30px;
+      width: 100%;
+    }
+  }
+}
+.news_text {
+  > p {
+    font-family: "Lora", serif;
+    font-style: italic;
+  }
+}
+.text_right {
+  margin-left: 25%;
+}
+.text_left {
+  margin-right: 25%;
+}
+.title {
+  font-size: 2vw;
+}
+.content {
+  font-size: 1.2vw;
+}
+hr {
+  border-top: 1px solid #bdb7b4;
+  width: 90%;
+}
+.h2 {
+  text-align: center;
+  font-family: Dancing Script;
+  font-size: 4vw;
+  margin-bottom: 10px;
+  color: #a97037;
+}
+.hotServices_container {
+  margin: 0 auto;
+  > .hotServices_child {
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 25px;
+    row-gap: 25px;
+    width: 100%;
+    > div {
+      width: 20% !important;
+      margin: 0 !important;
+    }
+    > div {
+      > div:first-child {
+        width: 100%;
+        // height: 65%;
+        object-fit: cover;
+        > img {
+          border-radius: 0;
+          width: 90%;
+          height: 12vw;
+          margin: 6% 6% 0 6%;
+        }
+      }
+      > div:last-child {
+        padding: 0 6% 6% 6%;
+        > div {
+          > div:first-child {
+            > div:first-child {
+              margin: 2% 0;
+              font-size: 1.23vw;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+.countdown {
+  padding: 3vw 5vw 3vw 5vw;
+  text-align: center;
+  background-color: #e0b970;
+}
+.countdown_time {
+  > div > span {
+    font-size: 30px;
+  }
+}
