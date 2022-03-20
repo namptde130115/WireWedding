@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid #e5e5e5;
+  background-color: #fff;
+  > div {
+    margin-right: 10px;
+  }
+}
+
+.service {
+  width: 100%;
+  > div {
+    display: flex;
+    width: 100%;
+    margin-bottom: 8px;
+    > div:first-child {
+      width: 85%;
+      font-size: 14px;
+      flex-wrap: wrap;
+    }
+    > div:last-child {
+      min-width: 110px;
+      width: 15%;
+      font-size: 14px;
+      text-align: right;
+    }
+  }
+}

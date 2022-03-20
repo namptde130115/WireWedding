@@ -1,0 +1,30 @@
+.utility {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 50px;
+}
+
+.search {
+    flex-grow: 6;
+}
+
+.card {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+    width: 100%;
+    min-width: 200px;
+    // > div {
+    //     width: 30%;
+    //     min-width: 250px;
+    // }
+}
+
+.paging {
+    padding: 50px;
+    margin: auto;
+    width: 80%;
+}

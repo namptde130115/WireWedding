@@ -1,0 +1,16 @@
+.form__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // align-items: center;
+  padding-left: 30px;
+  width: 100%;
+  margin-bottom: 30px;
+  > p {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  > div {
+    width: 500px;
+  }
+}

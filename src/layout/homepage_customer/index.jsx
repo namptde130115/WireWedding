@@ -1,24 +1,18 @@
-import { Menu, Carousel, Statistic } from "antd";
-import { useState } from "react";
-import styles from "./index.module.scss";
-import clsx from "clsx";
-import { imageUrl } from "../../assets/images-url/index";
-import { Countdown } from "../../components/Countdown/index.jsx";
+import { Menu, Carousel, Statistic } from 'antd';
+import { useState } from 'react';
+import styles from './index.module.scss';
+import clsx from 'clsx';
+import { imageUrl } from '../../assets/images-url/index';
+import { Countdown } from '../../components/Countdown/index.jsx';
+import { useNavigate } from 'react-router-dom';
 
 export const HomeCustomerLayout = ({ children }) => {
-  const [current, setCurrent] = useState("mail");
+  const [current, setCurrent] = useState();
+  let navigation = useNavigate();
 
   const handleClick = (e) => {
-    console.log("click ", e);
-    setCurrent(e);
-  };
-
-  const contentStyle = {
-    height: "300px",
-    color: "#fff",
-    lineHeight: "160px",
-    textAlign: "center",
-    background: "#364d79",
+    setCurrent(e.key);
+    navigation(`/${e.key}`);
   };
 
   return (
@@ -29,13 +23,13 @@ export const HomeCustomerLayout = ({ children }) => {
           // mode="inline"
           onClick={handleClick}
           selectedKeys={[current]}
-          mode="horizontal"
+          mode='horizontal'
           className={clsx(styles.menu__container)}
         >
-          <Menu.Item key="planning-tools">Planning tools</Menu.Item>
-          <Menu.Item key="our-services">Our services</Menu.Item>
-          <Menu.Item key="ideas">Ideas</Menu.Item>
-          <Menu.Item key="about-us">About us</Menu.Item>
+          <Menu.Item key='planning-tools'>Planning tools</Menu.Item>
+          <Menu.Item key='our-services'>Our services</Menu.Item>
+          <Menu.Item key='ideas'>Ideas</Menu.Item>
+          <Menu.Item key='about-us'>About us</Menu.Item>
         </Menu>
       </div>
       <div className={styles.carousel_container}>
@@ -45,19 +39,19 @@ export const HomeCustomerLayout = ({ children }) => {
         <div className={styles.carousel}>
           <Carousel autoplay dots={false}>
             <div>
-              <img width="100%" height="60%" src={imageUrl.slider_img1} />
+              <img width='100%' height='60%' src={imageUrl.slider_img1} />
             </div>
             <div>
-              <img width="100%" height="60%" src={imageUrl.slider_img2} />
+              <img width='100%' height='60%' src={imageUrl.slider_img2} />
             </div>
             <div>
-              <img width="100%" height="60%" src={imageUrl.slider_img3} />
+              <img width='100%' height='60%' src={imageUrl.slider_img3} />
             </div>
             <div>
-              <img width="100%" height="60%" src={imageUrl.slider_img4} />
+              <img width='100%' height='60%' src={imageUrl.slider_img4} />
             </div>
             <div>
-              <img width="100%" height="60%" src={imageUrl.slider_img5} />
+              <img width='100%' height='60%' src={imageUrl.slider_img5} />
             </div>
           </Carousel>
         </div>

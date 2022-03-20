@@ -1,12 +1,23 @@
 .utility {
     display: flex;
-    padding: 60px;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 50px;
+}
+
+.search {
+    flex-grow: 6;
 }
 
 .card {
     display: flex;
-    justify-content: space-evenly;
-    padding-bottom: 50px;
+    justify-content: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+    > div {
+        margin:auto !important;
+    }
 }
 
 .paging {

@@ -1,4 +1,4 @@
-import { Comment, Tooltip, List } from 'antd';
+import { Comment, Tooltip, List, Rate } from 'antd';
 import moment from 'moment';
 
 const data = [
@@ -41,6 +41,7 @@ export const Feedback = () => {
         dataSource={data}
         renderItem={item => (
         <li>
+            <Rate disabled defaultValue={4} />
             <Comment
             author={item.author}
             avatar={item.avatar}

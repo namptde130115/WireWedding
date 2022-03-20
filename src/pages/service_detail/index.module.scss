@@ -1,6 +1,21 @@
 .info {
     display: flex;
-    > div{margin-right: 30px}
+    justify-content: flex-start;
+    gap: 30px;
+    padding-top: 20px;
+}
+
+.imageinfo {
+    flex-grow: 1;
+}
+
+.textinfo {
+    flex-grow: 2;
+}
+
+.rateinfo {
+    width: 400px;
+    flex-grow: 1;
 }
 
 .title {
@@ -14,6 +29,9 @@
 
 .utility {
     display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
     padding-top: 20px;
     padding-bottom: 20px;
 }
@@ -25,10 +43,12 @@
 
 .thumbnail {
     border-radius: 15px;
-    width: 30%;
+    width: 300px;
 }
 
 .feature {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
 }
