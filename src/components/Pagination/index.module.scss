@@ -1,0 +1,17 @@
+.paging_container > ul > li {
+  &:hover {
+    border-color: var(--color-background);
+  }
+  &:focus {
+    border-color: var(--color-background);
+  }
+  &:active {
+    border-color: var(--color-background) !important;
+  }
+  > a {
+    color: var(--color-base-1);
+    &:hover {
+      color: var(--color-base-1);
+    }
+  }
+}

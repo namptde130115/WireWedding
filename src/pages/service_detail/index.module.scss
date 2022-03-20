@@ -1,0 +1,54 @@
+.info {
+    display: flex;
+    justify-content: flex-start;
+    gap: 30px;
+    padding-top: 20px;
+}
+
+.imageinfo {
+    flex-grow: 1;
+}
+
+.textinfo {
+    flex-grow: 2;
+}
+
+.rateinfo {
+    width: 400px;
+    flex-grow: 1;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.icons_location {
+    width: 3%;
+}
+
+.utility {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.image {
+    border-radius: 15px;
+    width: 150px;
+}
+
+.thumbnail {
+    border-radius: 15px;
+    width: 300px;
+}
+
+.feature {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+}

@@ -1,0 +1,65 @@
+.info {
+    display: flex;
+    justify-content: flex-start;
+    gap: 30px;
+    padding-top: 20px;
+}
+
+.imageinfo {
+    flex-grow: 1;
+}
+
+.textinfo {
+    flex-grow: 2;
+    min-width: 300px;
+}
+
+.rateinfo {
+    width: 400px;
+    flex-grow: 1;
+}
+
+.rating {
+    min-width: 200px;
+}
+
+.packinfo {
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.icons_location {
+    width: 20px;
+}
+
+.utility {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.image {
+    border-radius: 15px;
+    width: 150px;
+}
+
+.thumbnail {
+    border-radius: 15px;
+    width: 300px;
+}
+
+.feature {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+}

@@ -46,19 +46,40 @@
 .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-open,
 .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected,
 .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-selected {
-  color: var(--color-pink) !important;
+  color: var(--color-base-1) !important;
   &::after {
-    border-bottom: 2px solid var(--color-pink) !important;
+    border-bottom: 2px solid var(--color-base-1) !important;
   }
 }
 
+// .ant-menu-title-content {
+//   font-size: 18px;
+//   font-weight: bold;
+// }
+
 .ant-menu:not(.ant-menu-horizontal) > .ant-menu-item-selected {
-  background-color: var(--color-pink-2) !important;
+  background-color: var(--color-base-2) !important;
   color: #000;
   > svg {
     fill: #ffa544 !important;
   }
   > span {
     font-weight: 700 !important;
+  }
+}
+
+input {
+  border-radius: 0px;
+  outline: none;
+  border: 1px solid #e6e6e6;
+  height: 30px;
+  padding: 5px;
+  border-radius: 3px;
+  &:focus {
+    border: 1px solid #b8b84c;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+  }
+  .ant-carousel .slick-dots li.slick-active button {
+    background-color: var(--color-base-1) !important;
   }
 }

@@ -1,0 +1,32 @@
+@import url("http://fonts.googleapis.com/css?family=Dancing+Script");
+.h1 {
+  font-family: Dancing Script;
+  color: #a97037;
+  text-align: center;
+  font-size: 4.5vw;
+  margin-bottom: 15px;
+}
+hr {
+  border-top: 1px solid #bdb7b4;
+  width: 90%;
+  // margin-top: 40px;
+}
+.progress_menu {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.progress_menu_inner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.detail {
+  width: 100%;
+}
+
+.detail:nth-child(1) {
+  height: 100% !important;
+}

@@ -1,19 +1,19 @@
 .container {
   // width: 100%;
   display: flex;
-  height: 100vh;
+  height: 610vh;
   flex-direction: column;
   align-items: center;
   background: #feffff;
-  margin: 0 15%;
+  position: relative;
+  // margin: 0 15%;
 }
 .header {
   display: flex;
   align-items: center;
   // border-bottom: 1px solid #f0f0f0;
-  margin-bottom: 20px;
+  // margin-bottom: 20px;
 }
-
 .logo {
   width: 70px;
   height: 70px;
@@ -22,17 +22,41 @@
 .carousel {
   width: 100%;
   // height: 500px;
+  top: 0;
+  left: 0;
 }
 .body {
   flex: 1;
   height: 100%;
-  width: 80%;
-  background-color: #fff;
+  width: 75%;
+  z-index: 1;
+  margin-top: -50px;
+  background-color: #f7f6eb;
+  padding: 15px;
 }
 
 .menu__container {
-  color: var(--color-base-2);
+  color: var(--color-base-1);
   border-bottom: none;
+  width: 100%;
+  > li {
+    font-size: 18px;
+    font-weight: bold;
+    &:hover {
+      > div > span {
+        color: var(--color-base-1) !important;
+      }
+    }
+  }
+  > li > div > span {
+    &:hover {
+      color: var(--color-base-1) !important;
+    }
+  }
+  > li > span {
+    font-size: 18px;
+    font-weight: bold;
+  }
 }
 
 // .carousel__container {

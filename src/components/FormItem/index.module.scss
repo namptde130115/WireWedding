@@ -1,0 +1,16 @@
+.form__item__container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  width: 100%;
+  > label {
+    margin-right: 10px;
+    min-width: 120px;
+    font-weight: bold;
+  }
+  > input {
+    flex: 1;
+    width: 100%;
+    max-width: 400px;
+  }
+}
