@@ -1,0 +1,21 @@
+.new__todos {
+  display: flex;
+  margin-bottom: 20px;
+
+  > label {
+    min-width: 80px !important;
+  }
+  > input {
+    max-width: 70%;
+  }
+}
+
+.time__picker {
+  width: 150px;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+.progress {
+  margin-bottom: 20px;
+}

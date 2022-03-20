@@ -3,18 +3,6 @@
   flex-direction: column;
 }
 
-input {
-  border-radius: 0px;
-  border: none;
-  outline: none;
-  border-bottom: 1px solid #e6e6e6;
-  height: 40px;
-  padding: 0px 10px;
-  &:focus {
-    border-bottom: 1px solid #19b5bc;
-  }
-}
-
 .button:hover {
   background-color: #19b5bc;
   color: #fff;

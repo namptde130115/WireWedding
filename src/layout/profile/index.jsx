@@ -10,8 +10,19 @@ import {
 
 import clsx from 'clsx';
 import styles from './index.module.scss';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const ProfileLayout = ({ title, children }) => {
+  let currentUrl = window.location.pathname.split('/')[2];
+  const [current, setCurrent] = useState(currentUrl);
+  let navigation = useNavigate();
+
+  const handleClickMenu = (e) => {
+    console.log('click ', e.key);
+    setCurrent(e.key);
+    navigation(e.key);
+  };
   return (
     <div className={clsx(styles.profile__container)}>
       <div className={clsx(styles.profile__menu__container)}>
@@ -22,21 +33,23 @@ export const ProfileLayout = ({ title, children }) => {
         </div>
         <div className={clsx(styles.profile__main)}>
           <Menu
+            onClick={handleClickMenu}
             style={{ width: 228 }}
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
+            // defaultSelectedKeys={['infor']}
+            // defaultOpenKeys={['infor']}
+            selectedKeys={[current]}
             className={clsx(styles.profile__menu__main)}
           >
-            <Menu.Item key='1' icon={<UserOutlined />}>
+            <Menu.Item key='infor' icon={<UserOutlined />}>
               My info
             </Menu.Item>
-            <Menu.Item key='2' icon={<HeartOutlined />}>
+            <Menu.Item key='favorites' icon={<HeartOutlined />}>
               Favorites
             </Menu.Item>
-            <Menu.Item key='3' icon={<BellOutlined />}>
+            <Menu.Item key='notification' icon={<BellOutlined />}>
               Notification
             </Menu.Item>
-            <Menu.Item key='4' icon={<PayCircleOutlined />}>
+            <Menu.Item key='payment' icon={<PayCircleOutlined />}>
               Payment history
             </Menu.Item>
           </Menu>
