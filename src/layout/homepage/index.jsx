@@ -3,6 +3,8 @@ import { useState } from 'react';
 import styles from './index.module.scss';
 import clsx from 'clsx';
 import { imageUrl } from '../../assets/images-url/index';
+//components
+import { Footer } from '../../layout/footer/index.jsx';
 //route
 import { useNavigate } from 'react-router-dom';
 
@@ -58,8 +60,7 @@ export const HomeLayout = ({ children }) => {
       </div>
       <div className={styles.body}>{children}</div>
       <div className={styles.footer}>
-        this is footer\
-        <Button type='primary'>Primary</Button>
+        <Footer />
       </div>
     </div>
   );

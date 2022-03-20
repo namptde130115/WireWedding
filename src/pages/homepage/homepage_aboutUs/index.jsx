@@ -1,4 +1,3 @@
-import { HomeCustomerLayout } from '../../../layout/homepage_customer/index.jsx';
 import clsx from 'clsx';
 import styles from './index.module.scss';
 import { imageUrl } from '../../../assets/images-url/index.js';

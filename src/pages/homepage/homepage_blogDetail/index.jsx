@@ -1,21 +1,21 @@
-import { HomeCustomerLayout } from "../../../layout/homepage_customer/index.jsx";
-import clsx from "clsx";
-import styles from "./index.module.scss";
-import { imageUrl } from "../../../assets/images-url/index.js";
-import { ShareAltOutlined } from "@ant-design/icons";
-import { BlogComment } from "../../../components/BlogComment/index.jsx";
-import { ButtonCustom } from "../../../components/ButtonCustom/index.jsx";
+import clsx from 'clsx';
+import styles from './index.module.scss';
+import { imageUrl } from '../../../assets/images-url/index.js';
+import { ShareAltOutlined } from '@ant-design/icons';
+import { BlogComment } from '../../../components/BlogComment/index.jsx';
+import { ButtonCustom } from '../../../components/ButtonCustom/index.jsx';
+import { CommonLayout } from '../../../layout/common/index.jsx';
 
 export const HomePageBlogDetail = () => {
   return (
-    <HomeCustomerLayout>
+    <CommonLayout>
       <div className={clsx(styles.h1)}>Blog title</div>
       <div className={clsx(styles.blog_container)}>
         <div className={clsx(styles.blog_detail)}>
           <p>By Username</p>
           <p>March 9th, 2022</p>
         </div>
-        <img width="100%" height="60%" src={imageUrl.slider_img5} />
+        <img width='100%' height='60%' src={imageUrl.slider_img5} />
         <div className={clsx(styles.blog_child)}>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -76,9 +76,9 @@ export const HomePageBlogDetail = () => {
           <BlogComment />
         </div>
         <div className={clsx(styles.comment_button)}>
-          <ButtonCustom type="link" text="View more" />
+          <ButtonCustom type='link' text='View more' />
         </div>
       </div>
-    </HomeCustomerLayout>
+    </CommonLayout>
   );
 };

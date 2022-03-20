@@ -5,8 +5,6 @@ import { imageUrl } from '../../assets/images-url/index';
 import { Countdown } from '../../components/Countdown/index.jsx';
 import { CommonLayout } from '../common';
 
-const SubMenu = { Menu };
-
 export const HomeCustomerLayout = ({ children }) => {
   return (
     <CommonLayout>

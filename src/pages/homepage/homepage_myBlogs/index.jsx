@@ -8,7 +8,7 @@ import { Paging } from "../../../components/Pagination/index.jsx";
 import { Menu, Dropdown, message, Space } from "antd";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 
-export const HomePage_myBlogs = () => {
+export const HomePageMyBlogs = () => {
   function handleMenuClick(e) {
     message.info("Click on menu item.");
     console.log("click", e);

@@ -16,6 +16,8 @@ import { PrivateRoute } from './router/privateRoute';
 import { Service } from './pages/servicepage';
 import { ServicePack } from './pages/servicepackpage';
 import { HomePageAboutUs } from './pages/homepage/homepage_aboutUs';
+import { HomePageCreateBlog } from './pages/homepage/homepage_createBlog';
+import { HomePageMyBlogs } from './pages/homepage/homepage_myBlogs';
 
 function App() {
   const isAuthenticated = true;
@@ -42,6 +44,27 @@ function App() {
             />
           }
         />
+        <Route
+          path='/ideas/create-blog'
+          element={
+            <PrivateRoute
+              isAuthenticated={isAuthenticated}
+              roles={['customer', 'kol', 'vendor']}
+              components={<HomePageCreateBlog />}
+            />
+          }
+        />
+        <Route
+          path='/ideas/my-blogs'
+          element={
+            <PrivateRoute
+              isAuthenticated={isAuthenticated}
+              roles={['customer', 'kol', 'vendor']}
+              components={<HomePageMyBlogs />}
+            />
+          }
+        />
+        <Route path='ideas/blog-details' element={<HomePageBlogDetail />} />
         <Route path='/services-packs' element={<ServicePack />} />
         <Route path='/services' element={<Service />} />
         <Route path='/about-us' element={<HomePageAboutUs />} />
@@ -51,22 +74,6 @@ function App() {
         <Route path='/services' element={<Counter />} />
         <Route path='/ideas' element={<HomePage_ideas />} />
       </Routes>
-      {/* <SignIn /> */}
-      {/* <SignUp /> */}
-
-      {/* <HomePage /> */}
-      {/* <HomePage_customer /> */}
-
-      {/* <HomePage_ideas /> */}
-      {/* <HomePage_blogDetail /> */}
-      {/* <HomePage_myBlogs /> */}
-      {/* <HomePage_aboutUs /> */}
-      {/* <HomePage_createBlog /> */}
-
-      {/* <HomePage_ideas /> */}
-      {/* <HomePage_blog /> */}
-
-      {/* <ProfilePage /> */}
     </BrowserRouter>
   );
 }

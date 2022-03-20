@@ -4,7 +4,7 @@ import clsx from "clsx";
 import styles from "./index.module.scss";
 import { Input } from "antd";
 
-export const HomePage_createBlog = () => {
+export const HomePageCreateBlog = () => {
   const editorRef = useRef(null);
   const log = () => {
     if (editorRef.current) {
