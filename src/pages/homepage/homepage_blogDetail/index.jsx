@@ -4,8 +4,9 @@ import styles from "./index.module.scss";
 import { imageUrl } from "../../../assets/images-url/index.js";
 import { ShareAltOutlined } from "@ant-design/icons";
 import { BlogComment } from "../../../components/BlogComment/index.jsx";
+import { ButtonCustom } from "../../../components/ButtonCustom/index.jsx";
 
-export const HomePage_blog = () => {
+export const HomePage_blogDetail = () => {
   return (
     <HomeCustomerLayout>
       <div className={clsx(styles.h1)}>Blog title</div>
@@ -69,7 +70,13 @@ export const HomePage_blog = () => {
           </div>
         </div>
         <div className={clsx(styles.comment_container)}>
+          <h4>Comment</h4>
           <BlogComment />
+          <BlogComment />
+          <BlogComment />
+        </div>
+        <div className={clsx(styles.comment_button)}>
+          <ButtonCustom type="link" text="View more" />
         </div>
       </div>
     </HomeCustomerLayout>

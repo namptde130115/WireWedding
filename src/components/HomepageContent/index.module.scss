@@ -1,5 +1,5 @@
 @import url("http://fonts.googleapis.com/css?family=Dancing+Script");
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap");
 
 .h1 {
   font-family: Dancing Script;
@@ -57,37 +57,38 @@ hr {
     margin-bottom: 30px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around; // space-around
     column-gap: 25px;
     row-gap: 25px;
     width: 100%;
-    > div {
-      width: 20% !important;
-      margin: 0 !important;
-    }
-    > div {
-      > div:first-child {
-        width: 100%;
-        // height: 65%;
-        object-fit: cover;
-        > img {
-          border-radius: 0;
-          width: 90%;
-          height: 12vw;
-          margin: 6% 6% 0 6%;
-        }
-      }
-      > div:last-child {
-        padding: 0 6% 6% 6%;
-        > div {
-          > div:first-child {
-            > div:first-child {
-              margin: 2% 0;
-              font-size: 1.23vw;
-            }
-          }
-        }
-      }
-    }
+    // > div {
+    //   // min-width: 20vw;
+    //   width: 20% !important;
+    //   margin: 0 !important;
+    // }
+    // > div {
+    //   > div:first-child {
+    //     width: 100%;
+    //     // height: 65%;
+    //     object-fit: cover;
+    //     > img {
+    //       border-radius: 4%;
+    //       width: 90%;
+    //       height: 12vw;
+    //       margin: 6% 6% 0 6%;
+    //     }
+    //   }
+    //   > div:last-child {
+    //     padding: 0 6% 6% 6%;
+    //     > div {
+    //       > div:first-child {
+    //         > div:first-child {
+    //           margin: 2% 0;
+    //           font-size: 1.23vw;
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
   }
 }

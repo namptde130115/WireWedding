@@ -5,7 +5,7 @@ import { MyBlog } from "../../../components/MyBlog/index.jsx";
 import clsx from "clsx";
 import styles from "./index.module.scss";
 import { imageUrl } from "../../../assets/images-url/index.js";
-import { Pagination } from "antd";
+import { Paging } from "../../../components/Pagination/index.jsx";
 
 export const HomePage_ideas = () => {
   return (
@@ -19,7 +19,9 @@ export const HomePage_ideas = () => {
         <CardBlog imgUrl={imageUrl.invitation_01} />
         <CardBlog imgUrl={imageUrl.invitation_02} />
       </div>
-      <Pagination defaultCurrent={1} total={50} />
+      <div className={clsx(styles.paging)}>
+        <Paging />
+      </div>
       <MyBlog />
       <Feedback_Contact />
     </HomeCustomerLayout>

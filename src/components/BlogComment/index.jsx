@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import styles from "./index.module.scss";
+// import styles from "./index.module.scss";
 import React, { createElement, useState } from "react";
 import { Comment, Tooltip, Avatar } from "antd";
 import moment from "moment";
@@ -19,11 +19,10 @@ export const BlogComment = ({}) => {
     <div
       style={{
         display: "block",
-        width: 700,
-        padding: 30,
+        width: "100%",
+        padding: "0px 30px",
       }}
     >
-      <h4>Comment</h4>
       <Comment
         author={<a>Gourav Hammad</a>}
         // avatar={<Avatar style={{ backgroundColor: "green" }}>G</Avatar>}

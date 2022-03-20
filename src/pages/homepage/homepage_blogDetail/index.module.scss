@@ -30,13 +30,25 @@
 .blog_share {
   display: flex;
   justify-content: right;
+  color: var(--color-base-1);
   > span {
     margin-left: 5px;
     cursor: pointer;
     > svg {
       width: 1.6em;
       height: 1.6em;
-      color: var(--color-base-1);
     }
   }
+}
+.comment_container {
+  > h4 {
+    padding-left: 30px;
+  }
+  > div {
+    width: 100%;
+  }
+}
+.comment_button {
+  display: flex;
+  justify-content: center;
 }

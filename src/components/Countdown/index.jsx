@@ -8,11 +8,15 @@ export const Countdown = ({}) => {
   //
   return (
     <div className={styles.countdown}>
-      <Countdown className={clsx(styles.countdown_time)}
+      <Countdown
+        className={clsx(styles.countdown_time)}
         title="Countdown to my Wedding day"
         value={deadline}
-        format="D 天 H 时 m 分 s 秒"
+        // format="D 天 H 时 m 分 s 秒"
+        // format={"D [Days] H [Hours] m [Minutes] s [Seconds]"}
+        format="DD HH mm ss"
       />
+      <p>Days Hours Mins Secs</p>
     </div>
   );
 };

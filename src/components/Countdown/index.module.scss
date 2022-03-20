@@ -2,9 +2,15 @@
   padding: 3vw 5vw 3vw 5vw;
   text-align: center;
   background-color: #e0b970;
+  > p {
+    font-size: 1.5vw;
+    word-spacing: 5vw;
+    margin: 0;
+  }
 }
 .countdown_time {
   > div > span {
-    font-size: 30px;
+    font-size: 4.5vw;
+    word-spacing: 3vw;
   }
 }

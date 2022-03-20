@@ -1,0 +1,48 @@
+@import url("http://fonts.googleapis.com/css?family=Dancing+Script");
+.createBlog_container {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
+.createBlog_container > input {
+  width: 40%;
+  margin: 3vw 0;
+  border-bottom: 1px solid #d9d9d9;
+  font-size: 4.5vw;
+  font-family: Dancing Script;
+  height: 6vw;
+  color: var(--color-tittle);
+  text-align: center;
+  &:hover {
+    border-bottom: 1px solid #d9d9d9;
+  }
+  &:focus {
+    border-bottom: 1px solid #d9d9d9;
+  }
+}
+input::-webkit-input-placeholder {
+  font-size: 4.5vw;
+  line-height: 3;
+}
+.createBlog_child {
+  width: 75%;
+  > div {
+    border: 2px solid var(--color-background);
+    > div:first-child > div > div:first-child {
+      background-color: var(--color-background);
+      > button {
+        &:hover {
+          background: var(--color-base-2);
+        }
+        &:focus {
+          background: var(--color-base-2);
+        }
+        &:active {
+          background: var(--color-base-2);
+        }
+      }
+    }
+  }
+}
