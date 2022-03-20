@@ -28,8 +28,8 @@ function App() {
       {/* <HomePage /> */}
       {/* <HomePage_customer /> */}
       {/* <Service/> */}
-      { <ServicePack/> }
-      {/* { <ServicePackDetail/> } */}
+      {/* { <ServicePack/> } */}
+      { <ServicePackDetail/> }
       {/* { < ServiceDetail />} */}
       {/* { <ManageService/>} */}
       {/* <HomePage_ideas /> */}

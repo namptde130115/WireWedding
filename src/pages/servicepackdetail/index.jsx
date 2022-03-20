@@ -36,7 +36,7 @@ export const ServicePackDetail = () => {
                     </div>
                 </div>
                 <div className={styles.rateinfo}>
-                    <Rate disabled defaultValue={4} />
+                    <Rate className={styles.rating} disabled defaultValue={4} />
                 </div>
             </div>
             <div className= {styles.utility}>

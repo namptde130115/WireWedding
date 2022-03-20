@@ -9,7 +9,6 @@ export const CardInfor = ({ imgUrl, title, location }) => {
     <Card
       className={clsx(styles.card)}
       hoverable
-      style={{ width: 200 }}
       cover={<img className={styles.image} alt="example" src={imgUrl} />}
     >
       <Rate disabled defaultValue={4} />

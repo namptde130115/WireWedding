@@ -11,11 +11,16 @@
 
 .textinfo {
     flex-grow: 2;
+    min-width: 300px;
 }
 
 .rateinfo {
     width: 400px;
     flex-grow: 1;
+}
+
+.rating {
+    min-width: 200px;
 }
 
 .packinfo {
@@ -30,7 +35,7 @@
 }
 
 .icons_location {
-    width: 3%;
+    width: 20px;
 }
 
 .utility {
