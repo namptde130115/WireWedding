@@ -1,14 +1,13 @@
+import axios from 'axios';
 
-import axios from "axios";
-
-const apiUrl = `${window.location.protocol}//${window.location.hostname}:5000`;
+const apiUrl = `https://gotoubun.azurewebsites.net/api/v1`;
 
 const axiosClient = axios.create({
-  baseURL: `${apiUrl}/api/v1`,
+  baseURL: `${apiUrl}`,
   headers: {
     'content-type': 'application/json',
-  }
-})
+  },
+});
 
 axiosClient.interceptors.request.use(async (config) => {
   const customHeaders = {
@@ -17,7 +16,7 @@ axiosClient.interceptors.request.use(async (config) => {
 
   const token = localStorage.getItem('token');
   if (token) {
-    customHeaders.Authorization = `Beaer ${token}`;
+    customHeaders.Authorization = `${token}`;
   }
 
   return {
