@@ -2,8 +2,27 @@ import React from 'react';
 import styles from './index.module.scss';
 import { LoginLayout } from '../../layout/login/index';
 import imageWedding from '../../assets/images/loginImage.jpg';
+import { Form, Input, Button } from 'antd';
+import { signIn } from '../../redux/userSlice';
+import { useDispatch } from 'react-redux';
+import { unwrapResult } from '@reduxjs/toolkit';
+import { useNavigate } from 'react-router-dom';
 
 export const SignIn = () => {
+  const dispatch = useDispatch();
+  let navigate = useNavigate();
+  const onFinish = async (values) => {
+    console.log('Success:', values);
+    try {
+      const actionResult = await dispatch(signIn(values));
+      const response = unwrapResult(actionResult);
+      if (response) {
+        navigate('/');
+        console.log('response', response);
+      }
+    } catch (error) {}
+  };
+
   return (
     <LoginLayout>
       <div className={styles.form__title}>
@@ -13,25 +32,35 @@ export const SignIn = () => {
         </p>
       </div>
       <div className={styles.form}>
-        <form action='' className={styles.form__group__container}>
-          <div className={styles.form__group}>
-            <input
-              // name='email'
-              autoComplete='off'
-              className={styles.input}
-              placeholder='Email'
-            />
-            <input
-              // name='password'
-              autoComplete='new-password'
-              type='password'
-              className={styles.input}
-              placeholder='Password'
-            />
-          </div>
-          <p className={styles.forgot__pass}>Forgot your password?</p>
-          <button className={styles.btn__login}>Login</button>
-        </form>
+        <Form
+          name='basic'
+          labelCol={{ span: 8 }}
+          wrapperCol={{ span: 16 }}
+          initialValues={{ remember: true }}
+          onFinish={onFinish}
+          autoComplete='off'
+        >
+          <Form.Item
+            label='Username'
+            name='username'
+            rules={[{ required: true, message: 'Please input your username!' }]}
+          >
+            <Input className={styles.input__antd} />
+          </Form.Item>
+
+          <Form.Item
+            label='Password'
+            name='password'
+            rules={[{ required: true, message: 'Please input your password!' }]}
+          >
+            <Input.Password className={styles.input__antd} />
+          </Form.Item>
+          <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+            <Button type='primary' htmlType='submit'>
+              Submit
+            </Button>
+          </Form.Item>
+        </Form>
         <div className={styles.vendor__container}>
           <p>Are you a vendor?</p>
           <a href=''>Vendor login</a>
