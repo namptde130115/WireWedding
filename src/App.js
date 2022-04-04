@@ -5,7 +5,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 //components
 import { SignIn } from './pages/signin';
 import { SignUp } from './pages/signup';
-import { Counter } from './features/counter/Counter';
 
 import { HomePage } from './pages/homepage';
 import { HomePage_customer } from './pages/homepage/homepage_customer';
@@ -76,7 +75,6 @@ function App() {
         <Route path='/' element={<HomePage />} />
         <Route path='/sign-in' element={<SignIn />} />
         <Route path='/sign-up' element={<SignUp />} />
-        <Route path='/services' element={<Counter />} />
         <Route path='/ideas' element={<HomePage_ideas />} />
 
         <Route path='/payment/payment-confirm' element={<PaymentConfirm />} />
