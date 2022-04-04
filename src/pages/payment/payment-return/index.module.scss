@@ -1,0 +1,54 @@
+@import url("http://fonts.googleapis.com/css?family=Dancing+Script");
+@import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
+
+// p {
+//   margin-bottom: 0;
+// }
+.h1 {
+  font-family: Dancing Script;
+  color: #a97037;
+  text-align: center;
+  font-size: 3.2vw;
+  padding: 1vw 5vw;
+}
+.paymentReturn_container {
+  height: 100%;
+  background: var(--color-body);
+  font-size: 1.2vw;
+  font-family: "Lora", serif;
+  // height: 100vh;
+}
+.returnedTable {
+  width: 85%;
+  margin: auto;
+
+  thead > tr > th {
+    background-color: #ab7f35;
+    color: #fff;
+    font-size: 1.2vw;
+  }
+  tbody > tr {
+    font-size: 1.1vw;
+    &:nth-child(odd) {
+      background-color: #e7dda3;
+    }
+    &:hover > td {
+      background: var(--color-background) !important;
+    }
+  }
+}
+.btnBack {
+  padding: 2vw 0;
+  display: flex;
+  > button {
+    margin: auto;
+    width: 15vw;
+    height: 3.5vw;
+    background: #ab7f35;
+    border: 1px solid #ab7f35;
+    opacity: 1;
+    span {
+      font-size: 1.2vw;
+    }
+  }
+}

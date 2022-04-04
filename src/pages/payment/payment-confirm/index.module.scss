@@ -1,0 +1,179 @@
+@import url("http://fonts.googleapis.com/css?family=Dancing+Script");
+@import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
+
+p {
+  margin-bottom: 0;
+}
+.h1 {
+  font-family: Dancing Script;
+  color: #a97037;
+  font-size: 4vw;
+  margin-bottom: 15px;
+  padding: 1vw 5vw;
+}
+.payment_container {
+  display: flex;
+  height: auto;
+}
+.payment_cart {
+  flex: 1;
+  background: var(--color-body);
+}
+.payment_method {
+  width: 40%;
+  // height: 100%;
+  background: #48413a;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+.cart_item {
+  font-family: "Lora", serif;
+  font-style: italic;
+  font-size: 1.3vw;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+  background: #fff;
+  display: flex;
+  margin: 20px;
+  align-items: center;
+  width: 80%;
+  margin-left: 5vw;
+}
+.cart_image {
+  float: left;
+  width: 15%;
+  > img {
+    width: 100%;
+    padding: 0.8vw;
+  }
+}
+.cart_name {
+  float: left;
+  width: 50%;
+  margin-left: 0.5vw;
+}
+.cart_quantity {
+  float: left;
+  width: 10%;
+}
+.cart_price {
+  float: left;
+  width: 20%;
+  text-align: right;
+}
+
+.cart_total {
+  width: 83%;
+  margin: 0 auto;
+  p {
+    font-size: 1.5vw;
+    padding: 1.6vw 0;
+  }
+}
+
+.back {
+  float: left;
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  p {
+    margin-left: 1.5vw;
+  }
+}
+.txtTotal {
+  float: left;
+  width: 10%;
+}
+.numTotal {
+  float: left;
+  width: 23%;
+  text-align: right;
+  font-weight: bold;
+}
+.payment_details {
+  margin: 5vw 2vw;
+  > div {
+    margin-bottom: 2.5vw;
+    > div > input {
+      color: #fff;
+    }
+  }
+}
+.payment_amount {
+  display: flex;
+}
+.payment_title {
+  color: #fff;
+  font-size: 1.3vw;
+  float: left;
+}
+.amount {
+  float: right;
+  color: #fff;
+  font-size: 1.4vw;
+  margin-left: auto;
+}
+
+.payment_logoVNPay {
+  background: #fff;
+  width: 60%;
+  margin: 0 auto;
+  > img {
+    width: 100%;
+  }
+}
+input::-webkit-input-placeholder {
+  font-size: 1.2vw;
+  font-family: "Lora", serif;
+  color: #fff;
+}
+.btnChooseBank {
+  margin-top: 0.5vw;
+  padding: 0;
+  width: 35.5vw;
+  height: 3vw;
+  > span:first-child {
+    margin-left: 1vw;
+    float: left;
+  }
+  > span:last-child {
+    float: right;
+    margin-right: 1vw;
+    margin-top: 0.5vw;
+  }
+}
+.input_field {
+  > input {
+    border-bottom: 1px solid #dadada;
+    border-radius: 0;
+    padding: 1.5vw 0;
+    font-size: 1.2vw;
+    font-family: "Lora", serif;
+    width: 35.5vw;
+  }
+}
+.btnPay {
+  display: flex;
+  > button {
+    margin: 0 auto;
+    margin-bottom: 2vw;
+    opacity: 1;
+    width: 18vw;
+    height: 4.2vw;
+    font-size: 1.2vw;
+    background: #7c5b39;
+    border-color: #7c5b39;
+    opacity: 1;
+    &:hover {
+      background: #d1a239;
+      border-color: #d1a239;
+      opacity: 0.8;
+    }
+    > span {
+      font-size: 1.3vw;
+    }
+  }
+}

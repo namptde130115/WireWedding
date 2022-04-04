@@ -6,12 +6,17 @@ import clsx from "clsx";
 import styles from "./index.module.scss";
 import { imageUrl } from "../../../assets/images-url/index.js";
 import { Paging } from "../../../components/Pagination/index.jsx";
+import { useParams, useNavigate } from "react-router-dom";
 
 export const HomePage_ideas = () => {
+  // const { id } = useParams();
+  const navigate = useNavigate();
+  const handleBlogDetails = (id) => navigate("ideas/blog-details/" + id);
   return (
     <HomeCustomerLayout>
       <div className={clsx(styles.h1)}>Ideas for your wonderful moment</div>
       <div className={clsx(styles.ideas_child)}>
+        {/* <CardBlog imgUrl={imageUrl.studio_01} onClick={()=>handleBlogDetails(id)} /> */}
         <CardBlog imgUrl={imageUrl.studio_01} />
         <CardBlog imgUrl={imageUrl.studio_02} />
         <CardBlog imgUrl={imageUrl.decoration_01} />

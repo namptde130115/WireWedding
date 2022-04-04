@@ -19,6 +19,11 @@ import { HomePageAboutUs } from './pages/homepage/homepage_aboutUs';
 import { HomePageCreateBlog } from './pages/homepage/homepage_createBlog';
 import { HomePageMyBlogs } from './pages/homepage/homepage_myBlogs';
 
+import { PaymentConfirm } from './pages/payment/payment-confirm';
+import { PaymentReturn } from './pages/payment/payment-return';
+import { PaymentDetails } from './pages/payment/payment-details';
+import { CreateServicePack } from './pages/manageservice/create-servicePack';
+
 function App() {
   const isAuthenticated = true;
   return (
@@ -64,7 +69,7 @@ function App() {
             />
           }
         />
-        <Route path='ideas/blog-details' element={<HomePageBlogDetail />} />
+        <Route path='ideas/blog-details/:id' element={<HomePageBlogDetail />} />
         <Route path='/services-packs' element={<ServicePack />} />
         <Route path='/services' element={<Service />} />
         <Route path='/about-us' element={<HomePageAboutUs />} />
@@ -73,6 +78,12 @@ function App() {
         <Route path='/sign-up' element={<SignUp />} />
         <Route path='/services' element={<Counter />} />
         <Route path='/ideas' element={<HomePage_ideas />} />
+
+        <Route path='/payment/payment-confirm' element={<PaymentConfirm />} />
+        <Route path='/payment/payment-return' element={<PaymentReturn />} />
+        <Route path='/payment/payment-details' element={<PaymentDetails />} />
+        <Route path='/manageservice/create-servicePack' element={<CreateServicePack />} />
+
       </Routes>
     </BrowserRouter>
   );

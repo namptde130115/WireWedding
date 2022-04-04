@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap");
+
+.serviceBox_container {
+  padding: 2vw;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.05);
+  background: #fff;
+  align-items: center;
+  cursor: pointer;
+  min-width: 20%;
+  &:hover{
+    opacity: 0.8;
+  }
+}
+.serviceBox_child > div {
+  display: table;
+  margin: auto;
+  margin-top: 1vw;
+}
+.serviceBox_category {
+  font-family: "Lora", serif;
+  font-size: 16px;
+}
+.serviceBox_icon > span > svg {
+  width: 46px;
+  height: 46px;
+  > path {
+    fill: #919191;
+  }
+}
+.category_child{
+  width: 100%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(275px, max-content));
+  grid-gap: 3vw;
+  justify-content: center;
+}

@@ -3,8 +3,12 @@ import styles from "./index.module.scss";
 import { Carousel } from "antd";
 import { imageUrl } from "../../assets/images-url/index";
 import { ButtonCustom } from "../../components/ButtonCustom/index.jsx";
+import { useNavigate } from "react-router-dom";
 
 export const MyBlog = ({}) => {
+  const navigate = useNavigate();
+  const handleCreateBlog = () => navigate("/ideas/create-blog");
+  const handleSeeAll = () => navigate("/ideas/my-blogs");
   return (
     <div className={clsx(styles.ideas_blog)}>
       <hr />
@@ -35,8 +39,12 @@ export const MyBlog = ({}) => {
         </Carousel>
       </div>
       <div className={clsx(styles.ideas_blog_button)}>
-        <ButtonCustom type="primary" text="Create blog" />
-        <ButtonCustom type="ghost" text="See all" />
+        <ButtonCustom
+          type="primary"
+          text="Create blog "
+          onClick={handleCreateBlog}
+        />
+        <ButtonCustom type="ghost" text="See all" onClick={handleSeeAll} />
       </div>
     </div>
   );
