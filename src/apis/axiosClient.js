@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiUrl = `https://gotoubun.azurewebsites.net/api/v1`;
+const apiUrl = `http://localhost:8080`;
 
 const axiosClient = axios.create({
   baseURL: `${apiUrl}`,

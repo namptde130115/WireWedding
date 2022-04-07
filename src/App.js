@@ -17,6 +17,8 @@ import { ServicePack } from './pages/servicepackpage';
 import { HomePageAboutUs } from './pages/homepage/homepage_aboutUs';
 import { HomePageCreateBlog } from './pages/homepage/homepage_createBlog';
 import { HomePageMyBlogs } from './pages/homepage/homepage_myBlogs';
+import { VendorSignUp } from './pages/signup-vendor';
+import { AdminPage } from './pages/Admin';
 
 import { PaymentConfirm } from './pages/payment/payment-confirm';
 import { PaymentReturn } from './pages/payment/payment-return';
@@ -73,6 +75,17 @@ function App() {
           }
         />
         <Route path='ideas/blog-details/:id' element={<HomePageBlogDetail />} />
+        <Route
+          path='/admin/*'
+          element={
+            <PrivateRoute
+              isAuthenticated={isAuthenticated}
+              roles={['customer', 'kol', 'vendor']}
+              components={<AdminPage />}
+            />
+          }
+        />
+        <Route path='ideas/blog-details' element={<HomePageBlogDetail />} />
         <Route path='/services-packs' element={<ServicePack />} />
         <Route path='/services' element={<Service />} />
         <Route path='/about-us' element={<HomePageAboutUs />} />
@@ -90,6 +103,7 @@ function App() {
         <Route path='/add-service' element={<AddService />} />
         <Route path='/sign-up-kol' element={<SignUpKol />} />
         
+        <Route path='/vendor-signup' element={<VendorSignUp />} />
       </Routes>
     </BrowserRouter>
   );

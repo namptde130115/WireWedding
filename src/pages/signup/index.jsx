@@ -38,7 +38,6 @@ export const SignUp = () => {
   return (
     <LoginLayout>
       <div className={styles.signUp__container}>
-        <div>{loading}</div>
         <p className={styles.title}>Sign Up</p>
         <div>
           <Form
