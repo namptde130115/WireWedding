@@ -22,6 +22,10 @@ import { PaymentConfirm } from './pages/payment/payment-confirm';
 import { PaymentReturn } from './pages/payment/payment-return';
 import { PaymentDetails } from './pages/payment/payment-details';
 import { CreateServicePack } from './pages/manageservice/create-servicePack';
+import { ServiceDetail } from './pages/service_detail';
+import { EditService } from './pages/edit-service';
+import { AddService } from './pages/add-service';
+import { SignUpKol } from './pages/signup/signup-kol';
 
 function App() {
   const isAuthenticated = true;
@@ -81,7 +85,11 @@ function App() {
         <Route path='/payment/payment-return' element={<PaymentReturn />} />
         <Route path='/payment/payment-details' element={<PaymentDetails />} />
         <Route path='/manageservice/create-servicePack' element={<CreateServicePack />} />
-
+        <Route path='/service-detail' element={<ServiceDetail />} />
+        <Route path='/edit-service' element={<EditService />} />
+        <Route path='/add-service' element={<AddService />} />
+        <Route path='/sign-up-kol' element={<SignUpKol />} />
+        
       </Routes>
     </BrowserRouter>
   );

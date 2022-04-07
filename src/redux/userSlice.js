@@ -65,7 +65,7 @@ export const userSlice = createSlice({
       .addCase(signUp.fulfilled, (state, { payload }) => {
         state.registerLoading = false;
         state.userInfor = payload;
-      });
+      })
   },
 });
 

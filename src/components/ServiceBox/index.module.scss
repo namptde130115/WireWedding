@@ -29,8 +29,12 @@
   }
 }
 .category_child{
-  width: 100%;
-  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(275px, max-content));
+  grid-gap: 3vw;
+  justify-content: center;
+}
+.service{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(275px, max-content));
   grid-gap: 3vw;

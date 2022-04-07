@@ -56,12 +56,18 @@ hr {
   margin: 0 auto;
   > .hotServices_child {
     margin-bottom: 30px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around; // space-around
-    column-gap: 25px;
-    row-gap: 25px;
-    width: 100%;
+    // display: flex;
+    // flex-wrap: wrap;
+    // justify-content: space-around; // space-around
+    // column-gap: 25px;
+    // row-gap: 25px;
+    // width: 100%;
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(275px, max-content));
+    grid-gap: 3vw;
+    justify-content: center;
+    // padding: 2vw 0;
     // > div {
     //   // min-width: 20vw;
     //   width: 20% !important;

@@ -5,7 +5,7 @@ import styles from "./index.module.scss";
 import { Input } from "antd";
 import { ButtonCustom } from "../../../components/ButtonCustom/index.jsx";
 
-export const HomePageCreateBlog = () => {
+export const HomePageEditBlog = () => {
   const editorRef = useRef(null);
   const log = () => {
     if (editorRef.current) {
@@ -67,7 +67,7 @@ export const HomePageCreateBlog = () => {
         {/* <button onClick={log}>Log editor content</button> */}
       </div>
       <div className={clsx(styles.button_container)}>
-        <ButtonCustom type="primary" text="Create" />
+        <ButtonCustom type="primary" text="Save" />
         <ButtonCustom type="ghost" text="Cancel" />
       </div>
     </div>

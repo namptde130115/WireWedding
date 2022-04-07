@@ -32,13 +32,13 @@
 }
 .pack_name {
   > input {
-    margin: 1.5vw 0;
+    margin: 1vw 0;
     border-bottom: 1px solid #d9d9d9;
     border-radius: 0;
     font-size: 3vw;
     font-family: Dancing Script;
     height: 6vw;
-    color: var(--color-tittle);
+    color: #cf8842;
     text-align: center;
     &:hover {
       border-bottom: 1px solid #d9d9d9;
@@ -77,12 +77,11 @@
   margin: 0.5vw 0;
 }
 .amount {
-  float: right;
   color: #fff;
   font-size: 1.4vw;
   margin-left: auto;
 }
-.btnChooseCategory {
+.dropdownTheme {
   margin-top: 0.5vw;
   padding: 0;
   width: 35.5vw;
@@ -97,34 +96,37 @@
     margin-top: 0.5vw;
   }
 }
-.btnSave {
+.button_container {
   display: flex;
   > button {
     margin: 0 auto;
+    margin-top: 3vw;
     margin-bottom: 2.5vw;
     opacity: 1;
-    width: 18vw;
-    height: 4.2vw;
+    width: 10vw;
+    height: 3.5vw;
     font-size: 1.2vw;
-    background: #7c5b39;
-    border-color: #7c5b39;
-    opacity: 1;
-    &:hover {
-      background: #d1a239;
-      border-color: #d1a239;
-      opacity: 0.8;
-    }
-    > span {
-      font-size: 1.3vw;
+    border-color: #d1a239;
+    color: #d1a239;
+    &:first-child {
+      background: #7c5b39;
+      border-color: #7c5b39;
+      color: #fff;
+      opacity: 1;
+      &:hover {
+        background: #d1a239;
+        border-color: #d1a239;
+        opacity: 0.8;
+      }
+      > span {
+        font-size: 1.3vw;
+      }
     }
   }
 }
 .createPack_serviceBox {
   flex: 1;
   background: var(--color-body);
-
-  width: 100%;
-  margin: auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(275px, max-content));
   grid-gap: 3vw;

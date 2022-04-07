@@ -76,12 +76,21 @@ export const ServiceBox = ({ component, category }) => {
         width={1000}
       >
         <div className={clsx(styles.service)}>
-          {/* <CardInfor
+          <CardInfor
             title="Service 1"
             location="Location 1"
             imgUrl={imageUrl.news_img1}
-          /> */}
-          aaaaaaaaaaaa
+          />
+          <CardInfor
+            title="Service 1"
+            location="Location 1"
+            imgUrl={imageUrl.studio_01}
+          />
+          <CardInfor
+            title="Service 1"
+            location="Location 1"
+            imgUrl={imageUrl.studio_02}
+          />
         </div>
       </Modal>
     </div>

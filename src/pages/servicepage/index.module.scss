@@ -1,27 +1,33 @@
 .utility {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    padding: 50px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 50px;
 }
 
 .search {
-    flex-grow: 6;
+  flex-grow: 6;
 }
 
 .card {
-    display: flex;
-    justify-content: flex-start;
-    gap: 10px;
-    flex-wrap: wrap;
-    > div {
-        margin:auto !important;
-    }
+  // display: flex;
+  // justify-content: flex-start;
+  // gap: 10px;
+  // flex-wrap: wrap;
+  // > div {
+  //     margin:auto !important;
+  // }
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(275px, max-content));
+  grid-gap: 3vw;
+  justify-content: center;
+  padding: 2vw 0;
 }
 
 .paging {
-    padding: 50px;
-    margin: auto;
-    width: 80%;
+  padding: 50px;
+  margin: auto;
+  width: 80%;
 }

@@ -127,7 +127,7 @@ export const PaymentConfirm = () => {
           <div className={clsx(styles.payment_bank)}>
             <p className={clsx(styles.payment_title)}>Choose bank</p>
             <Dropdown overlay={menu} placement="bottomRight" arrow>
-              <Button className={clsx(styles.btnChooseBank)}>
+              <Button className={clsx(styles.dropdownBank)}>
                 Không chọn
                 <DownOutlined />
               </Button>
