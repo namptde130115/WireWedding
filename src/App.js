@@ -17,6 +17,8 @@ import { ServicePack } from './pages/servicepackpage';
 import { HomePageAboutUs } from './pages/homepage/homepage_aboutUs';
 import { HomePageCreateBlog } from './pages/homepage/homepage_createBlog';
 import { HomePageMyBlogs } from './pages/homepage/homepage_myBlogs';
+import { VendorSignUp } from './pages/signup-vendor';
+import { AdminPage } from './pages/Admin';
 
 function App() {
   const isAuthenticated = true;
@@ -63,6 +65,16 @@ function App() {
             />
           }
         />
+        <Route
+          path='/admin/*'
+          element={
+            <PrivateRoute
+              isAuthenticated={isAuthenticated}
+              roles={['customer', 'kol', 'vendor']}
+              components={<AdminPage />}
+            />
+          }
+        />
         <Route path='ideas/blog-details' element={<HomePageBlogDetail />} />
         <Route path='/services-packs' element={<ServicePack />} />
         <Route path='/services' element={<Service />} />
@@ -71,6 +83,7 @@ function App() {
         <Route path='/sign-in' element={<SignIn />} />
         <Route path='/sign-up' element={<SignUp />} />
         <Route path='/ideas' element={<HomePage_ideas />} />
+        <Route path='/vendor-signup' element={<VendorSignUp />} />
       </Routes>
     </BrowserRouter>
   );
