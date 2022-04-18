@@ -1,49 +1,38 @@
 .body {
-    width: 95%;
+    width: 75%;
     background-color: var(--color-body);
     padding: 15px;
     margin: 0 auto;
     margin-top: 10px;
   }
 
-//Button group
-.button_group{
-    margin-top: -20px;
-    margin-bottom: 50px;
+//   Avatar group css
+.ava_group{
     display: flex;
     justify-content: center;
-    >div > button{
-        background: var(--color-button);
-        color: white;
-    }
+    margin-top: 50px;
 }
 
-//Hire button css
-.hire_btn{
-    position: absolute;
-    margin-top: -31px;
-    right: 20.01%;
-    background-color: var(--color-button);
-    color: white;
+.anata_ava:hover{
+    opacity: 0.5;
 }
 
-//Remove button css
-.remove_all_btn{
-    position: absolute;
-    margin-top: -31px;
-    left: 20.01%;
-    background-color: var(--color-button);
-    color: white;
+.inner_camera{
+    font-size: 150% !important;
+}
+
+.inner_camera:hover{
+    opacity: 0.5;
 }
 
 
-// Your Services css
+// Your progress css
 @font-face {
     font-family: 'AlexBrush';
     src: url('../../../fonts/alexbrush/AlexBrush-Regular.ttf') format('truetype');
 }
 
-.your_service_text{
+.progress_text{
     display: flex;
     justify-content: center;
     color: var(--color-title);
@@ -51,33 +40,50 @@
     font-family: "AlexBrush" !important;
 }
 
-.services_list{
+.progress_menu{
     display: flex;
     justify-content: center;
     text-align: center;
 }
 
-.services_list_inner{
+.progress_menu_inner{
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
 .detail{
-    width: 100%;
+ width: 100%;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+
 }
 
 .detail:nth-child(1){
     height: 100% !important;
 }
 
-.col_line{
-    margin-top: 10px;
-}
-
 // Divider css
 .divider{
     border-top: 2px solid rgba(0, 0, 0, 0.3) !important;
+}
+
+// Upcomming task css
+.upcomming_title{
+    font-size: 1.3rem;
+    color: black;
+}
+
+.task_list{
+    background-color: white;
+    padding: 10px;
+}
+
+// Hired services
+.search_bar{
+    width: 30%;
+    float: right;
 }
 
 

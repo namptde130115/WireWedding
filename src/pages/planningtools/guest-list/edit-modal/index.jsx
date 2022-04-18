@@ -1,5 +1,5 @@
 import { Modal } from 'antd';
-import { FormItem } from '../../../components/FormItem';
+import { FormItem } from '../../../../components/FormItem';
 
 export const EditModal = ({ title, visible, onOk, onCancel }) => {
   return (

@@ -68,22 +68,6 @@
   }
 }
 
-input {
-  border-radius: 0px;
-  outline: none;
-  border: 1px solid #e6e6e6;
-  height: 30px;
-  padding: 5px;
-  border-radius: 3px;
-  &:focus {
-    border: 1px solid #b8b84c;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
-  }
-  .ant-carousel .slick-dots li.slick-active button {
-    background-color: var(--color-base-1) !important;
-  }
-}
-
 //custom scroll
 ::-webkit-scrollbar {
   background-color:#fff;
@@ -111,3 +95,7 @@ input {
 
 /* set button(top and bottom of the scrollbar) */
 ::-webkit-scrollbar-button {display:none}
+
+.ant-picker-input > input:focus {
+  border-color: #fff;
+}

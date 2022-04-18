@@ -1,9 +1,9 @@
-@import '../../../scss/mixin.scss';
+@import '../../../../scss/mixin.scss';
 
 .checklist__items {
   margin-bottom: 10px;
   display: flex;
-  @include borderShadown;
+  // @include borderShadown;
   padding: 10px;
   align-items: center;
 }

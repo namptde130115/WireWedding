@@ -9,8 +9,9 @@ import {
   SaveOutlined,
 } from '@ant-design/icons';
 import { useState } from 'react';
+import { Input } from 'antd';
 
-export const CheckListItem = ({ title, day }) => {
+export const CheckListItem = ({ isShowCheck, title, day }) => {
   const [isEdit, setIsEdit] = useState(title);
   const [isVisible, setIsVisible] = useState(true);
   const [isChecked, setIsChecked] = useState(true);
@@ -28,18 +29,20 @@ export const CheckListItem = ({ title, day }) => {
 
   return (
     <div className={clsx(styles.checklist__items)}>
-      <CheckSquareOutlined
-        onClick={handleUnChecked}
-        className={clsx(
-          {
-            [styles.is__checked]: isChecked,
-          },
-          styles.icon__check,
-          styles.icon
-        )}
-      />
+      {isShowCheck && (
+        <CheckSquareOutlined
+          onClick={handleUnChecked}
+          className={clsx(
+            {
+              [styles.is__checked]: isChecked,
+            },
+            styles.icon__check,
+            styles.icon
+          )}
+        />
+      )}
       <div className={clsx(styles.content)}>
-        <input
+        <Input
           className={clsx({ [styles.visible__input]: isVisible }, styles.input)}
           value={isEdit}
           onChange={handleEdit}
@@ -47,7 +50,7 @@ export const CheckListItem = ({ title, day }) => {
           readOnly={isVisible}
         />
       </div>
-      <div className={clsx(styles.day)}>{day}</div>
+      {day && <div className={clsx(styles.day)}>{day}</div>}
       <div>
         {isVisible ? (
           <EditOutlined

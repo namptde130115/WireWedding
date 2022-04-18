@@ -1,3 +1,19 @@
+.body {
+  width: 95%;
+  background-color: var(--color-body);
+  padding: 15px;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+.your_service_text {
+  display: flex;
+  justify-content: center;
+  color: var(--color-title);
+  font-size: 5em;
+  font-family: 'AlexBrush' !important;
+}
+
 .groupname {
   display: flex;
   > label {
@@ -90,6 +106,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 5px;
+  border: solid 1px #ccc;
+  padding: 10px 0;
+  > div:first-child {
+    width: 93%;
+  }
 }
 
 .guest {

@@ -30,6 +30,7 @@ import { ServiceDetail } from './pages/service_detail';
 // import { AddService } from './pages/add-service';
 import { SignUpKol } from './pages/signup-kol';
 import { SignInVendor } from './pages/vendorsignin';
+import { PlanningTools } from './pages/planningtools/planningtools_home';
 
 function App() {
   const isAuthenticated = true;
@@ -117,6 +118,7 @@ function App() {
         <Route path='/kol-signup' element={<SignUpKol />} />
         <Route path='/vendor-signin' element={<SignInVendor />} />
         <Route path='/vendor-signup' element={<VendorSignUp />} />
+        <Route path='/planning-tools/*' element={<PlanningTools />} />
       </Routes>
     </BrowserRouter>
   );
