@@ -6,9 +6,6 @@ import { Card, Rate } from 'antd';
 import { ButtonCustom } from '../../components/ButtonCustom/index.jsx';
 
 const { Meta } = Card;
-<<<<<<< HEAD
-export const CardInfor = ({ imgUrl, title, location, onclick }) => {
-=======
 export const CardInfor = ({
   imgUrl,
   title,
@@ -19,7 +16,6 @@ export const CardInfor = ({
   textButton,
   showRate,
 }) => {
->>>>>>> d659dfbdf1769afa1390c19886754857c7d2bd9c
   return (
     <Card
       className={clsx(styles.card, className)}
@@ -39,15 +35,11 @@ export const CardInfor = ({
               />
               {location}
             </div>
-<<<<<<< HEAD
-            <ButtonCustom type="primary" text="+ Add" onclick={onclick}/>
-=======
             <ButtonCustom
               type='primary'
               text={textButton}
               onClick={handleAdd}
             />
->>>>>>> d659dfbdf1769afa1390c19886754857c7d2bd9c
           </div>
         }
       />

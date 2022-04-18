@@ -6,6 +6,7 @@ import { Location } from '../../components/Location/index.jsx';
 import { Paging } from '../../components/Pagination/index.jsx';
 import styles from './index.module.scss';
 import { imageUrl } from '../../assets/images-url/index.js';
+import clsx from 'clsx';
 
 export const Service = () => {
   return (
