@@ -1,42 +1,38 @@
 import React from 'react';
 import { LoginLayout } from '../../layout/login/index';
 import styles from './index.module.scss';
-import { Form, Input, Button, Select, message } from 'antd';
+import { Form, Input, Button, message } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { unwrapResult } from '@reduxjs/toolkit';
-import { vendorSignUp } from '../../redux/vendorSlice';
+import { signUpKol } from '../../redux/kolSlice';
 
-const { Option } = Select;
-export const VendorSignUp = () => {
+export const SignUpKol = () => {
   const dispatch = useDispatch();
   let navigate = useNavigate();
 
   const loading = useSelector((state) => state.user.registerLoading);
   const onFinish = async (values) => {
-    console.log(values.categoryId.value);
-    const dataSubmit = {
-      ...values,
-      categoryId: parseInt(values.categoryId),
-    };
-    console.log('Success:', dataSubmit);
+    console.log('Success:', values);
     try {
-      const actionResult = await dispatch(vendorSignUp(dataSubmit));
+      console.log('aaaaa');
+      const actionResult = await dispatch(signUpKol(values));
       const response = unwrapResult(actionResult);
       if (response) {
-        message.success('register success');
+        message.success('Register success');
+        navigate('/');
         console.log('response', response);
       }
     } catch (error) {
-      console.log('error', error);
+      console.log(error);
       message.error(error.username);
     }
   };
-
   return (
     <LoginLayout>
       <div className={styles.signUp__container}>
-        <p className={styles.title}>Sign Up For Vendor</p>
+        <div>{loading}</div>
+        <p className={styles.title}>Sign Up For Kols</p>
         <div>
           <Form
             name='basic'
@@ -44,39 +40,32 @@ export const VendorSignUp = () => {
             wrapperCol={{ span: 16 }}
             onFinish={onFinish}
             autoComplete='off'
-            initialValues={{
-              categoryId: '1',
-            }}
           >
             <Form.Item
-              label='Company Name'
-              name='companyName'
+              label='Full Name'
+              name='fullName'
+              rules={[{ required: true, message: 'Please input your name!' }]}
+            >
+              <Input className={styles.input__antd} />
+            </Form.Item>
+            <Form.Item
+              label='Email'
+              name='email'
               rules={[
-                { required: true, message: 'Please input your company name!' },
+                { required: true, message: 'Please input your email!' },
+                { type: 'email', message: 'Please input a valid email' },
               ]}
             >
               <Input className={styles.input__antd} />
             </Form.Item>
             <Form.Item
-              label='Representative'
-              name='representative'
+              label='Password'
+              name='password'
               rules={[
-                {
-                  required: true,
-                  message: 'Please input your representative!',
-                },
+                { required: true, message: 'Please input your password!' },
               ]}
             >
-              <Input className={styles.input__antd} />
-            </Form.Item>
-            <Form.Item
-              label='User Name'
-              name='username'
-              rules={[
-                { required: true, message: 'Please input your user name!' },
-              ]}
-            >
-              <Input className={styles.input__antd} />
+              <Input.Password className={styles.input__antd} />
             </Form.Item>
             <Form.Item
               label='Phone'
@@ -96,23 +85,16 @@ export const VendorSignUp = () => {
             >
               <Input className={styles.input__antd} />
             </Form.Item>
-            <Form.Item label='Category' name='categoryId'>
-              <Select style={{ width: 120 }}>
-                <Option value='1'>Studio</Option>
-                <Option value='2'>Invitations</Option>
-                <Option value='3'>{`Dress & Attire`}</Option>
-                <Option value='4'>Jewelry</Option>
-                <Option value='5'>Transportation</Option>
-                <Option value='6'>Makeup</Option>
-                <Option value='7'>{`Musicians & Bands`}</Option>
-                <Option value='8'>Venues</Option>
-                <Option value='9'>Cakes</Option>
-                <Option value='10'>{`Lighting & Decor`}</Option>
-                <Option value='11'>Officiants</Option>
-                <Option value='12'>Travel Agents</Option>
-                <Option value='13'>Event Agents</Option>
-              </Select>
+            <Form.Item
+              label='Description'
+              name='description'
+              rules={[
+                { required: true, message: 'Please input your description!' },
+              ]}
+            >
+              <Input className={styles.input__antd} />
             </Form.Item>
+
             <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
               <Button type='primary' htmlType='submit'>
                 Submit

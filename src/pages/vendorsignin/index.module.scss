@@ -1,0 +1,88 @@
+.form__title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  > .title {
+    color: #222222;
+    font-family: ProximaNova;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 26px;
+    margin: 0px 0px 10px;
+    text-align: center;
+  }
+  > .title__signIn {
+    color: #8c8c8c;
+    font-family: ProximaNova;
+    line-height: 24px;
+    margin: 15px 0px 10px;
+    text-align: center;
+    > a {
+      color: var(--color-base-1);
+      display: inline;
+      font-family: ProximaNova;
+      font-weight: 600;
+      line-height: 24px;
+      text-align: center;
+      text-decoration: none;
+    }
+  }
+}
+
+.form {
+  width: 70%;
+}
+
+.form__group {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+  margin-top: 20px;
+}
+
+.forgot__pass {
+  font-family: ProximaNova;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: right;
+  color: #222222;
+  &:hover {
+    cursor: pointer;
+    color: var(--color-base-1);
+  }
+}
+
+.input__antd {
+  height: 40px;
+}
+
+.vendor__container {
+  width: 100%;
+  margin-top: 30px;
+  > p {
+    text-align: center;
+    color: #8c8c8c;
+    font-family: ProximaNova;
+    line-height: 24px;
+    margin: 15px 0px 10px;
+  }
+  > a {
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    color: #222222;
+    font-family: ProximaNova;
+    font-weight: 600;
+    line-height: 24px;
+    &:hover {
+      cursor: pointer;
+      color: var(--color-base-1);
+    }
+  }
+}
+
+.form__group__container {
+}

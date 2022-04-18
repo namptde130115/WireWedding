@@ -1,26 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
 
 .edit_container {
-  width: 80%;
-  margin: auto;
   font-family: "Lora", serif;
-  padding: 2vw;
 }
 
 .info {
   display: flex;
   justify-content: flex-start;
   gap: 30px;
-
-  padding-bottom: 5vw;
-}
-
-.imageinfo {
-  flex-grow: 1;
 }
 
 .textinfo {
-  flex-grow: 2;
+  width: 100%;
   > div {
     display: flex;
     &:not(:last-child) {
@@ -54,13 +45,10 @@
 }
 .image {
   border-radius: 15px;
-  //   width: 190px;
   width: 20vw;
   height: 100%;
 }
-.popup_edit {
-  padding: 2vw 0;
-}
+
 .thumbnail {
   border-radius: 15px;
   width: 300px;

@@ -1,8 +1,8 @@
 import './index.scss';
-import { Table, Tag, Space, Modal, Select } from 'antd';
+import { Table, Tag, Space, Modal, Select, message } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { getAllKols, updateVendor } from '../../../redux/adminSlice';
+import { getAllKols, updateKol } from '../../../redux/adminSlice';
 import { unwrapResult } from '@reduxjs/toolkit';
 
 const { Option } = Select;
@@ -43,13 +43,16 @@ export const ManageKolTable = () => {
     };
     console.log(body);
     try {
-      const actionResult = await dispatch(updateVendor(body));
+      const actionResult = await dispatch(updateKol(body));
       const response = unwrapResult(actionResult);
       if (response) {
+        message.success('Update Successfully');
         dispatch(getAllKols());
         setIsModalVisible(false);
       }
-    } catch (error) {}
+    } catch (error) {
+      message.error('Update Failed');
+    }
   };
 
   const handleCancel = () => {
@@ -66,7 +69,6 @@ export const ManageKolTable = () => {
       title: 'User Name',
       dataIndex: 'username',
       key: 'username',
-      render: (text) => <a>{text}</a>,
     },
     {
       title: 'Address',
@@ -113,6 +115,7 @@ export const ManageKolTable = () => {
         dataSource={dataKols}
         rowKey='id'
         loading={isLoading}
+        pagination={false}
       />
       <Modal
         title='Infor Kol'
@@ -122,7 +125,9 @@ export const ManageKolTable = () => {
       >
         <p>{currentVendor.username}</p>
         <p>{currentVendor.address}</p>
+        <p>Desciption: </p>
         <p>Some contents...</p>
+        <p style={{ display: 'inline' }}>Status: </p>
         <Select
           defaultValue={currentVendor?.status?.toString()}
           style={{ width: 120 }}
