@@ -1,73 +1,76 @@
 .body {
-    width: 75%;
-    background-color: var(--color-body);
-    padding: 15px;
-    margin: 0 auto;
-    margin-top: 10px;
-  }
+  width: 95%;
+  background-color: var(--color-body);
+  padding: 15px;
+  margin: 0 auto;
+  margin-top: 10px;
+}
 
 //Button group
-.button_group{
-    margin-top: -20px;
-    margin-bottom: 50px;
-    display: flex;
-    justify-content: center;
-    >div > button{
-        background: var(--color-button);
-        color: white;
-    }
-}
-
-//Add button css
-.add_button{
-    position: absolute;
-    margin-top: -31px;
-    right: 20.01%;
-    background-color: var(--color-button);
+.button_group {
+  margin-top: -20px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  > div > button {
+    background: var(--color-button);
     color: white;
+  }
 }
 
+.btn {
+  display: flex;
+}
 
+.add_button {
+  margin-left: auto;
+}
 // Your Services css
 @font-face {
-    font-family: 'AlexBrush';
-    src: url('../../../fonts/alexbrush/AlexBrush-Regular.ttf') format('truetype');
+  font-family: 'AlexBrush';
+  src: url('../../../fonts/alexbrush/AlexBrush-Regular.ttf') format('truetype');
 }
 
-.your_service_text{
-    display: flex;
-    justify-content: center;
-    color: var(--color-title);
-    font-size: 5em;
-    font-family: "AlexBrush" !important;
+.your_service_text {
+  display: flex;
+  justify-content: center;
+  color: var(--color-title);
+  font-size: 5em;
+  font-family: 'AlexBrush' !important;
 }
 
-.services_list{
-    display: flex;
-    justify-content: center;
-    text-align: center;
+.services_list {
+  display: flex;
+  justify-content: flex-start;
+  text-align: center;
+  flex: 1;
+  background: var(--color-body);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(275px, max-content));
+  grid-gap: 3vw;
+  justify-content: center;
+  padding: 2vw 0;
 }
 
-.services_list_inner{
-    width: 100%;
-    display: flex;
-    justify-content: center;
+.services_list_inner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.detail{
-    width: 100%;
+.detail {
+  width: 100%;
 }
 
-.detail:nth-child(1){
-    height: 100% !important;
+.detail:nth-child(1) {
+  height: 100% !important;
 }
 
-.col_line{
-    margin-top: 10px;
+.col_line {
+  margin-top: 10px;
 }
 
 // Divider css
-.divider{
-    border-top: 2px solid rgba(0, 0, 0, 0.3) !important;
+.divider {
+  border-top: 2px solid rgba(0, 0, 0, 0.3) !important;
 }
-

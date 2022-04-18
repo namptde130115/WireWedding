@@ -1,5 +1,5 @@
 import './index.scss';
-import { Table, Tag, Space, Modal, Select } from 'antd';
+import { Table, Tag, Space, Modal, Select, message } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { getAllVendors, updateVendor } from '../../../redux/adminSlice';
@@ -46,10 +46,13 @@ export const ManageVendorTable = () => {
       const actionResult = await dispatch(updateVendor(body));
       const response = unwrapResult(actionResult);
       if (response) {
+        message.success('Update Successfully');
         dispatch(getAllVendors());
         setIsModalVisible(false);
       }
-    } catch (error) {}
+    } catch (error) {
+      message.error('Update Failed');
+    }
   };
 
   const handleCancel = () => {
@@ -66,7 +69,6 @@ export const ManageVendorTable = () => {
       title: 'User Name',
       dataIndex: 'username',
       key: 'username',
-      render: (text) => <a>{text}</a>,
     },
     {
       title: 'Address',
@@ -113,6 +115,7 @@ export const ManageVendorTable = () => {
         dataSource={dataVendors}
         rowKey='id'
         loading={isLoading}
+        pagination={false}
       />
       <Modal
         title='Infor Kol'
@@ -120,9 +123,12 @@ export const ManageVendorTable = () => {
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <p>{currentVendor.username}</p>
-        <p>{currentVendor.address}</p>
+        <p>UserName: {currentVendor.username}</p>
+        <p>Address: {currentVendor.address}</p>
+        <p>Desciption: </p>
         <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p style={{ display: 'inline' }}>Status: </p>
         <Select
           defaultValue={currentVendor?.status?.toString()}
           style={{ width: 120 }}

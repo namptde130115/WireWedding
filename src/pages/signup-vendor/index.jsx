@@ -1,13 +1,11 @@
 import React from 'react';
 import { LoginLayout } from '../../layout/login/index';
 import styles from './index.module.scss';
-import { Form, Input, Button, Select } from 'antd';
+import { Form, Input, Button, Select, message } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { unwrapResult } from '@reduxjs/toolkit';
-import { signUp } from '../../redux/userSlice';
 import { vendorSignUp } from '../../redux/vendorSlice';
-import { message } from 'antd';
 
 const { Option } = Select;
 export const VendorSignUp = () => {
@@ -31,7 +29,7 @@ export const VendorSignUp = () => {
       }
     } catch (error) {
       console.log('error', error);
-      
+      message.error(error.username);
     }
   };
 
