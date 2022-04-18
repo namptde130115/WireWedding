@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-import { SearchBar } from "../../components/Search/index.jsx";
-import { Category } from "../../components/Category/index.jsx";
-import { CommonLayout } from "../../layout/common/index.jsx";
-import { CardInfor } from "../../components/CardInfor/index.jsx";
-import { Location } from "../../components/Location/index.jsx";
-import { Paging } from "../../components/Pagination/index.jsx";
-import styles from "./index.module.scss";
-import { imageUrl } from "../../assets/images-url/index.js";
-import clsx from "clsx";
-=======
 import { SearchBar } from '../../components/Search/index.jsx';
 import { Category } from '../../components/Category/index.jsx';
 import { CommonLayout } from '../../layout/common/index.jsx';
@@ -17,7 +6,6 @@ import { Location } from '../../components/Location/index.jsx';
 import { Paging } from '../../components/Pagination/index.jsx';
 import styles from './index.module.scss';
 import { imageUrl } from '../../assets/images-url/index.js';
->>>>>>> d659dfbdf1769afa1390c19886754857c7d2bd9c
 
 export const Service = () => {
   return (
