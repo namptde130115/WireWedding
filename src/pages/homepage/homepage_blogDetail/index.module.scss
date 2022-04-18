@@ -8,6 +8,10 @@
   font-size: 4.5vw;
   margin-bottom: 25px;
 }
+.blog_container {
+  width: 80%;
+  margin: auto;
+}
 .blog_detail {
   justify-content: left;
   margin-bottom: 10px;
@@ -17,7 +21,6 @@
   }
 }
 .blog_child {
-  width: 80%;
   margin: 0 auto;
   margin-top: 2vw;
   > p {
@@ -41,14 +44,26 @@
   }
 }
 .comment_container {
-  > h4 {
-    padding-left: 30px;
+  margin-top: 30px;
+  h4 {
+    border-bottom: 1px solid var(--color-base-1);
+    width: 65px;
   }
   > div {
     width: 100%;
   }
 }
-.comment_button {
+.your_comment {
+  margin-bottom: 3vw;
+}
+.input_comment > textarea {
+  min-height: 8vw;
+  margin-bottom: 1vw;
+}
+.btnSend {
+  float: right;
+}
+.btnViewMore {
   display: flex;
   justify-content: center;
 }

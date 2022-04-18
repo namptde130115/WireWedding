@@ -1,27 +1,29 @@
-import { Menu, Carousel, Button } from 'antd';
-import { useState } from 'react';
-import styles from './index.module.scss';
-import clsx from 'clsx';
-import { imageUrl } from '../../assets/images-url/index';
+import { Menu, Carousel, Button } from "antd";
+import { useState } from "react";
+import styles from "./index.module.scss";
+import clsx from "clsx";
+import { imageUrl } from "../../assets/images-url/index";
 //components
-import { Footer } from '../../layout/footer/index.jsx';
+import { Footer } from "../../layout/footer/index.jsx";
+import { Header } from "../../layout/header/index.jsx";
+
 //route
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const { SubMenu } = Menu;
 
 export const HomeLayout = ({ children }) => {
-  const [current, setCurrent] = useState();
-  let navigation = useNavigate();
+  // const [current, setCurrent] = useState();
+  // let navigation = useNavigate();
 
-  const handleClick = (e) => {
-    setCurrent(e.key);
-    navigation(e.key);
-  };
+  // const handleClick = (e) => {
+  //   setCurrent(e.key);
+  //   navigation(e.key);
+  // };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.header}>
+    <div className={clsx(styles.container)}>
+      {/* <div className={styles.header}>
         <div className={clsx(styles.logo)}>logo</div>
         <Menu
           // mode="inline"
@@ -38,28 +40,29 @@ export const HomeLayout = ({ children }) => {
           <Menu.Item key='ideas'>Ideas</Menu.Item>
           <Menu.Item key='about-us'>About us</Menu.Item>
         </Menu>
-      </div>
-      <div className={styles.carousel}>
+      </div> */}
+      <Header />
+      <div className={clsx(styles.carousel)}>
         <Carousel autoplay dots={false}>
           <div>
-            <img width='100%' height='60%' src={imageUrl.slider_img1} />
+            <img width="100%" height="60%" src={imageUrl.slider_img1} />
           </div>
           <div>
-            <img width='100%' height='60%' src={imageUrl.slider_img2} />
+            <img width="100%" height="60%" src={imageUrl.slider_img2} />
           </div>
           <div>
-            <img width='100%' height='60%' src={imageUrl.slider_img3} />
+            <img width="100%" height="60%" src={imageUrl.slider_img3} />
           </div>
           <div>
-            <img width='100%' height='60%' src={imageUrl.slider_img4} />
+            <img width="100%" height="60%" src={imageUrl.slider_img4} />
           </div>
           <div>
-            <img width='100%' height='60%' src={imageUrl.slider_img5} />
+            <img width="100%" height="60%" src={imageUrl.slider_img5} />
           </div>
         </Carousel>
       </div>
-      <div className={styles.body}>{children}</div>
-      <div className={styles.footer}>
+      <div className={clsx(styles.body)}>{children}</div>
+      <div className={clsx(styles.footer)}>
         <Footer />
       </div>
     </div>

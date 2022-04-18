@@ -20,7 +20,6 @@ export const BlogComment = ({}) => {
       style={{
         display: "block",
         width: "100%",
-        padding: "0px 30px",
       }}
     >
       <Comment
@@ -64,7 +63,7 @@ export const BlogComment = ({}) => {
             </span>
           </Tooltip>,
         ]}
-        datetime={"30-05-2021 11:09 AM"}
+        datetime={"30-01-2022 11:09 AM"}
       />
     </div>
   );

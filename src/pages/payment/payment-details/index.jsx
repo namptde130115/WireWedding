@@ -16,7 +16,6 @@ const columns = [
     title: "Date",
     dataIndex: "date",
     key: "date",
-    render: (text) => <a>{text}</a>,
     width: "20%",
   },
   {
@@ -56,7 +55,7 @@ export const PaymentDetails = () => {
   return (
     // <CommonLayout>
     <div className={clsx(styles.paymentDetails_container)}>
-      <div className={clsx(styles.h1)}>Payment details</div>
+      <div className={clsx(styles.h1)}>Order details</div>
       <div className={clsx(styles.returnedTable)}>
         <Table pagination={false} columns={columns} dataSource={data} />
       </div>

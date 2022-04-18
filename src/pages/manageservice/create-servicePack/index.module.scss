@@ -133,3 +133,9 @@
   justify-content: center;
   padding: 2vw 0;
 }
+.service{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, max-content));
+  grid-gap: 3vw;
+  justify-content: center;
+}

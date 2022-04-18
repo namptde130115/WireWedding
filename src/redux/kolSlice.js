@@ -5,6 +5,7 @@ const initialState = {
   loading: false,
   registerLoading: false,
   userInfor: {},
+  services: {},
 };
 
 export const signUpKol = createAsyncThunk(
@@ -22,6 +23,21 @@ export const signUpKol = createAsyncThunk(
     return response.data;
   }
 );
+/////////////
+export const getAllServicesByCategory = createAsyncThunk(
+  'kol/getAllServicesByCategory',
+  async (params, { rejectWithValue }) => {
+    try {
+      const response = await kolApi.getAllServicesByCategory(params);
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
 
 export const kolSlice = createSlice({
   name: 'kol',
@@ -33,14 +49,22 @@ export const kolSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder  
+    builder
       .addCase(signUpKol.pending, (state) => {
         state.registerLoading = true;
       })
       .addCase(signUpKol.fulfilled, (state, { payload }) => {
         state.registerLoading = false;
         state.userInfor = payload;
-      });
+      })
+
+      .addCase(getAllServicesByCategory.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getAllServicesByCategory.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        state.services = payload;
+      })
   },
 });
 

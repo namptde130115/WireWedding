@@ -28,6 +28,7 @@ import { ServiceDetail } from './pages/service_detail';
 import { EditService } from './pages/edit-service';
 import { AddService } from './pages/add-service';
 import { SignUpKol } from './pages/signup/signup-kol';
+import { CheckListItem } from './pages/planning-tools-nam/check-list-item'
 
 function App() {
   const isAuthenticated = true;
@@ -102,8 +103,10 @@ function App() {
         <Route path='/edit-service' element={<EditService />} />
         <Route path='/add-service' element={<AddService />} />
         <Route path='/sign-up-kol' element={<SignUpKol />} />
-        
+
         <Route path='/vendor-signup' element={<VendorSignUp />} />
+        <Route path='/planning-tools/check-list' element={<CheckListItem />} />
+
       </Routes>
     </BrowserRouter>
   );

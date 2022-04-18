@@ -1,4 +1,4 @@
-import { HomeCustomerLayout } from "../../../layout/homepage_customer/index.jsx";
+import { HomeLayout } from "../../../layout/homepage/index.jsx";
 import { Feedback_Contact } from "../../../components/Feedback_Contact/index.jsx";
 import { CardBlog } from "../../../components/CardBlog/index.jsx";
 import { MyBlog } from "../../../components/MyBlog/index.jsx";
@@ -13,7 +13,7 @@ export const HomePage_ideas = () => {
   const navigate = useNavigate();
   const handleBlogDetails = (id) => navigate("ideas/blog-details/" + id);
   return (
-    <HomeCustomerLayout>
+    <HomeLayout>
       <div className={clsx(styles.h1)}>Ideas for your wonderful moment</div>
       <div className={clsx(styles.ideas_child)}>
         {/* <CardBlog imgUrl={imageUrl.studio_01} onClick={()=>handleBlogDetails(id)} /> */}
@@ -28,7 +28,7 @@ export const HomePage_ideas = () => {
         <Paging />
       </div>
       <MyBlog />
-      <Feedback_Contact />
-    </HomeCustomerLayout>
+      {/* <Feedback_Contact /> */}
+    </HomeLayout>
   );
 };

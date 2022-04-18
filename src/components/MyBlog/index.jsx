@@ -8,11 +8,11 @@ import { useNavigate } from "react-router-dom";
 export const MyBlog = ({}) => {
   const navigate = useNavigate();
   const handleCreateBlog = () => navigate("/ideas/create-blog");
-  const handleSeeAll = () => navigate("/ideas/my-blogs");
+  const handleSeeAll = () => navigate("/ideas");
   return (
     <div className={clsx(styles.ideas_blog)}>
-      <hr />
-      <div className={clsx(styles.h2)}>My Blogs</div>
+      {/* <hr /> */}
+      <div className={clsx(styles.h2)}>Ideas for you</div>
       <div className={styles.carousel}>
         <Carousel autoplay>
           <div>
@@ -39,12 +39,12 @@ export const MyBlog = ({}) => {
         </Carousel>
       </div>
       <div className={clsx(styles.ideas_blog_button)}>
-        <ButtonCustom
+        {/* <ButtonCustom
           type="primary"
           text="Create blog "
           onClick={handleCreateBlog}
-        />
-        <ButtonCustom type="ghost" text="See all" onClick={handleSeeAll} />
+        /> */}
+        <p onClick={handleSeeAll}>See all {">"}</p>
       </div>
     </div>
   );

@@ -64,38 +64,14 @@ hr {
     // width: 100%;
     flex: 1;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(275px, max-content));
-    grid-gap: 3vw;
+    grid-template-columns: repeat(auto-fit, minmax(220px, max-content));
+    grid-gap: 30px;
     justify-content: center;
-    // padding: 2vw 0;
-    // > div {
-    //   // min-width: 20vw;
-    //   width: 20% !important;
-    //   margin: 0 !important;
-    // }
-    // > div {
-    //   > div:first-child {
-    //     width: 100%;
-    //     // height: 65%;
-    //     object-fit: cover;
-    //     > img {
-    //       border-radius: 4%;
-    //       width: 90%;
-    //       height: 12vw;
-    //       margin: 6% 6% 0 6%;
-    //     }
-    //   }
-    //   > div:last-child {
-    //     padding: 0 6% 6% 6%;
-    //     > div {
-    //       > div:first-child {
-    //         > div:first-child {
-    //           margin: 2% 0;
-    //           font-size: 1.23vw;
-    //         }
-    //       }
-    //     }
-    //   }
-    // }
+  }
+  p {
+    text-align: right;
+    color: var(--color-base-1);
+    margin-bottom: 30px;
   }
 }
+

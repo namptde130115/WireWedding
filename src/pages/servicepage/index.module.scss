@@ -3,11 +3,16 @@
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
-  padding: 50px;
+  padding: 50px 0;
+  width: 80%;
+  margin: auto;
 }
 
 .search {
   flex-grow: 6;
+  > span > span > input {
+    height: 32px;
+  }
 }
 
 .card {
@@ -20,10 +25,15 @@
   // }
   flex: 1;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(275px, max-content));
-  grid-gap: 3vw;
+  grid-template-columns: repeat(auto-fit, minmax(240px, max-content));
+  grid-gap: 42px;
   justify-content: center;
-  padding: 2vw 0;
+  padding-bottom: 3vw;
+  > div > div:first-child {
+    padding-bottom: 0;
+    width: 240px;
+    height: 180px;
+  }
 }
 
 .paging {

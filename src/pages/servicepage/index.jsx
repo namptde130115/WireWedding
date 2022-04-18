@@ -6,19 +6,20 @@ import { Location } from "../../components/Location/index.jsx";
 import { Paging } from "../../components/Pagination/index.jsx";
 import styles from "./index.module.scss";
 import { imageUrl } from "../../assets/images-url/index.js";
+import clsx from "clsx";
 
 export const Service = () => {
   return (
     <CommonLayout>
-      <div className={styles.utility}>
-        <div className={styles.search}>
+      <div className={clsx(styles.utility)}>
+        <div className={clsx(styles.search)}>
           <SearchBar />
         </div>
         <Category />
         <Location />
       </div>
-      <div className={styles.cardholder}>
-        <div className={styles.card}>
+      <div className={clsx(styles.cardholder)}>
+        <div className={clsx(styles.card)}>
           <CardInfor
             imgUrl={imageUrl.studio_01}
             title="chup anh"

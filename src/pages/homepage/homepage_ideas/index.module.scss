@@ -1,11 +1,7 @@
 @import url("http://fonts.googleapis.com/css?family=Dancing+Script");
-
+@import "../../../scss/mixin.scss";
 .h1 {
-  font-family: Dancing Script;
-  color: var(--color-tittle);
-  text-align: center;
-  font-size: 4.5vw;
-  margin-bottom: 25px;
+  @include titleFont;
 }
 .ideas_child {
   display: flex;

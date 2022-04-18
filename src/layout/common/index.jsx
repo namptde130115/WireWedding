@@ -1,26 +1,28 @@
-import { Menu, Carousel, Button } from 'antd';
-import { useState } from 'react';
-import styles from './index.module.scss';
-import clsx from 'clsx';
+import { Menu, Carousel, Button } from "antd";
+import { useState } from "react";
+import styles from "./index.module.scss";
+import clsx from "clsx";
 //route
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { Header } from "../../layout/header/index.jsx";
+import { Footer } from "../../layout/footer/index.jsx";
 
-const { SubMenu } = Menu;
+// const { SubMenu } = Menu;
 
 export const CommonLayout = ({ children }) => {
-  const [current, setCurrent] = useState();
-  let navigation = useNavigate();
+  // const [current, setCurrent] = useState();
+  // let navigation = useNavigate();
 
-  const handleClick = (e) => {
-    setCurrent(e.key);
-    navigation(`/${e.key}`);
-  };
+  // const handleClick = (e) => {
+  //   setCurrent(e.key);
+  //   navigation(`/${e.key}`);
+  // };
 
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <div className={clsx(styles.logo)}>logo</div>
-        <Menu
+        {/* <div className={clsx(styles.logo)}>logo</div> */}
+        {/* <Menu
           // mode="inline"
           onClick={handleClick}
           selectedKeys={[current]}
@@ -34,12 +36,12 @@ export const CommonLayout = ({ children }) => {
           </SubMenu>
           <Menu.Item key='ideas'>Ideas</Menu.Item>
           <Menu.Item key='about-us'>About us</Menu.Item>
-        </Menu>
+        </Menu> */}
+        <Header />
       </div>
       <div className={styles.body}>{children}</div>
       <div className={styles.footer}>
-        this is footer\
-        <Button type='primary'>Primary</Button>
+        <Footer />
       </div>
     </div>
   );

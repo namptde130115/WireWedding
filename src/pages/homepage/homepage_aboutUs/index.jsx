@@ -5,6 +5,7 @@ import { CardBlog } from "../../../components/CardBlog/index.jsx";
 import { ButtonCustom } from "../../../components/ButtonCustom/index.jsx";
 import { CommonLayout } from "../../../layout/common/index.jsx";
 import { Footer } from "../../../layout/footer/index.jsx";
+import { Header } from "../../../layout/header/index.jsx";
 import { useNavigate } from "react-router-dom";
 
 export const HomePageAboutUs = () => {
@@ -13,14 +14,17 @@ export const HomePageAboutUs = () => {
   return (
     // <CommonLayout>
     <div className={clsx(styles.aboutUs_container)}>
+      <div className={styles.header}>
+        <Header />
+      </div>
       <div className={clsx(styles.aboutUs_banner)}>
         <div className={clsx(styles.aboutUs_banner_intro)}>
-          <h1>
+          <div className={clsx(styles.h1)}>
             Start a <span>new life</span>
             <br />
             with the one <span>you love</span>
-          </h1>
-          <p>
+          </div>
+          <p className={clsx(styles.txt_intro)}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Rutrum
             quisque non tellus orci ac auctor augue mauris augue.
@@ -34,8 +38,8 @@ export const HomePageAboutUs = () => {
       </div>
 
       <div className={clsx(styles.aboutUs_content)}>
-        <h1>ABOUT GOTOUBUN</h1>
-        <p>
+        <div className={clsx(styles.h1)}>ABOUT GOTOUBUN</div>
+        <p className={clsx(styles.txt_intro)}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Rutrum
           quisque non tellus orci ac auctor augue mauris augue. Metus aliquam
@@ -47,18 +51,22 @@ export const HomePageAboutUs = () => {
       </div>
 
       <div className={clsx(styles.aboutUs_vendors)}>
-        <h1>Meet our vendors</h1>
+        <div className={clsx(styles.h1)}>Meet our vendors</div>
         <div className={clsx(styles.aboutUs_vendorsLogo)}>
           <img src="https://theplannersvn.com/home/wp-content/uploads/2020/10/Lotte-hanoi.png" />
+          <img src="https://theplannersvn.com/home/wp-content/uploads/2020/10/as-seen-white_2018.png" />
           <img src="https://theplannersvn.com/home/wp-content/uploads/2020/10/Pullman-Logo.png" />
           <img src="https://theplannersvn.com/home/wp-content/uploads/2020/10/PhanTien.png" />
-          <img src="https://theplannersvn.com/home/wp-content/uploads/2020/10/Move-studio.png" />
+          <img src="https://theplannersvn.com/home/wp-content/uploads/2020/10/5fa2618c703fe87591639d60d2a9a50c.png" />
           <img src="https://theplannersvn.com/home/wp-content/uploads/2020/10/logo-tuta-01-2-1-copy.png" />
+          <img src="https://theplannersvn.com/home/wp-content/uploads/2020/10/Sheraton.png" />
         </div>
       </div>
       <div className={clsx(styles.aboutUs_name)}>
-        <h1>Where does the name "Gotoubun" come from?</h1>
-        <p>
+        <div className={clsx(styles.h1)}>
+          Where does the name "Gotoubun" come from?
+        </div>
+        <p className={clsx(styles.txt_intro)}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Rutrum
           quisque non tellus orci ac auctor augue mauris augue. Metus aliquam

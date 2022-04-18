@@ -10,7 +10,6 @@ const columns = [
     title: "Name",
     dataIndex: "name",
     key: "name",
-    render: (text) => <a>{text}</a>,
     width: "25%",
   },
   {

@@ -2,97 +2,56 @@ import clsx from "clsx";
 import styles from "./index.module.scss";
 import { ButtonCustom } from "../../components/ButtonCustom/index.jsx";
 import Icon from "@ant-design/icons";
-import { Modal } from "antd";
 import React, { useState } from "react";
-import { CardInfor } from "../../components/CardInfor/index.jsx";
-import { imageUrl } from "../../assets/images-url/index";
+import { iconUrl } from "../../assets/icons/index.js";
 
-export const ServiceBox = ({ component, category }) => {
-  const [isModalVisible, setIsModalVisible] = useState({
-    // addNew: false,
-    // update: false,
-  });
-  const handleCancel = () => {
-    // formAdd.resetFields();
-    // formUpdate.resetFields();
-    setIsModalVisible(false);
+export const ServiceBox = ({ data, handleOpenModal }) => {
+  const iconComponent = () => {
+    switch (data.name) {
+      case "Studio":
+        return iconUrl.icon_studio;
+      case "Invitations":
+        return iconUrl.icon_invitation;
+      case "Dress & Attire":
+        return iconUrl.icon_costume;
+      case "Jewelry":
+        return iconUrl.icon_jewelry;
+      case "Transportation":
+        return iconUrl.icon_transportation;
+      case "Makeup":
+        return iconUrl.icon_makeUp;
+      case "Musicians & Bands":
+        return iconUrl.icon_music;
+      case "Venues":
+        return iconUrl.icon_venue;
+      case "Cakes":
+        return iconUrl.icon_cakes;
+      case "Lighting & Decor":
+        return iconUrl.icon_decoration;
+      case "Officiants":
+        return iconUrl.icon_officiant;
+      case "Travel Agents":
+        return iconUrl.icon_travel;
+      case "Event Agents":
+        return iconUrl.icon_event;
+    }
   };
-  const showModal = (method) => {
-    setIsModalVisible((prev) => {
-      return { ...prev, [method]: true };
-    });
-  };
+
   return (
     <div className={styles.serviceBox_container}>
-      <div
-        className={styles.serviceBox_child}
-        onClick={() => showModal("view")}
-      >
+      <div className={styles.serviceBox_child}>
         <div className={styles.serviceBox_icon}>
-          <Icon component={component} />
+          <Icon component={iconComponent} />
         </div>
-        <div className={clsx(styles.serviceBox_category)}>{category}</div>
+        <div className={clsx(styles.serviceBox_category)}>{data.name}</div>
         <div className={clsx(styles.btnAdd)}>
           <ButtonCustom
             type="primary"
             text="Add"
-            onClick={(event) => {
-              event.stopPropagation();
-              showModal("add");
-            }}
+            onClick={(event) => handleOpenModal(event)}
           />
         </div>
       </div>
-      <Modal
-        className="view_category_child"
-        visible={isModalVisible.view}
-        onCancel={handleCancel}
-        footer={null}
-        width={1000}
-      >
-        <div className={clsx(styles.category_child)}>
-          <CardInfor
-            title="Service 1"
-            location="Location 1"
-            imgUrl={imageUrl.news_img1}
-          />
-          {/* <CardInfor
-            title="Service 1"
-            location="Location 1"
-            imgUrl={imageUrl.news_img1}
-          />
-          <CardInfor
-            title="Service 1"
-            location="Location 1"
-            imgUrl={imageUrl.news_img1}
-          /> */}
-        </div>
-      </Modal>
-      <Modal
-        className="add_category_child"
-        visible={isModalVisible.add}
-        onCancel={handleCancel}
-        footer={null}
-        width={1000}
-      >
-        <div className={clsx(styles.service)}>
-          <CardInfor
-            title="Service 1"
-            location="Location 1"
-            imgUrl={imageUrl.news_img1}
-          />
-          <CardInfor
-            title="Service 1"
-            location="Location 1"
-            imgUrl={imageUrl.studio_01}
-          />
-          <CardInfor
-            title="Service 1"
-            location="Location 1"
-            imgUrl={imageUrl.studio_02}
-          />
-        </div>
-      </Modal>
     </div>
   );
 };
