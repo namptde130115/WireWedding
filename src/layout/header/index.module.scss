@@ -9,12 +9,14 @@
   padding: 5px 0;
 }
 .navMenu {
-  padding: 0 5vw;
+  width: 620px;
+  display: flex;
+  justify-content: center;
 }
 .menu__container {
   color: var(--color-base-1);
   border-bottom: none;
-  width: 100%;
+  width: 530px;
   > li {
     font-size: 18px;
     font-weight: bold;
