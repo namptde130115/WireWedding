@@ -1,33 +1,33 @@
-import React, { useState, useEffect } from "react";
-import styles from "./index.module.scss";
-import clsx from "clsx";
-import { Input, Menu, Dropdown, Button, Modal } from "antd";
-import { DownOutlined } from "@ant-design/icons";
-import { ServiceBox } from "../../../components/ServiceBox/index.jsx";
-import { imageUrl } from "../../../assets/images-url/index.js";
-import { ButtonCustom } from "../../../components/ButtonCustom/index.jsx";
-import { CardInfor } from "../../../components/CardInfor/index.jsx";
-import { useDispatch, useSelector } from "react-redux";
-import { unwrapResult } from "@reduxjs/toolkit";
-import { getAllServicesByCategory } from "../../../redux/kolSlice";
+import React, { useState, useEffect } from 'react';
+import styles from './index.module.scss';
+import clsx from 'clsx';
+import { Input, Menu, Dropdown, Button, Modal } from 'antd';
+import { DownOutlined } from '@ant-design/icons';
+import { ServiceBox } from '../../../components/ServiceBox/index.jsx';
+import { imageUrl } from '../../../assets/images-url/index.js';
+import { ButtonCustom } from '../../../components/ButtonCustom/index.jsx';
+import { CardInfor } from '../../../components/CardInfor/index.jsx';
+import { useDispatch, useSelector } from 'react-redux';
+import { unwrapResult } from '@reduxjs/toolkit';
+import { getAllServicesByCategory } from '../../../redux/kolSlice';
 
 const { TextArea } = Input;
 const menu = (
   <Menu>
     <Menu.Item>
       <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.antgroup.com"
+        target='_blank'
+        rel='noopener noreferrer'
+        href='https://www.antgroup.com'
       >
         Winter
       </a>
     </Menu.Item>
     <Menu.Item>
       <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.aliyun.com"
+        target='_blank'
+        rel='noopener noreferrer'
+        href='https://www.aliyun.com'
       >
         Beach
       </a>
@@ -35,69 +35,70 @@ const menu = (
   </Menu>
 );
 const onChange = (e) => {
-  console.log("Change:", e.target.value);
+  console.log('Change:', e.target.value);
 };
 
 const categories = [
   {
     id: 1,
-    name: "Studio",
+    name: 'Studio',
   },
   {
     id: 2,
-    name: "Invitations",
+    name: 'Invitations',
   },
   {
     id: 3,
-    name: "Dress & Attire",
+    name: 'Dress & Attire',
   },
   {
     id: 4,
-    name: "Jewelry",
+    name: 'Jewelry',
   },
   {
     id: 5,
-    name: "Transportation",
+    name: 'Transportation',
   },
   {
     id: 6,
-    name: "Makeup",
+    name: 'Makeup',
   },
   {
     id: 7,
-    name: "Musicians & Bands",
+    name: 'Musicians & Bands',
   },
   {
     id: 8,
-    name: "Venues",
+    name: 'Venues',
   },
   {
     id: 9,
-    name: "Cakes",
+    name: 'Cakes',
   },
   {
     id: 10,
-    name: "Lighting & Decor",
+    name: 'Lighting & Decor',
   },
   {
     id: 11,
-    name: "Officiants",
+    name: 'Officiants',
   },
   {
     id: 12,
-    name: "Travel Agents",
+    name: 'Travel Agents',
   },
   {
     id: 13,
-    name: "Event Agents",
+    name: 'Event Agents',
   },
 ];
 export const CreateServicePack = () => {
   const [isVisible, setIsVisible] = useState();
   const [isDetailVisible, setIsDetailVisible] = useState();
-  const openModal = (e) => {
+  const openModal = (e, id) => {
     e.stopPropagation();
     setIsVisible(true);
+    console.log(id);
   };
   const handleOpenDetail = () => {
     setIsDetailVisible(true);
@@ -136,7 +137,7 @@ export const CreateServicePack = () => {
     <div className={clsx(styles.createPack_container)}>
       <div className={clsx(styles.createPack_details)}>
         <div className={clsx(styles.pack_name)}>
-          <Input placeholder="Service pack name" bordered={false} />
+          <Input placeholder='Service pack name' bordered={false} />
         </div>
         <div className={clsx(styles.pack_amount)}>
           <p className={clsx(styles.title)}>Total price: </p>
@@ -146,7 +147,7 @@ export const CreateServicePack = () => {
           <p className={clsx(styles.title)}>Description</p>
           <div className={clsx(styles.input_description)}>
             <TextArea
-              placeholder="Description here"
+              placeholder='Description here'
               onChange={onChange}
               autoSize
             />
@@ -154,7 +155,7 @@ export const CreateServicePack = () => {
         </div>
         <div className={clsx(styles.pack_theme)}>
           <p className={clsx(styles.title)}>Choose theme</p>
-          <Dropdown overlay={menu} placement="bottomLeft" arrow>
+          <Dropdown overlay={menu} placement='bottomLeft' arrow>
             <Button className={clsx(styles.dropdownTheme)}>
               Spring
               <DownOutlined />
@@ -162,27 +163,30 @@ export const CreateServicePack = () => {
           </Dropdown>
         </div>
         <div className={clsx(styles.button_container)}>
-          <ButtonCustom type="primary" text="Save" />
-          <ButtonCustom type="ghost" text="Cancel" />
+          <ButtonCustom type='primary' text='Save' />
+          <ButtonCustom type='ghost' text='Cancel' />
         </div>
       </div>
 
       <div className={clsx(styles.createPack_serviceBox)}>
-        {categories.map((category) => (
-          <div onClick={handleOpenDetail}>
-            <ServiceBox data={category} handleOpenModal={openModal} />
+        {categories.map((category, index) => (
+          <div onClick={handleOpenDetail} key={index}>
+            <ServiceBox
+              data={category}
+              handleOpenModal={(e) => openModal(e, category.id)}
+            />
           </div>
         ))}
       </div>
-      <Modal
-        className="add_category_child"
+      {/* <Modal
+        className='add_category_child'
         visible={isVisible}
         onCancel={handleCancel}
         footer={null}
         width={1000}
       >
         <div className={clsx(styles.service)}>
-          {dataServices.map((service) => (
+          {dataServices?.map((service) => (
             <CardInfor
               title={service.serviceName}
               location={service.description}
@@ -190,11 +194,11 @@ export const CreateServicePack = () => {
             />
           ))}
         </div>
-      </Modal>
+      </Modal> */}
 
       <Modal
-        className="view_category_child"
-        title="Detail"
+        className='view_category_child'
+        title='Detail'
         visible={isDetailVisible}
         onCancel={handleDetailCancel}
         footer={null}

@@ -4,7 +4,10 @@ import styles from './index.module.scss';
 import { Upload, Input, Form, Button } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { vendorCreateSingleService } from '../../../redux/vendorSlice';
+import {
+  getListSingleService,
+  vendorCreateSingleService,
+} from '../../../redux/vendorSlice';
 import { unwrapResult } from '@reduxjs/toolkit';
 
 //firebase
@@ -17,6 +20,7 @@ export const VendorModal = ({
   isModalEditVisible,
   handleOk,
   handleCancel,
+  editData,
 }) => {
   console.log('editMode', editMode);
   const [form] = Form.useForm();
@@ -33,9 +37,23 @@ export const VendorModal = ({
   useEffect(() => {
     // const handle
     if (editMode) {
-      form.setFieldsValue({});
+      form.setFieldsValue({
+        serviceName: editData?.serviceName,
+        price: editData?.price,
+        description: editData?.description,
+      });
+      const photos = editData.photos.map((photo, index) => {
+        return {
+          uid: -index,
+          name: 'image',
+          status: 'done',
+          url: photo.url,
+        };
+      });
+      setFileList(photos);
+      setPhotos(photos);
     }
-  }, [editMode]);
+  }, [editMode, isModalEditVisible]);
 
   const getBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -102,6 +120,7 @@ export const VendorModal = ({
   // };
 
   const handleChange = ({ fileList: newFileList }) => {
+    console.log('newFileList', newFileList);
     setFileList(newFileList);
   };
 
@@ -131,6 +150,7 @@ export const VendorModal = ({
       if (response) {
         message.success('Service added successfully');
         form.resetFields();
+        dispatch(getListSingleService(3));
         handleOk();
       }
     } catch (error) {
@@ -141,8 +161,6 @@ export const VendorModal = ({
     }
   };
 
-  console.log(photos);
-
   const handleCancelModal = () => {
     form.resetFields();
     handleCancel();
@@ -152,6 +170,21 @@ export const VendorModal = ({
     setVisible({ previewVisible: false });
   };
 
+  const handleRemoveImage = (value) => {
+    console.log(value);
+    setPhotos(
+      photos
+        .filter((photo) => photo.url !== value.url)
+        .map((photo) => {
+          return {
+            caption: 'photos',
+            url: photo.url,
+          };
+        })
+    );
+  };
+
+  console.log(photos);
   return (
     <Modal
       title='Infor Kol'
@@ -216,6 +249,7 @@ export const VendorModal = ({
             onChange={handleChange}
             onPreview={onPreview}
             customRequest={customUpload}
+            onRemove={handleRemoveImage}
           >
             {fileList.length < 5 && '+ Upload'}
           </Upload>
