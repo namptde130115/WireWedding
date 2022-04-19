@@ -27,8 +27,9 @@ import { PaymentReturn } from './pages/payment/payment-return';
 import { PaymentDetails } from './pages/payment/payment-details';
 import { CreateServicePack } from './pages/manageservice/create-servicePack';
 import { ServiceDetail } from './pages/service_detail';
+// import { AddService } from './pages/add-service';
 import { SignUpKol } from './pages/signup-kol';
-import { CheckListItem } from './pages/planningtools/checklist/check-list-item'
+import { CheckListItem } from './pages/planningtools/checklist/check-list-item';
 // import { AddService } from './pages/add-service';
 import { SignInVendor } from './pages/vendorsignin';
 import { PlanningTools } from './pages/planningtools/planningtools_home';
@@ -116,11 +117,6 @@ function App() {
           element={<CreateServicePack />}
         />
         <Route path='/service-detail' element={<ServiceDetail />} />
-        <Route path='/sign-up-kol' element={<SignUpKol />} />
-
-        <Route path='/vendor-signup' element={<VendorSignUp />} />
-        <Route path='/planning-tools/check-list' element={<CheckListItem />} />
-
         <Route path='/kol-signup' element={<SignUpKol />} />
         <Route path='/vendor-signin' element={<SignInVendor />} />
         <Route path='/vendor-signup' element={<VendorSignUp />} />

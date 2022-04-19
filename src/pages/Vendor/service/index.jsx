@@ -17,7 +17,7 @@ export const VendorSevice = () => {
 
   const services = useSelector((state) => state.vendor.services);
 
-  console.log(services);
+  console.log('services:', services);
 
   useEffect(() => {
     const getSingleService = async () => {

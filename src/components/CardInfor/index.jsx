@@ -41,6 +41,11 @@ export const CardInfor = ({
                 onClick={handleAdd}
               />
             </div>
+            <ButtonCustom
+              type='primary'
+              text={textButton}
+              onClick={handleAdd}
+            />
           </div>
         }
       />
