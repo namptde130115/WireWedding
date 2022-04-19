@@ -1,55 +1,69 @@
-import React, { useRef } from "react";
-import { Editor } from "@tinymce/tinymce-react";
-import clsx from "clsx";
-import styles from "./index.module.scss";
-import { Input } from "antd";
-import { ButtonCustom } from "../../../components/ButtonCustom/index.jsx";
+import React, { useRef, useState } from 'react';
+import { Editor } from '@tinymce/tinymce-react';
+import clsx from 'clsx';
+import styles from './index.module.scss';
+import { Input } from 'antd';
+import { ButtonCustom } from '../../../components/ButtonCustom/index.jsx';
+import { useSelector } from 'react-redux';
 
 export const HomePageCreateBlog = () => {
+  const userName = localStorage.getItem('userName');
+  const initContent = useSelector((state) => state.kol.initContent);
   const editorRef = useRef(null);
-  const log = () => {
+  const [title, setTitle] = useState('');
+  const handlePostBlog = () => {
     if (editorRef.current) {
       console.log(editorRef.current.getContent());
+      console.log(title);
+      console.log(userName);
     }
+  };
+  const handleChangeTitle = (e) => {
+    setTitle(e.target.value);
   };
   return (
     <div className={clsx(styles.createBlog_container)}>
-      <Input placeholder="Blog Title" bordered={false} />
+      <Input
+        placeholder='Blog Title'
+        bordered={false}
+        value={title}
+        onChange={handleChangeTitle}
+      />
       <div className={clsx(styles.createBlog_child)}>
         <Editor
-          apiKey="cl0i398qnef0mj3s5d5a1r8syteuq89aj2dzjw9xvcjjlyt5"
+          apiKey='cl0i398qnef0mj3s5d5a1r8syteuq89aj2dzjw9xvcjjlyt5'
           onInit={(evt, editor) => {
             editorRef.current = editor;
           }}
-          initialValue="<p>This is the initial content of the editor.</p>"
+          initialValue='<p>This is the initial content of the editor.</p>'
           init={{
             height: 700,
             menubar: true,
             /* enable title field in the Image dialog*/
             image_title: true,
             plugins: [
-              "advlist autolink lists link image charmap print preview anchor",
-              "searchreplace visualblocks code fullscreen",
-              "insertdatetime media table paste image code help wordcount",
+              'advlist autolink lists link image charmap print preview anchor',
+              'searchreplace visualblocks code fullscreen',
+              'insertdatetime media table paste image code help wordcount',
             ],
             toolbar:
-              "undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect " +
-              "| alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist " +
-              "| forecolor backcolor casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons " +
-              "| fullscreen  preview save print | insertfile image media pageembed template link anchor codesample" +
-              "| a11ycheck ltr rtl | showcomments addcomment",
+              'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect ' +
+              '| alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist ' +
+              '| forecolor backcolor casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons ' +
+              '| fullscreen  preview save print | insertfile image media pageembed template link anchor codesample' +
+              '| a11ycheck ltr rtl | showcomments addcomment',
             file_picker_callback: function (cb, value, meta) {
-              var input = document.createElement("input");
-              input.setAttribute("type", "file");
-              input.setAttribute("accept", "image/*");
+              var input = document.createElement('input');
+              input.setAttribute('type', 'file');
+              input.setAttribute('accept', 'image/*');
               input.onchange = function () {
                 var file = this.files[0];
 
                 var reader = new FileReader();
                 reader.onload = function () {
-                  var id = "blobid" + new Date().getTime();
+                  var id = 'blobid' + new Date().getTime();
                   var blobCache = editorRef.current.editorUpload.blobCache;
-                  var base64 = reader.result.split(",")[1];
+                  var base64 = reader.result.split(',')[1];
                   var blobInfo = blobCache.create(id, file, base64);
                   blobCache.add(blobInfo);
 
@@ -67,8 +81,8 @@ export const HomePageCreateBlog = () => {
         {/* <button onClick={log}>Log editor content</button> */}
       </div>
       <div className={clsx(styles.button_container)}>
-        <ButtonCustom type="primary" text="Post" />
-        <ButtonCustom type="ghost" text="Cancel" />
+        <ButtonCustom type='primary' text='Post' onClick={handlePostBlog} />
+        <ButtonCustom type='ghost' text='Cancel' />
       </div>
     </div>
   );

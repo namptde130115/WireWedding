@@ -16,7 +16,13 @@ export const SignIn = () => {
     try {
       const actionResult = await dispatch(signIn(values));
       const response = unwrapResult(actionResult);
-      if (response) {
+      if (response.role === 1) {
+        navigate('/admin');
+        console.log('response', response);
+      } else if (response.role === 2) {
+        navigate('/vendor');
+        console.log('response', response);
+      } else {
         navigate('/');
         console.log('response', response);
       }
@@ -57,14 +63,14 @@ export const SignIn = () => {
           </Form.Item>
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
             <Button type='primary' htmlType='submit'>
-              Submit
+              Login
             </Button>
           </Form.Item>
         </Form>
-        <div className={styles.vendor__container}>
+        {/* <div className={styles.vendor__container}>
           <p>Are you a vendor?</p>
           <a href=''>Vendor login</a>
-        </div>
+        </div> */}
       </div>
     </LoginLayout>
   );

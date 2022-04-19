@@ -1,31 +1,30 @@
-import React from "react";
-import { HomeCustomerLayout } from "../../../layout/homepage_customer/index.jsx";
-import clsx from "clsx";
-import styles from "./index.module.scss";
-import { imageUrl } from "../../../assets/images-url/index.js";
-import { CardBlog } from "../../../components/CardBlog/index.jsx";
-import { Paging } from "../../../components/Pagination/index.jsx";
-import { Menu, Dropdown, message, Space } from "antd";
-import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import React from 'react';
+import { HomeCustomerLayout } from '../../../layout/homepage_customer/index.jsx';
+import clsx from 'clsx';
+import styles from './index.module.scss';
+import { imageUrl } from '../../../assets/images-url/index.js';
+import { CardBlog } from '../../../components/CardBlog/index.jsx';
+import { Paging } from '../../../components/Pagination/index.jsx';
+import { Menu, Dropdown, message, Space } from 'antd';
+import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 
 export const HomePageMyBlogs = () => {
   function handleMenuClick(e) {
-    message.info("Click on menu item.");
-    console.log("click", e);
+    message.info('Click on menu item.');
+    console.log('click', e);
   }
   const menu = (
     <Menu onClick={handleMenuClick}>
-      <Menu.Item key="1" icon={<EditOutlined />}>
+      <Menu.Item key='1' icon={<EditOutlined />}>
         Edit
       </Menu.Item>
-      <Menu.Item key="2" icon={<DeleteOutlined />}>
+      <Menu.Item key='2' icon={<DeleteOutlined />}>
         Delete
       </Menu.Item>
     </Menu>
   );
   return (
-    <HomeCustomerLayout>
-      <div className={clsx(styles.h1)}>My blogs</div>
+    <div className={clsx(styles.blogs__container)}>
       <div className={clsx(styles.blogs_child)}>
         <div className={clsx(styles.blogsCard)}>
           <CardBlog imgUrl={imageUrl.studio_01} />
@@ -65,6 +64,6 @@ export const HomePageMyBlogs = () => {
         </div>
       </div>
       <Paging />
-    </HomeCustomerLayout>
+    </div>
   );
 };

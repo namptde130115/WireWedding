@@ -1,12 +1,7 @@
 import { Menu } from 'antd';
 
 //icons
-import {
-  BellOutlined,
-  UserOutlined,
-  HeartOutlined,
-  PayCircleOutlined,
-} from '@ant-design/icons';
+import { UserOutlined, HeartOutlined, FormOutlined } from '@ant-design/icons';
 
 import clsx from 'clsx';
 import styles from './index.module.scss';
@@ -43,6 +38,9 @@ export const VendorLayout = ({ title, children }) => {
             </Menu.Item>
             <Menu.Item key='infor' icon={<HeartOutlined />}>
               Infor
+            </Menu.Item>
+            <Menu.Item key='blogs' icon={<FormOutlined />}>
+              Blogs
             </Menu.Item>
           </Menu>
         </div>

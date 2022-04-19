@@ -5,6 +5,7 @@
 }
 
 .vendor__service__card {
+  height: 280px;
   width: 220px !important;
   // flex:1;
   display: grid;
@@ -16,7 +17,7 @@
 
 .vendor__service__container {
   padding: 10px 0px;
-  overflow-y: scroll;
+  // overflow-y: scroll;
   height: calc(100vh - 150px);
   margin-top: 20px;
   display: flex;

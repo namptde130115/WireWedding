@@ -1,4 +1,4 @@
-@import url("http://fonts.googleapis.com/css?family=Dancing+Script");
+@import url('http://fonts.googleapis.com/css?family=Dancing+Script');
 .createBlog_container {
   width: 100%;
   position: relative;
@@ -7,7 +7,7 @@
   align-items: center;
 }
 .createBlog_container > input {
-  width: 40%;
+  width: 70%;
   margin: 2vw 0;
   border-bottom: 1px solid #d9d9d9;
   font-size: 4.5vw;
@@ -21,7 +21,7 @@
   &:focus {
     border-bottom: 1px solid #d9d9d9;
   }
-  &::placeholder{
+  &::placeholder {
     font-size: 4.5vw;
     line-height: 3;
     font-family: Dancing Script;
@@ -33,7 +33,7 @@
 //   font-family: Dancing Script;
 // }
 .createBlog_child {
-  width: 75%;
+  width: 100%;
   > div {
     border: 2px solid var(--color-background);
     > div:first-child > div > div:first-child {

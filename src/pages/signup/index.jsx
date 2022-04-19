@@ -1,7 +1,7 @@
 import React from 'react';
 import { LoginLayout } from '../../layout/login/index';
 import styles from './index.module.scss';
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, DatePicker } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { unwrapResult } from '@reduxjs/toolkit';
@@ -95,12 +95,15 @@ export const SignUp = () => {
                 { required: true, message: 'Please input your day Wedding!' },
               ]}
             >
-              <Input className={styles.input__antd} />
+              <DatePicker
+                style={{ width: 240, height: 40 }}
+                placeholder={null}
+              />
             </Form.Item>
 
             <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
               <Button type='primary' htmlType='submit'>
-                Submit
+                Sign Up
               </Button>
             </Form.Item>
           </Form>

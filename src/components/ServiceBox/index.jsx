@@ -7,7 +7,7 @@ import { iconUrl } from "../../assets/icons/index.js";
 
 export const ServiceBox = ({ data, handleOpenModal }) => {
   const iconComponent = () => {
-    switch (data.name) {
+    switch (data?.name) {
       case "Studio":
         return iconUrl.icon_studio;
       case "Invitations":
@@ -43,7 +43,7 @@ export const ServiceBox = ({ data, handleOpenModal }) => {
         <div className={styles.serviceBox_icon}>
           <Icon component={iconComponent} />
         </div>
-        <div className={clsx(styles.serviceBox_category)}>{data.name}</div>
+        <div className={clsx(styles.serviceBox_category)}>{data?.name}</div>
         <div className={clsx(styles.btnAdd)}>
           <ButtonCustom
             type="primary"
