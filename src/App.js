@@ -27,17 +27,11 @@ import { PaymentReturn } from './pages/payment/payment-return';
 import { PaymentDetails } from './pages/payment/payment-details';
 import { CreateServicePack } from './pages/manageservice/create-servicePack';
 import { ServiceDetail } from './pages/service_detail';
-<<<<<<< HEAD
-import { EditService } from './pages/edit-service';
-import { AddService } from './pages/add-service';
-import { SignUpKol } from './pages/signup/signup-kol';
-import { CheckListItem } from './pages/planning-tools-nam/check-list-item'
-=======
-// import { AddService } from './pages/add-service';
 import { SignUpKol } from './pages/signup-kol';
+import { CheckListItem } from './pages/planningtools/checklist/check-list-item'
+// import { AddService } from './pages/add-service';
 import { SignInVendor } from './pages/vendorsignin';
 import { PlanningTools } from './pages/planningtools/planningtools_home';
->>>>>>> d659dfbdf1769afa1390c19886754857c7d2bd9c
 
 function App() {
   const isAuthenticated = true;
@@ -122,20 +116,15 @@ function App() {
           element={<CreateServicePack />}
         />
         <Route path='/service-detail' element={<ServiceDetail />} />
-<<<<<<< HEAD
-        <Route path='/edit-service' element={<EditService />} />
-        <Route path='/add-service' element={<AddService />} />
         <Route path='/sign-up-kol' element={<SignUpKol />} />
 
         <Route path='/vendor-signup' element={<VendorSignUp />} />
         <Route path='/planning-tools/check-list' element={<CheckListItem />} />
 
-=======
         <Route path='/kol-signup' element={<SignUpKol />} />
         <Route path='/vendor-signin' element={<SignInVendor />} />
         <Route path='/vendor-signup' element={<VendorSignUp />} />
         <Route path='/planning-tools/*' element={<PlanningTools />} />
->>>>>>> d659dfbdf1769afa1390c19886754857c7d2bd9c
       </Routes>
     </BrowserRouter>
   );

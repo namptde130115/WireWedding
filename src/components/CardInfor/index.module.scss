@@ -17,15 +17,17 @@
     }
   }
 }
-.card_bottom {
+.card_price{
+  color: var(--color-base-1);
+  font-weight: 500;
+  font-size: 18px;
+}
+.card_location {
   display: flex;
-  > button {
+  align-items: end;
+  button{
     margin-left: auto;
   }
-}
-.card_description {
-  display: flex;
-  align-items: center;
 }
 .icons {
   color: #fabb00;

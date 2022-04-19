@@ -67,7 +67,7 @@ export const HomePageCreateBlog = () => {
         {/* <button onClick={log}>Log editor content</button> */}
       </div>
       <div className={clsx(styles.button_container)}>
-        <ButtonCustom type="primary" text="Create" />
+        <ButtonCustom type="primary" text="Post" />
         <ButtonCustom type="ghost" text="Cancel" />
       </div>
     </div>

@@ -93,11 +93,26 @@ const categories = [
   },
 ];
 export const CreateServicePack = () => {
+  const dataServices = useSelector((state) => state.kol?.kolServices);
+  const [currentCategory, setCurrentCategory] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+
+  const dispatch = useDispatch();
+
   const [isVisible, setIsVisible] = useState();
   const [isDetailVisible, setIsDetailVisible] = useState();
-  const openModal = (e) => {
+  const openModal = async (e, id, name) => {
     e.stopPropagation();
     setIsVisible(true);
+    setCurrentCategory(name);
+    try {
+      console.log("aaaaaaaaaa");
+      const actionResult = await dispatch(getAllServicesByCategory(id));
+      const response = unwrapResult(actionResult);
+      if (response) {
+        setIsLoading(false);
+      }
+    } catch (error) {}
   };
   const handleOpenDetail = () => {
     setIsDetailVisible(true);
@@ -110,28 +125,13 @@ export const CreateServicePack = () => {
   };
 
   //  useSelector
-  const dataServices = useSelector((state) => state.kol.services);
-  const [currentCategory, setCurrentCategory] = useState();
-  const [isLoading, setIsLoading] = useState(true);
 
-  const dispatch = useDispatch();
-  useEffect(() => {
-    const getAll = async () => {
-      const body = {
-        // id: dataServices.id,
-      };
-      console.log(body);
-      try {
-        const actionResult = await dispatch(getAllServicesByCategory(body));
-        const response = unwrapResult(actionResult);
-        if (response) {
-          setIsLoading(false);
-        }
-      } catch (error) {}
-    };
-    getAll();
-  }, []);
+  // useEffect(() => {
+  //   const getAllServicesByCategory = async () => {
 
+  //   getAllServicesByCategory();
+  // }, [currentCategory]);
+  console.log(dataServices);
   return (
     <div className={clsx(styles.createPack_container)}>
       <div className={clsx(styles.createPack_details)}>
@@ -168,9 +168,12 @@ export const CreateServicePack = () => {
       </div>
 
       <div className={clsx(styles.createPack_serviceBox)}>
-        {categories.map((category) => (
-          <div onClick={handleOpenDetail}>
-            <ServiceBox data={category} handleOpenModal={openModal} />
+        {categories.map((category, index) => (
+          <div onClick={handleOpenDetail} key={index}>
+            <ServiceBox
+              data={category}
+              handleOpenModal={(e) => openModal(e, category.id, category.name)}
+            />
           </div>
         ))}
       </div>
@@ -180,15 +183,20 @@ export const CreateServicePack = () => {
         onCancel={handleCancel}
         footer={null}
         width={1000}
+        title={currentCategory}
       >
         <div className={clsx(styles.service)}>
-          {dataServices.map((service) => (
-            <CardInfor
-              title={service.serviceName}
-              location={service.description}
-              imgUrl={imageUrl.news_img1}
-            />
-          ))}
+          {dataServices &&
+            dataServices?.map((service) => (
+              <div key={service.id}>
+                <CardInfor
+                  title={service.serviceName}
+                  location={service.serviceName}
+                  imgUrl={service.photos.url}
+                  textButton="+ Add"
+                />
+              </div>
+            ))}
         </div>
       </Modal>
 

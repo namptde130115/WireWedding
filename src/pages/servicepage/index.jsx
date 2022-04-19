@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { SearchBar } from "../../components/Search/index.jsx";
 import { Category } from "../../components/Category/index.jsx";
 import { CommonLayout } from "../../layout/common/index.jsx";
@@ -8,16 +7,6 @@ import { Paging } from "../../components/Pagination/index.jsx";
 import styles from "./index.module.scss";
 import { imageUrl } from "../../assets/images-url/index.js";
 import clsx from "clsx";
-=======
-import { SearchBar } from '../../components/Search/index.jsx';
-import { Category } from '../../components/Category/index.jsx';
-import { CommonLayout } from '../../layout/common/index.jsx';
-import { CardInfor } from '../../components/CardInfor/index.jsx';
-import { Location } from '../../components/Location/index.jsx';
-import { Paging } from '../../components/Pagination/index.jsx';
-import styles from './index.module.scss';
-import { imageUrl } from '../../assets/images-url/index.js';
->>>>>>> d659dfbdf1769afa1390c19886754857c7d2bd9c
 
 export const Service = () => {
   return (
@@ -33,43 +22,67 @@ export const Service = () => {
         <div className={clsx(styles.card)}>
           <CardInfor
             imgUrl={imageUrl.studio_01}
-            title='chup anh'
-            location='Da Nang'
+            showRate="5"
+            title="chup anh"
+            location="Da Nang"
+            price="$2300"
+            textButton="+ Add"
           />
           <CardInfor
             imgUrl={imageUrl.studio_02}
-            title='chup anh'
-            location='Da Nang'
+            showRate={5}
+            title="chup anh"
+            location="Da Nang"
+            price="$2300"
+            textButton="+ Add"
           />
           <CardInfor
             imgUrl={imageUrl.decoration_01}
-            title='chup anh'
-            location='Da Nang'
+            showRate={4.5}
+            title="chup anh"
+            location="Da Nang"
+            price="$2300"
+            textButton="+ Add"
           />
           <CardInfor
             imgUrl={imageUrl.decoration_02}
-            title='chup anh'
-            location='Da Nang'
+            showRate={4}
+            title="chup anh"
+            location="Da Nang"
+            price="$2300"
+            textButton="+ Add"
           />
           <CardInfor
             imgUrl={imageUrl.invitation_01}
-            title='chup anh'
-            location='Da Nang'
+            showRate={4}
+            title="chup anh"
+            location="Da Nang"
+            price="$2300"
+            textButton="+ Add"
           />
           <CardInfor
             imgUrl={imageUrl.invitation_02}
-            title='chup anh'
-            location='Da Nang'
+            showRate={4}
+            title="chup anh"
+            location="Da Nang"
+            price="$2300"
+            textButton="+ Add"
           />
           <CardInfor
-            imgUrl='https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Service%2Fstudio_01.PNG?alt=media&token=1d0cfe71-8e3a-48ad-860e-6e0f0e816368'
-            title='chup anh'
-            location='Da Nang'
+            imgUrl={imageUrl.invitation_02}
+            showRate={4}
+            title="chup anh"
+            location="Da Nang"
+            price="$2300"
+            textButton="+ Add"
           />
           <CardInfor
-            imgUrl='https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Service%2Fstudio_01.PNG?alt=media&token=1d0cfe71-8e3a-48ad-860e-6e0f0e816368'
-            title='chup anh'
-            location='Da Nang'
+            imgUrl={imageUrl.invitation_02}
+            showRate={4}
+            title="chup anh"
+            location="Da Nang"
+            price="$2300"
+            textButton="+ Add"
           />
         </div>
       </div>

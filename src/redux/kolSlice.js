@@ -5,7 +5,7 @@ const initialState = {
   loading: false,
   registerLoading: false,
   userInfor: {},
-  services: {},
+  kolServices: [],
 };
 
 export const signUpKol = createAsyncThunk(
@@ -63,7 +63,11 @@ export const kolSlice = createSlice({
       })
       .addCase(getAllServicesByCategory.fulfilled, (state, { payload }) => {
         state.loading = false;
-        state.services = payload;
+        state.kolServices = payload;
+        console.log(payload);
+      })
+      .addCase(getAllServicesByCategory.rejected, (state) => {
+        state.kolServices = []
       })
   },
 });

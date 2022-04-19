@@ -5,8 +5,8 @@ const kolApi = {
     const url = '/kol';
     return AxiosClient.post(url, payload);
   },
-  getAllServicesByCategory:(body) => {
-    const url = `/single-service/category/${body.id}`;
+  getAllServicesByCategory:(id) => {
+    const url = `/single-service/category/${id}`;
     return AxiosClient.get(url);
   },
 };

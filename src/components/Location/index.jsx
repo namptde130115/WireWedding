@@ -23,7 +23,7 @@ const menu = (
 export const Location = ({}) => {
     return (
     <Dropdown overlay={menu} placement="bottomLeft" arrow>
-    <Button>Location</Button>
+    <Button>Price range</Button>
     </Dropdown>
     );
 }
