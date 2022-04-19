@@ -189,10 +189,42 @@ export const CreateServicePack = () => {
           {dataServices &&
             dataServices?.map((service) => (
               <div key={service.id}>
-                <CardInfor
+                {/* <CardInfor
                   title={service.serviceName}
                   location={service.serviceName}
                   imgUrl={service.photos.url}
+                  textButton="+ Add"
+                /> */}
+                <CardInfor
+                  imgUrl={imageUrl.invitation_02}
+                  showRate={4}
+                  title="chup anh"
+                  location="Da Nang"
+                  price="$2300"
+                  textButton="+ Add"
+                />
+                <CardInfor
+                  imgUrl={imageUrl.invitation_02}
+                  showRate={4}
+                  title="chup anh"
+                  location="Da Nang"
+                  price="$2300"
+                  textButton="+ Add"
+                />
+                <CardInfor
+                  imgUrl={imageUrl.invitation_02}
+                  showRate={4}
+                  title="chup anh"
+                  location="Da Nang"
+                  price="$2300"
+                  textButton="+ Add"
+                />
+                <CardInfor
+                  imgUrl={imageUrl.invitation_02}
+                  showRate={4}
+                  title="chup anh"
+                  location="Da Nang"
+                  price="$2300"
                   textButton="+ Add"
                 />
               </div>
