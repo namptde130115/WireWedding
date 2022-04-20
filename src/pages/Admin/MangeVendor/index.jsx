@@ -13,8 +13,6 @@ export const ManageVendorTable = () => {
   const [currentVendor, setCurrentVendor] = useState({});
   const [currentStatus, setCurrentStatus] = useState();
 
-  // console.log(dataVendors);
-
   const [isModalVisible, setIsModalVisible] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -35,15 +33,20 @@ export const ManageVendorTable = () => {
     setCurrentVendor(record);
     setIsModalVisible(true);
   };
+  console.log(currentVendor);
 
   const handleOk = async () => {
-    const body = {
-      id: currentVendor.id,
-      status: { status: currentStatus },
-    };
-    console.log(body);
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleChange = async (value) => {
+    console.log(`selected `, value);
     try {
-      const actionResult = await dispatch(updateVendor(body));
+      const actionResult = await dispatch(updateVendor(currentVendor.id));
       const response = unwrapResult(actionResult);
       if (response) {
         message.success('Update Successfully');
@@ -54,15 +57,6 @@ export const ManageVendorTable = () => {
       message.error('Update Failed');
     }
   };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
-
-  function handleChange(value) {
-    console.log(`selected `, parseInt(value));
-    setCurrentStatus(parseInt(value));
-  }
 
   const columns = [
     {
@@ -112,7 +106,7 @@ export const ManageVendorTable = () => {
     <>
       <Table
         columns={columns}
-        dataSource={dataVendors}
+        dataSource={dataVendors?.vendorProviderResponses}
         rowKey='id'
         loading={isLoading}
         pagination={false}
@@ -124,18 +118,19 @@ export const ManageVendorTable = () => {
         onCancel={handleCancel}
       >
         <p>UserName: {currentVendor.username}</p>
+        <p>Full Name: {currentVendor.fullName}</p>
         <p>Address: {currentVendor.address}</p>
+        <p>Company: {currentVendor.company}</p>
+        <p>Phone: {currentVendor.phone}</p>
         <p>Desciption: </p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
         <p style={{ display: 'inline' }}>Status: </p>
         <Select
-          defaultValue={currentVendor?.status?.toString()}
+          defaultValue={currentVendor?.status}
           style={{ width: 120 }}
           onChange={handleChange}
         >
-          <Option value='0'>Deactive</Option>
-          <Option value='1'>Active</Option>
+          <Option value={false}>Deactive</Option>
+          <Option value={true}>Active</Option>
         </Select>
       </Modal>
     </>

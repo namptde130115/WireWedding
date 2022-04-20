@@ -1,16 +1,14 @@
-import clsx from "clsx";
-import styles from "./index.module.scss";
+import clsx from 'clsx';
+import styles from './index.module.scss';
+import parse from 'html-react-parser';
 
-export const CardBlog = ({ imgUrl }) => {
+export const CardBlog = ({ imgUrl, title, content, handleClick }) => {
   return (
-    <div className={styles.card_blog}>
-      <img src={imgUrl} />
+    <div className={styles.card_blog} onClick={handleClick}>
+      <img src={imgUrl} alt={'sdfasdf'} />
       <div className={styles.blog_content}>
-        <p className={clsx(styles.blog_tittle)}>Title</p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
+        <p className={clsx(styles.blog_tittle)}>{title}</p>
+        <div className={styles.blog_content_inner}>{parse(content)}</div>
       </div>
     </div>
   );

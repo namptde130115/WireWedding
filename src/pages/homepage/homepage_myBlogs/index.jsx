@@ -1,24 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { HomeCustomerLayout } from '../../../layout/homepage_customer/index.jsx';
 import clsx from 'clsx';
 import styles from './index.module.scss';
 import { imageUrl } from '../../../assets/images-url/index.js';
 import { CardBlog } from '../../../components/CardBlog/index.jsx';
 import { Paging } from '../../../components/Pagination/index.jsx';
-import { Menu, Dropdown, message, Space } from 'antd';
+import { Menu, Dropdown, message, Space, Modal } from 'antd';
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
+import { HomePageCreateBlog } from '../homepage_createBlog/index.jsx';
+import { deleteBlog, getAllBogsByPerson } from '../../../redux/vendorSlice.js';
+import { unwrapResult } from '@reduxjs/toolkit';
+import { useDispatch } from 'react-redux';
 
-export const HomePageMyBlogs = () => {
-  function handleMenuClick(e) {
-    message.info('Click on menu item.');
-    console.log('click', e);
-  }
-  const menu = (
-    <Menu onClick={handleMenuClick}>
-      <Menu.Item key='1' icon={<EditOutlined />}>
+export const HomePageMyBlogs = ({ data }) => {
+  const [currentBlog, setCurrentBlog] = useState();
+  const [isVisible, setIsVisible] = useState(false);
+  const dispatch = useDispatch();
+
+  const openEditBlog = (id) => {
+    console.log('item: ' + id);
+    setCurrentBlog(data?.find((item) => item.id === id));
+    setIsVisible(true);
+  };
+  console.log(currentBlog);
+
+  const handleDeleteBlog = async (id) => {
+    try {
+      const actionResult = await dispatch(deleteBlog(id));
+      const response = unwrapResult(actionResult);
+      if (response) {
+        dispatch(getAllBogsByPerson());
+        message.success('Delete blog success');
+      }
+    } catch (error) {}
+  };
+
+  const handleCloseModal = () => {
+    setIsVisible(false);
+  };
+
+  const menu = (id) => (
+    <Menu>
+      <Menu.Item
+        key='1'
+        icon={<EditOutlined />}
+        onClick={() => openEditBlog(id)}
+      >
         Edit
       </Menu.Item>
-      <Menu.Item key='2' icon={<DeleteOutlined />}>
+      <Menu.Item
+        key='2'
+        icon={<DeleteOutlined />}
+        onClick={() => handleDeleteBlog(id)}
+      >
         Delete
       </Menu.Item>
     </Menu>
@@ -26,44 +60,40 @@ export const HomePageMyBlogs = () => {
   return (
     <div className={clsx(styles.blogs__container)}>
       <div className={clsx(styles.blogs_child)}>
-        <div className={clsx(styles.blogsCard)}>
-          <CardBlog imgUrl={imageUrl.studio_01} />
-          <div className={clsx(styles.dropdown)}>
-            <Dropdown.Button overlay={menu}></Dropdown.Button>
+        {data?.map((item, index) => (
+          <div className={clsx(styles.blogsCard)} key={index}>
+            <CardBlog
+              imgUrl={imageUrl.studio_01}
+              title={item.title}
+              content={item.content}
+            />
+            <div className={clsx(styles.dropdown)}>
+              <Dropdown.Button overlay={menu(item.id)}></Dropdown.Button>
+            </div>
           </div>
-        </div>
-        <div className={clsx(styles.blogsCard)}>
-          <CardBlog imgUrl={imageUrl.studio_02} />
-          <div className={clsx(styles.dropdown)}>
-            <Dropdown.Button overlay={menu}></Dropdown.Button>
-          </div>
-        </div>
-        <div className={clsx(styles.blogsCard)}>
-          <CardBlog imgUrl={imageUrl.decoration_01} />
-          <div className={clsx(styles.dropdown)}>
-            <Dropdown.Button overlay={menu}></Dropdown.Button>
-          </div>
-        </div>
-        <div className={clsx(styles.blogsCard)}>
-          <CardBlog imgUrl={imageUrl.decoration_02} />
-          <div className={clsx(styles.dropdown)}>
-            <Dropdown.Button overlay={menu}></Dropdown.Button>
-          </div>
-        </div>
-        <div className={clsx(styles.blogsCard)}>
-          <CardBlog imgUrl={imageUrl.invitation_01} />
-          <div className={clsx(styles.dropdown)}>
-            <Dropdown.Button overlay={menu}></Dropdown.Button>
-          </div>
-        </div>
-        <div className={clsx(styles.blogsCard)}>
-          <CardBlog imgUrl={imageUrl.invitation_02} />
-          <div className={clsx(styles.dropdown)}>
-            <Dropdown.Button overlay={menu}></Dropdown.Button>
-          </div>
-        </div>
+        ))}
       </div>
-      <Paging />
+      {isVisible && (
+        <Modal
+          title='Blogs'
+          visible={isVisible}
+          maskClosable={false}
+          width={1000}
+          footer={null}
+          onCancel={() => setIsVisible(false)}
+        >
+          <div className={clsx(styles.edit_container)}>
+            <div className={clsx(styles.info)}>
+              <div className={clsx(styles.textinfo)}>
+                <HomePageCreateBlog
+                  currentBlog={currentBlog}
+                  closeModal={handleCloseModal}
+                />
+              </div>
+            </div>
+          </div>
+        </Modal>
+      )}
     </div>
   );
 };

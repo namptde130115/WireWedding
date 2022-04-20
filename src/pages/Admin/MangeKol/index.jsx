@@ -112,7 +112,7 @@ export const ManageKolTable = () => {
     <>
       <Table
         columns={columns}
-        dataSource={dataKols}
+        dataSource={dataKols?.kolResponses}
         rowKey='id'
         loading={isLoading}
         pagination={false}
@@ -123,8 +123,10 @@ export const ManageKolTable = () => {
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <p>{currentVendor.username}</p>
-        <p>{currentVendor.address}</p>
+        <p>User Name: {currentVendor.username}</p>
+        <p>Full Name: {currentVendor.fullName}</p>
+        <p>Address: {currentVendor.address}</p>
+        <p>Phone: {currentVendor.phone}</p>
         <p>Desciption: </p>
         <p>Some contents...</p>
         <p style={{ display: 'inline' }}>Status: </p>

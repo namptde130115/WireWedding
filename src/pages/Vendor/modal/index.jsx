@@ -35,7 +35,6 @@ export const VendorModal = ({
   });
 
   useEffect(() => {
-    // const handle
     if (editMode) {
       form.setFieldsValue({
         serviceName: editData?.serviceName,
@@ -145,6 +144,8 @@ export const VendorModal = ({
         ...values,
         photos: photos,
       };
+      console.log(photos);
+      console.log('photos:', photos);
       const actionResult = await dispatch(vendorCreateSingleService(submiBody));
       const response = unwrapResult(actionResult);
       if (response) {

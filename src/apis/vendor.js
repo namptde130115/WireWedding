@@ -17,6 +17,30 @@ const vendorApi = {
     const url = `/single-service/${payload.id}`;
     return AxiosClient.put(url, payload.body);
   },
+  createBlog: (body) => {
+    const url = `blog`;
+    return AxiosClient.post(url, body);
+  },
+  getAllByPerson: () => {
+    const url = `blog/my-blogs`;
+    return AxiosClient.get(url);
+  },
+  editBlog: (body) => {
+    const url = `blog/${body.id}`;
+    return AxiosClient.put(url, body.data);
+  },
+  deleteBlog: (id) => {
+    const url = `blog/${id}`;
+    return AxiosClient.delete(url);
+  },
+  getAllBlog: () => {
+    const url = `blog`;
+    return AxiosClient.get(url);
+  },
+  getDetailBlog: (id) => {
+    const url = `/blog/detail/${id}`;
+    return AxiosClient.get(url);
+  },
 };
 
 export default vendorApi;
