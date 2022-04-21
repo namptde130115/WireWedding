@@ -3,11 +3,16 @@ import { ButtonCustom } from "../../components/ButtonCustom/index.jsx";
 import { Feedback } from "../../components/Feedback/index.jsx";
 import { Rate } from "antd";
 import styles from "./index.module.scss";
+import { Footer } from "../../layout/footer/index.jsx";
+import { Header } from "../../layout/header/index.jsx";
 
 export const ServiceDetail = () => {
   return (
     // <ServiceLayout>
     <div>
+      <div className={styles.header}>
+        <Header />
+      </div>
       <div className={styles.info}>
         <div className={styles.imageinfo}>
           <img
@@ -39,8 +44,8 @@ export const ServiceDetail = () => {
       </div>
       <div className={styles.utility}>
         <ButtonCustom type="primary" text="Add"></ButtonCustom>
-        <ButtonCustom type="primary" text="Hire"></ButtonCustom>
-        <ButtonCustom type="like" text="Like"></ButtonCustom>
+        {/* <ButtonCustom type="primary" text="Hire"></ButtonCustom>
+        <ButtonCustom type="like" text="Like"></ButtonCustom> */}
       </div>
       <div className={styles.feature}>
         <img
@@ -59,7 +64,7 @@ export const ServiceDetail = () => {
       <div className={styles.feedback}>
         <Feedback></Feedback>
       </div>
-      {/* </ServiceLayout> */}
+      <Footer />
     </div>
   );
 };

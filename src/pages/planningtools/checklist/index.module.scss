@@ -1,3 +1,5 @@
+@import "../../../scss/mixin.scss";
+
 .new__todos {
   display: flex;
   margin-bottom: 20px;
@@ -20,11 +22,8 @@
 }
 
 .your_service_text {
-  display: flex;
-  justify-content: center;
-  color: var(--color-title);
-  font-size: 5em;
-  font-family: 'AlexBrush' !important;
+  @include titleFont;
+  margin: 20px 0;
 }
 
 .time__picker {

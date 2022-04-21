@@ -8,6 +8,7 @@ import styles from "./index.module.scss";
 import { imageUrl } from "../../assets/images-url/index.js";
 import clsx from "clsx";
 
+
 export const Service = () => {
   return (
     <CommonLayout>
@@ -25,7 +26,7 @@ export const Service = () => {
             showRate="5"
             title="chup anh"
             location="Da Nang"
-            price="$2300"
+            price="8.000.000 VND"
             textButton="+ Add"
           />
           <CardInfor
@@ -33,7 +34,7 @@ export const Service = () => {
             showRate={5}
             title="chup anh"
             location="Da Nang"
-            price="$2300"
+            price="8.000.000 VND"
             textButton="+ Add"
           />
           <CardInfor
@@ -41,7 +42,7 @@ export const Service = () => {
             showRate={4.5}
             title="chup anh"
             location="Da Nang"
-            price="$2300"
+            price="8.000.000 VND"
             textButton="+ Add"
           />
           <CardInfor
@@ -49,7 +50,7 @@ export const Service = () => {
             showRate={4}
             title="chup anh"
             location="Da Nang"
-            price="$2300"
+            price="8.000.000 VND"
             textButton="+ Add"
           />
           <CardInfor
@@ -57,7 +58,7 @@ export const Service = () => {
             showRate={4}
             title="chup anh"
             location="Da Nang"
-            price="$2300"
+            price="8.000.000 VND"
             textButton="+ Add"
           />
           <CardInfor
@@ -65,7 +66,7 @@ export const Service = () => {
             showRate={4}
             title="chup anh"
             location="Da Nang"
-            price="$2300"
+            price="8.000.000 VND"
             textButton="+ Add"
           />
           <CardInfor
@@ -73,7 +74,7 @@ export const Service = () => {
             showRate={4}
             title="chup anh"
             location="Da Nang"
-            price="$2300"
+            price="8.000.000 VND"
             textButton="+ Add"
           />
           <CardInfor
@@ -81,7 +82,7 @@ export const Service = () => {
             showRate={4}
             title="chup anh"
             location="Da Nang"
-            price="$2300"
+            price="8.000.000 VND"
             textButton="+ Add"
           />
         </div>

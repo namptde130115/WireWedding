@@ -34,39 +34,39 @@ export const PaymentConfirm = () => {
     // <CommonLayout>
     <div className={clsx(styles.payment_container)}>
       <div className={clsx(styles.payment_cart)}>
-        <div className={clsx(styles.h1)}>Services Ordered</div>
+        <div className={clsx(styles.h1)}>Checkout</div>
         <div className={clsx(styles.cart_item)}>
           <div className={clsx(styles.cart_image)}>
             <img src={imageUrl.decoration_02} />
           </div>
-          <div className={clsx(styles.cart_name)}>Service's name</div>
+          <div className={clsx(styles.cart_name)}>Beach Decoration</div>
           <div className={clsx(styles.cart_quantity)}>1</div>
-          <div className={clsx(styles.cart_price)}>₫1.000.000</div>
+          <div className={clsx(styles.cart_price)}>8.000.000 VND</div>
         </div>
 
         <div className={clsx(styles.cart_item)}>
           <div className={clsx(styles.cart_image)}>
             <img src={imageUrl.studio_02} />
           </div>
-          <div className={clsx(styles.cart_name)}>Service's name</div>
+          <div className={clsx(styles.cart_name)}>Luxury Invitation</div>
           <div className={clsx(styles.cart_quantity)}>1</div>
-          <div className={clsx(styles.cart_price)}>₫1.000.000</div>
+          <div className={clsx(styles.cart_price)}>1.400.000 VND</div>
         </div>
         <div className={clsx(styles.cart_item)}>
           <div className={clsx(styles.cart_image)}>
             <img src={imageUrl.studio_02} />
           </div>
-          <div className={clsx(styles.cart_name)}>Service's name</div>
+          <div className={clsx(styles.cart_name)}>Korea Concept Photoshoot</div>
           <div className={clsx(styles.cart_quantity)}>1</div>
-          <div className={clsx(styles.cart_price)}>₫1.000.000</div>
+          <div className={clsx(styles.cart_price)}>8.000.000VND</div>
         </div>
         <div className={clsx(styles.cart_item)}>
           <div className={clsx(styles.cart_image)}>
             <img src={imageUrl.studio_02} />
           </div>
-          <div className={clsx(styles.cart_name)}>Service's name</div>
+          <div className={clsx(styles.cart_name)}>Wedding Rings</div>
           <div className={clsx(styles.cart_quantity)}>1</div>
-          <div className={clsx(styles.cart_price)}>₫1.000.000</div>
+          <div className={clsx(styles.cart_price)}>10.000.000 VND</div>
         </div>
         <div className={clsx(styles.cart_item)}>
           <div className={clsx(styles.cart_image)}>
