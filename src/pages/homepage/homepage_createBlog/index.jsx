@@ -1,21 +1,70 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import clsx from 'clsx';
 import styles from './index.module.scss';
-import { Input } from 'antd';
+import { Input, message } from 'antd';
 import { ButtonCustom } from '../../../components/ButtonCustom/index.jsx';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  createBlog,
+  editBlog,
+  getAllBogsByPerson,
+} from '../../../redux/vendorSlice';
+import { unwrapResult } from '@reduxjs/toolkit';
 
-export const HomePageCreateBlog = () => {
+export const HomePageCreateBlog = ({ currentBlog, closeModal }) => {
   const userName = localStorage.getItem('userName');
-  const initContent = useSelector((state) => state.kol.initContent);
+  const [initContent, setInitContent] = useState('');
+  const dispatch = useDispatch();
   const editorRef = useRef(null);
-  const [title, setTitle] = useState('');
-  const handlePostBlog = () => {
-    if (editorRef.current) {
-      console.log(editorRef.current.getContent());
-      console.log(title);
-      console.log(userName);
+  const [title, setTitle] = useState(currentBlog?.title);
+  useEffect(() => {
+    if (currentBlog) {
+      setInitContent(currentBlog.content);
+      setTitle(currentBlog.title);
+    }
+  }, [currentBlog?.content]);
+
+  const handlePostBlog = async () => {
+    if (currentBlog) {
+      if (editorRef.current) {
+        console.log(editorRef.current.getContent());
+        const body = {
+          id: currentBlog.id,
+          data: {
+            blogTitle: title,
+            blogContent: editorRef.current.getContent(),
+          },
+        };
+        try {
+          const actionResult = await dispatch(editBlog(body));
+          const response = unwrapResult(actionResult);
+          if (response) {
+            dispatch(getAllBogsByPerson());
+            message.success('Edit blog success');
+          }
+        } catch (error) {
+          message.error(error.data.message);
+          console.log(error);
+        }
+      }
+    } else {
+      if (editorRef.current) {
+        console.log(editorRef.current.getContent());
+        const body = {
+          blogTitle: title,
+          blogContent: editorRef.current.getContent(),
+        };
+        try {
+          const actionResult = await dispatch(createBlog(body));
+          const response = unwrapResult(actionResult);
+          if (response) {
+            dispatch(getAllBogsByPerson());
+            message.success('Create blog success');
+            closeModal();
+          }
+        } catch (error) {}
+      }
     }
   };
   const handleChangeTitle = (e) => {
@@ -35,7 +84,7 @@ export const HomePageCreateBlog = () => {
           onInit={(evt, editor) => {
             editorRef.current = editor;
           }}
-          initialValue='<p>This is the initial content of the editor.</p>'
+          initialValue={initContent}
           init={{
             height: 700,
             menubar: true,
@@ -82,7 +131,6 @@ export const HomePageCreateBlog = () => {
       </div>
       <div className={clsx(styles.button_container)}>
         <ButtonCustom type='primary' text='Post' onClick={handlePostBlog} />
-        <ButtonCustom type='ghost' text='Cancel' />
       </div>
     </div>
   );

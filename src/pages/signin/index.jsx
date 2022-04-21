@@ -17,11 +17,13 @@ export const SignIn = () => {
       const actionResult = await dispatch(signIn(values));
       const response = unwrapResult(actionResult);
       if (response.role === 1) {
-        navigate('/admin');
+        navigate('/admin/vendor');
         console.log('response', response);
       } else if (response.role === 2) {
         navigate('/vendor');
         console.log('response', response);
+      } else if (response.role === 4) {
+        navigate('/kol');
       } else {
         navigate('/');
         console.log('response', response);

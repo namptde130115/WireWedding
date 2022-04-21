@@ -77,7 +77,6 @@ export const VendorSevice = () => {
       </div>
       <div className={'vendor__service__container'}>
         {services.map((servive, index) => (
-          
           <CardInfor
             textButton={'Edit'}
             key={index}

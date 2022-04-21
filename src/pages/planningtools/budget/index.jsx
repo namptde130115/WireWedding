@@ -413,7 +413,7 @@ export const Budget = () => {
                           <Card className={clsx(styles.list_item)}>
                             {item.type}{' '}
                             <span>
-                              $ {item.value}{' '}
+                              {item.value}00K vnd{' '}
                               <Popup
                                 trigger={
                                   <EllipsisOutlined
