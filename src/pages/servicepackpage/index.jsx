@@ -7,8 +7,28 @@ import styles from "./index.module.scss";
 import clsx from "clsx";
 import { SearchBar } from "../../components/Search/index.jsx";
 import { imageUrl } from "../../assets/images-url/index.js";
+import { useEffect } from "react";
+import { getAllServicePack } from "../../redux/userSlice.js";
+import { useDispatch, useSelector } from "react-redux";
+import { unwrapResult } from "@reduxjs/toolkit";
 
 export const ServicePack = () => {
+  const dispatch = useDispatch();
+
+  const allPack = useSelector((state) => state.user.allServicePack);
+  console.log("allPack: ", allPack);
+  useEffect(() => {
+    const getAllService = async () => {
+      try {
+        const actionResult = await dispatch(getAllServicePack());
+        const response = await unwrapResult(actionResult);
+        if (response) {
+          console.log(response);
+        }
+      } catch (error) {}
+    };
+    getAllService();
+  }, []);
   return (
     <CommonLayout>
       <div className={styles.utility}>
@@ -19,7 +39,20 @@ export const ServicePack = () => {
         <Location />
       </div>
       <div className={styles.card}>
-        <CardInfor
+        {allPack?.map((item) => (
+          <CardInfor
+            key={item.id}
+            showRate="5"
+            imgUrl={item?.photos[0]?.url}
+            title={item.serviceName}
+            location="Da Nang"
+            price={item.price.toLocaleString(undefined, {
+              maximumFractionDigits: 2,
+            })}
+            textButton="+ Add"
+          />
+        ))}
+        {/* <CardInfor
           imgUrl={imageUrl.studio_01}
           showRate="5"
           title="chup anh"
@@ -82,7 +115,7 @@ export const ServicePack = () => {
           location="Da Nang"
           price="8.000.000 VND"
           textButton="+ Add"
-        />
+        /> */}
       </div>
     </CommonLayout>
   );

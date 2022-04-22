@@ -5,6 +5,8 @@ const initialState = {
   loading: false,
   registerLoading: false,
   userInfor: {},
+  allSingleService: [],
+  allServicePack: [],
 };
 
 export const signIn = createAsyncThunk(
@@ -43,7 +45,34 @@ export const signUp = createAsyncThunk(
     return response.data;
   }
 );
-
+export const getAllSingleService = createAsyncThunk(
+  'user/getAllSingleService',
+  async (params, { rejectWithValue }) => {
+    try {
+      const response = await userApi.getAllSingleService();
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response);
+    }
+  }
+);
+export const getAllServicePack = createAsyncThunk(
+  'user/getAllServicePack',
+  async (params, { rejectWithValue }) => {
+    try {
+      const response = await userApi.getAllServicePack();
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response);
+    }
+  }
+);
 export const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -67,7 +96,24 @@ export const userSlice = createSlice({
       .addCase(signUp.fulfilled, (state, { payload }) => {
         state.registerLoading = false;
         state.userInfor = payload;
-      });
+      })
+
+      .addCase(getAllSingleService.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getAllSingleService.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        console.log(payload);
+        state.allSingleService = payload.singleServicePostResponses;
+      })
+      .addCase(getAllServicePack.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getAllServicePack.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        console.log(payload);
+        state.allServicePack = payload;
+      });;
   },
 });
 
