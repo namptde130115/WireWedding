@@ -8,9 +8,11 @@ import { useState } from 'react';
 import { Button, Input } from 'antd';
 import { AddGroupModal } from './addGoup-modal';
 import { CheckListItem } from '../checklist/check-list-item';
+import { useSelector } from 'react-redux';
 
 export const GuestList = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const allGroup = useSelector((state) => state.customer.allGroup);
 
   const handleOnOk = () => {
     setIsVisible(false);

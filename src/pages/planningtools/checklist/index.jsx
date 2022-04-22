@@ -1,30 +1,32 @@
-import { DatePicker, Input, Progress, Button } from "antd";
-import { FormItem } from "../../../components/FormItem";
-import { CheckListItem } from "./check-list-item";
-import styles from "./index.module.scss";
-import clsx from "clsx";
-import { useEffect, useState } from "react";
+import { DatePicker, Input, Progress, Button, message } from 'antd';
+import { FormItem } from '../../../components/FormItem';
+import { CheckListItem } from './check-list-item';
+import styles from './index.module.scss';
+import clsx from 'clsx';
+import { useEffect, useState } from 'react';
 import {
   getCheckList,
   addCheckListTask,
-} from "../../../redux/customerSlice.js";
-import { useDispatch, useSelector } from "react-redux";
-import { unwrapResult } from "@reduxjs/toolkit";
+} from '../../../redux/customerSlice.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { unwrapResult } from '@reduxjs/toolkit';
 
 export const CheckList = () => {
   const dispatch = useDispatch();
-  const [title, setTitle] = useState("");
-  const [dueDate, setDueDate] = useState('');useState(new Date());
+  const [title, setTitle] = useState('');
+  const [dueDate, setDueDate] = useState('');
+  const [progress, setProgress] = useState(0);
+  const dateFormat = 'YYYY/MM/DD';
 
   const checkList = useSelector((state) => state.customer?.allTask);
-  console.log("checkList: ", checkList);
+
   useEffect(() => {
     const getAllCheckList = async () => {
       try {
         const actionResult = await dispatch(getCheckList());
         const response = await unwrapResult(actionResult);
         if (response) {
-          console.log(response);
+          message.success('Get all check list success');
         }
       } catch (error) {}
     };
@@ -35,25 +37,27 @@ export const CheckList = () => {
     const body = {
       name: title,
       deadline: dueDate,
+      description: 'huy dep trai',
     };
+    console.log(body);
     try {
       const actionResult = await dispatch(addCheckListTask(body));
       const response = unwrapResult(actionResult);
       if (response) {
+        setTitle('');
         dispatch(getCheckList());
       }
     } catch (error) {}
   };
+
   const handleChangeTitle = (e) => {
     setTitle(e.target.value);
   };
+
   const onChange = (date, dateString) => {
     console.log(dateString);
-    // setDueDate(dateString);
+    setDueDate(dateString);
   };
-  // const onChange = (e) => {
-  //   setValue("dueDate", e.target.value);
-  // };
 
   return (
     <div className={clsx(styles.checklist__container)}>
@@ -61,24 +65,30 @@ export const CheckList = () => {
       <div className={clsx(styles.checklist)}>
         <div className={styles.progress}>
           <span>Progress: </span>
-          <Progress percent={30} className={clsx(styles.progress)} />
+          <Progress
+            percent={Math.round(
+              (checkList.filter((item) => item.status === true).length /
+                checkList.length) *
+                100
+            )}
+            className={clsx(styles.progress)}
+          />
         </div>
-        <FormItem title="New Todos:" className={clsx(styles.new__todos)}>
+        <FormItem title='New Todos:' className={clsx(styles.new__todos)}>
           <Input
             value={title}
             onChange={handleChangeTitle}
-            type="text"
-            placeholder="Input new todos"
+            type='text'
+            placeholder='Input new todos'
           />
           <DatePicker
-            // value={dueDate}
-            // onChange={onChange}
-            selected={dueDate} 
-            onChange={dueDate => setDueDate(dueDate)} 
+            format={dateFormat}
+            selected={dueDate}
+            onChange={onChange}
             className={clsx(styles.time__picker)}
           />
           <Button
-            type="primary"
+            type='primary'
             className={clsx(styles.btn__add)}
             onClick={handleAddTask}
           >
@@ -91,20 +101,14 @@ export const CheckList = () => {
             <CheckListItem
               key={item?.id}
               isShowCheck={item.status}
-              title="mmmmmmmm"
-              day={item.dueDate}
+              title={item.name}
+              day={
+                item.dueDate &&
+                `${item?.dueDate[0]}/${item?.dueDate[1]}/${item?.dueDate[2]}`
+              }
+              idCheck={item.id}
             />
           ))}
-          {/* <CheckListItem
-            isShowCheck={true}
-            title={'check item 1'}
-            day={'20/11/2022'}
-          />
-          <CheckListItem
-            isShowCheck={true}
-            title={'check item 1'}
-            day={'20/11/2022'}
-          /> */}
         </div>
       </div>
     </div>

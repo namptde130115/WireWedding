@@ -5,6 +5,7 @@ const initialState = {
   loading: false,
   registerLoading: false,
   allTask: [],
+  allGroup: [],
 };
 
 export const getCheckList = createAsyncThunk(
@@ -35,6 +36,67 @@ export const addCheckListTask = createAsyncThunk(
     }
   }
 );
+
+export const editContentCheckList = createAsyncThunk(
+  'customer/editContentCheckList',
+  async (body, { rejectWithValue }) => {
+    try {
+      const response = await customerApi.editContentCheckList(body);
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+export const editStatusChecklist = createAsyncThunk(
+  'customer/editStatusChecklist',
+  async (id, { rejectWithValue }) => {
+    try {
+      const response = await customerApi.editStatusChecklist(id);
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+export const deleteCheckList = createAsyncThunk(
+  'customer/deleteCheckList',
+  async (id, { rejectWithValue }) => {
+    try {
+      const response = await customerApi.deleteCheckList(id);
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+export const getAllGroup = createAsyncThunk(
+  'customer/getAllGroup',
+  async (params, { rejectWithValue }) => {
+    try {
+      const response = await customerApi.getAllGroup();
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
 export const customerSlice = createSlice({
   name: 'customer',
   initialState,
@@ -46,21 +108,38 @@ export const customerSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-    .addCase(getCheckList.pending, (state) => {
-      state.loading = true;
-    })
-    .addCase(getCheckList.fulfilled, (state, { payload }) => {
-      state.loading = false;
-      console.log(payload);
-      state.allTask = payload.checkListTaskResponseList;
-    })
-
-    .addCase(addCheckListTask.pending, (state) => {
-      state.loading = true;
-    })
-    .addCase(addCheckListTask.fulfilled, (state, { payload }) => {
-      state.loading = false;
-    })
+      .addCase(getCheckList.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getCheckList.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        console.log(payload);
+        state.allTask = payload.checkListTaskResponseList;
+      })
+      .addCase(addCheckListTask.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(addCheckListTask.fulfilled, (state, { payload }) => {
+        state.loading = false;
+      })
+      .addCase(editContentCheckList.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(editContentCheckList.fulfilled, (state, { payload }) => {
+        state.loading = false;
+      })
+      .addCase(deleteCheckList.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(deleteCheckList.fulfilled, (state, { payload }) => {
+        state.loading = false;
+      })
+      .addCase(getAllGroup.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getAllGroup.fulfilled, (state, { payload }) => {
+        state.loading = false;
+      });
   },
 });
 

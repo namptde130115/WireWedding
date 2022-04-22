@@ -31,8 +31,7 @@
 }
 
 .content {
-  flex: 1;
-  flex-wrap: wrap;
+  width: 75vw;
   margin-left: 10px;
 }
 
@@ -53,4 +52,12 @@
     border: none;
     box-shadow: none;
   }
+}
+
+.time__picker {
+  margin-right: 20px;
+}
+
+.control {
+  min-width: 100px;
 }
