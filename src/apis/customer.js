@@ -25,6 +25,30 @@ const customerApi = {
     const url = `guest/list`;
     return AxiosClient.get(url);
   },
+  createGroup: (body) => {
+    const url = `guest/list`;
+    return AxiosClient.post(url, body);
+  },
+  deleteGroup: (id) => {
+    const url = `guest/list/${id}`;
+    return AxiosClient.delete(url);
+  },
+  updateGroupName: (body) => {
+    const url = `guest`;
+    return AxiosClient.post(url, body.data, {
+      params: { guestListId: body.id },
+    });
+  },
+  updateGuest: (body) => {
+    const url = `guest/${body.guestId}`;
+    return AxiosClient.put(url, body.data, {
+      params: { guestListId: body.guestListId },
+    });
+  },
+  updateGuestList: (body) => {
+    const url = `guest/list/${body.id}`;
+    return AxiosClient.put(url, body.data);
+  },
 };
 
 export default customerApi;
