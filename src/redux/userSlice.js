@@ -103,7 +103,6 @@ export const userSlice = createSlice({
       })
       .addCase(getAllSingleService.fulfilled, (state, { payload }) => {
         state.loading = false;
-        console.log(payload);
         state.allSingleService = payload.singleServicePostResponses;
       })
       .addCase(getAllServicePack.pending, (state) => {
@@ -111,7 +110,6 @@ export const userSlice = createSlice({
       })
       .addCase(getAllServicePack.fulfilled, (state, { payload }) => {
         state.loading = false;
-        console.log(payload);
         state.allServicePack = payload;
       });;
   },

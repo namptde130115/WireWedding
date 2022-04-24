@@ -332,7 +332,6 @@ export const Budget = () => {
     var value = parseInt(cost);
     if (type != null && value != null) {
       category.push({ type, value });
-      console.log(category);
       setArray(category);
       reEstimating();
       setName(null);
@@ -344,14 +343,11 @@ export const Budget = () => {
   //edit category js
   const getItem = (props) => category.indexOf(props);
   const handleEdit = () => {
-    console.log(name, cost);
     var type = name;
     var value = parseInt(cost);
-    console.log(getItem);
     if (type != null && value != null) {
       category.splice(getItem, 1);
       category.splice(getItem, 0, { type, value });
-      console.log();
       setArray(category);
       reEstimating();
       setName(null);
@@ -362,8 +358,6 @@ export const Budget = () => {
 
   //delete category js
   const Remove = (props) => {
-    // console.log(props.type)
-    //console.log(category.indexOf(props))
     category.splice(category.indexOf(props), 1);
     setArray(category);
     reEstimating();

@@ -5,13 +5,23 @@
 }
 
 .vendor__service__card {
-  height: 280px;
+  height: 290px;
   width: 220px !important;
   // flex:1;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, max-content));
   .ant-card-cover {
     width: 100% !important;
+  }
+  .ant-card-meta-description {
+    > div > div:last-child {
+      display: flex;
+      flex-wrap: wrap;
+      > p {
+        display: block;
+        width: calc(100% - 20px);
+      }
+    }
   }
 }
 

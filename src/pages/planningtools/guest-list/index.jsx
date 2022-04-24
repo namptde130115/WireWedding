@@ -73,7 +73,6 @@ export const GuestList = () => {
   };
 
   const handleOpenModalEdit = (guest, id) => {
-    console.log('guest', guest, 'id', id);
     setCurrentGuest(guest);
     setCurrentIdGroupGuest(id);
     setIsVisibleEdit(true);

@@ -85,7 +85,6 @@ export const ManageVendorTable = () => {
   };
 
   const onChange = async (checked) => {
-    console.log(`switch to ${checked}`);
     setSwitchLoading(true);
     try {
       const actionResult = await dispatch(updateVendor(currentVendor.id));

@@ -6,27 +6,23 @@ import { Form, Input, Button } from 'antd';
 import { signIn } from '../../redux/userSlice';
 import { useDispatch } from 'react-redux';
 import { unwrapResult } from '@reduxjs/toolkit';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const SignIn = () => {
   const dispatch = useDispatch();
   let navigate = useNavigate();
   const onFinish = async (values) => {
-    console.log('Success:', values);
     try {
       const actionResult = await dispatch(signIn(values));
       const response = unwrapResult(actionResult);
       if (response.role === 1) {
         navigate('/admin/vendor');
-        console.log('response', response);
       } else if (response.role === 2) {
         navigate('/vendor');
-        console.log('response', response);
       } else if (response.role === 4) {
-        navigate('/kol');
+        navigate('/kol/myservive-pack');
       } else {
         navigate('/');
-        console.log('response', response);
       }
     } catch (error) {}
   };
@@ -36,7 +32,7 @@ export const SignIn = () => {
       <div className={styles.form__title}>
         <p className={styles.title}>Log in to your account</p>
         <p className={styles.title__signIn}>
-          Not a member yet? <a href=''>Join now</a>
+          Not a member yet? <Link to='/sign-up'>Join now</Link>
         </p>
       </div>
       <div className={styles.form}>

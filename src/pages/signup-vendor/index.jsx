@@ -14,21 +14,17 @@ export const VendorSignUp = () => {
 
   const loading = useSelector((state) => state.user.registerLoading);
   const onFinish = async (values) => {
-    console.log(values.categoryId.value);
     const dataSubmit = {
       ...values,
       categoryId: parseInt(values.categoryId),
     };
-    console.log('Success:', dataSubmit);
     try {
       const actionResult = await dispatch(vendorSignUp(dataSubmit));
       const response = unwrapResult(actionResult);
       if (response) {
         message.success('register success');
-        console.log('response', response);
       }
     } catch (error) {
-      console.log('error', error);
       message.error(error.username);
     }
   };

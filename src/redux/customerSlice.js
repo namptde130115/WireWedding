@@ -188,7 +188,6 @@ export const customerSlice = createSlice({
       })
       .addCase(getCheckList.fulfilled, (state, { payload }) => {
         state.loading = false;
-        console.log(payload);
         state.allTask = payload.checkListTaskResponseList;
       })
       .addCase(addCheckListTask.pending, (state) => {

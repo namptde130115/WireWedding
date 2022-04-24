@@ -9,6 +9,10 @@ const vendorApi = {
     const url = '/single-service';
     return AxiosClient.post(url, payload);
   },
+  updateSingleService: (payload) => {
+    const url = `/single-service/${payload.id}`;
+    return AxiosClient.put(url, payload.data);
+  },
   getListSingleService: () => {
     const url = `/single-service/vendor`;
     return AxiosClient.get(url);

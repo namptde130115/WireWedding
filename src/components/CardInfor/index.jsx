@@ -36,12 +36,15 @@ export const CardInfor = ({
                 className={clsx(styles.icons_location)}
                 src='https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Icon%2Ficon_location.png?alt=media&token=29af5c96-9413-41aa-9b3b-67d2eba337af'
               />
-              {location}
-              <ButtonCustom
-                type='ghost'
-                text={textButtonRemove}
-                onClick={handleRemove}
-              />
+              <p>{location}</p>
+              {textButtonRemove && (
+                <ButtonCustom
+                  type='ghost'
+                  text={textButtonRemove}
+                  onClick={handleRemove}
+                />
+              )}
+
               <ButtonCustom
                 type='primary'
                 text={textButton}

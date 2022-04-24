@@ -12,8 +12,6 @@ export const ManageKolTable = () => {
   const [switchLoading, setSwitchLoading] = useState(false);
   const [currentStatus, setCurrentStatus] = useState();
 
-  // console.log(dataVendors);
-
   const [isModalVisible, setIsModalVisible] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -30,7 +28,6 @@ export const ManageKolTable = () => {
   }, []);
 
   const showModal = (record) => {
-    console.log(record);
     setCurrentVendor(record);
     setIsModalVisible(true);
   };
@@ -44,7 +41,6 @@ export const ManageKolTable = () => {
   };
 
   const onChange = async (checked) => {
-    console.log(`switch to ${checked}`);
     setSwitchLoading(true);
     try {
       const actionResult = await dispatch(updateKol(currentVendor.id));

@@ -249,7 +249,6 @@ export const kolSlice = createSlice({
       .addCase(getAllServicesByCategory.fulfilled, (state, { payload }) => {
         state.loading = false;
         state.kolServices = payload;
-        console.log(payload);
       })
       .addCase(getAllServicesByCategory.rejected, (state) => {
         state.kolServices = [];

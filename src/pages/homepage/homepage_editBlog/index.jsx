@@ -7,11 +7,7 @@ import { ButtonCustom } from "../../../components/ButtonCustom/index.jsx";
 
 export const HomePageEditBlog = () => {
   const editorRef = useRef(null);
-  const log = () => {
-    if (editorRef.current) {
-      console.log(editorRef.current.getContent());
-    }
-  };
+  
   return (
     <div className={clsx(styles.createBlog_container)}>
       <Input placeholder="Blog Title" bordered={false} />

@@ -18,11 +18,9 @@ export const HomePageMyBlogs = ({ data }) => {
   const dispatch = useDispatch();
 
   const openEditBlog = (id) => {
-    console.log('item: ' + id);
     setCurrentBlog(data?.find((item) => item.id === id));
     setIsVisible(true);
   };
-  console.log(currentBlog);
 
   const handleDeleteBlog = async (id) => {
     try {

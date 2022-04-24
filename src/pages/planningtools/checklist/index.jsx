@@ -39,7 +39,6 @@ export const CheckList = () => {
       deadline: dueDate,
       description: 'huy dep trai',
     };
-    console.log(body);
     try {
       const actionResult = await dispatch(addCheckListTask(body));
       const response = unwrapResult(actionResult);
@@ -55,7 +54,6 @@ export const CheckList = () => {
   };
 
   const onChange = (date, dateString) => {
-    console.log(dateString);
     setDueDate(dateString);
   };
 

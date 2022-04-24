@@ -13,9 +13,7 @@ export const SignUp = () => {
 
   const loading = useSelector((state) => state.user.registerLoading);
   const onFinish = async (values) => {
-    console.log('Success:', values);
     try {
-      console.log('aaaaa');
       const actionResult = await dispatch(
         signUp({
           companyName: 'TUART WEDDING ĐÀ NẴNG',
@@ -31,7 +29,6 @@ export const SignUp = () => {
       const response = unwrapResult(actionResult);
       if (response) {
         navigate('/');
-        console.log('response', response);
       }
     } catch (error) {}
   };

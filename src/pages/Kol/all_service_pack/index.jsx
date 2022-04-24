@@ -19,7 +19,6 @@ export const AllServicePack = () => {
   const [isVisible, setIsVisible] = useState();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log('packServices', packServices);
 
   const handleEditPack = (idPack) => {
     navigate('edit?idPack=' + idPack);
@@ -67,7 +66,6 @@ export const AllServicePack = () => {
   };
 
   const onFinish = async (values) => {
-    console.log(values);
     try {
       const actionResult = await dispatch(createPackageCategory(values));
       const response = unwrapResult(actionResult);
@@ -80,7 +78,6 @@ export const AllServicePack = () => {
   };
 
   const handleDeletePack = async (packId) => {
-    console.log(packId);
     try {
       const actionResult = await dispatch(deletePack(packId));
       const response = unwrapResult(actionResult);
@@ -98,24 +95,30 @@ export const AllServicePack = () => {
         Create
       </Button>
       <div className={'vendor__service__container'}>
-        {packServices.map((servive, index) => (
-          <CardInfor
-            textButton={'Edit'}
-            key={index}
-            className={'vendor__service__card'}
-            handleAdd={() => handleEditPack(servive.id)}
-            title={servive?.name}
-            location={servive?.kolMiniResponse?.fullName}
-            imgUrl={servive?.photo?.url}
-            price={
-              servive?.price.toLocaleString(undefined, {
-                maximumFractionDigits: 2,
-              }) + ' VND'
-            }
-            textButtonRemove={'Remove'}
-            handleRemove={() => handleDeletePack(servive.id)}
-          />
-        ))}
+        {packServices.message === 'No results' ? (
+          <></>
+        ) : (
+          <div className={'vendor__service__container'}>
+            {packServices?.map((servive, index) => (
+              <CardInfor
+                textButton={'Edit'}
+                key={index}
+                className={'vendor__service__card'}
+                handleAdd={() => handleEditPack(servive.id)}
+                textButtonRemove={'Remove'}
+                handleRemove={() => handleDeletePack(servive.id)}
+                title={servive?.name}
+                location={servive?.kolMiniResponse?.fullName}
+                imgUrl={servive?.photo?.url}
+                price={
+                  servive?.price.toLocaleString(undefined, {
+                    maximumFractionDigits: 2,
+                  }) + ' VND'
+                }
+              />
+            ))}
+          </div>
+        )}
       </div>
       <Modal
         className='add_category_child'

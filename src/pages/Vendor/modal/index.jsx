@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {
   getListSingleService,
+  updateSingleService,
   vendorCreateSingleService,
 } from '../../../redux/vendorSlice';
 import { unwrapResult } from '@reduxjs/toolkit';
@@ -119,12 +120,10 @@ export const VendorModal = ({
   // };
 
   const handleChange = ({ fileList: newFileList }) => {
-    console.log('newFileList', newFileList);
     setFileList(newFileList);
   };
 
   const onPreview = async (file) => {
-    console.log('aaaaaa');
     if (!file.url && !file.preview) {
       file.preview = await getBase64(file.originFileObj);
     }
@@ -138,27 +137,51 @@ export const VendorModal = ({
   };
 
   const onFinish = async (values) => {
-    try {
-      console.log('success: ', values);
-      const submiBody = {
-        ...values,
-        photos: photos,
-      };
-      console.log(photos);
-      console.log('photos:', photos);
-      const actionResult = await dispatch(vendorCreateSingleService(submiBody));
-      const response = unwrapResult(actionResult);
-      if (response) {
-        message.success('Service added successfully');
-        form.resetFields();
-        dispatch(getListSingleService(3));
-        handleOk();
+    if (editMode) {
+      // updateSingleService(values);
+      try {
+        const submiBody = {
+          ...values,
+          photos: photos,
+        };
+        const actionResult = await dispatch(
+          updateSingleService({ id: editData.id, data: submiBody })
+        );
+        const response = unwrapResult(actionResult);
+        if (response) {
+          message.success('Service updated successfully');
+          form.resetFields();
+          dispatch(getListSingleService());
+          handleOk();
+        }
+      } catch (error) {
+        if (error.photos) {
+          message.error('Something went wrong');
+        }
       }
-    } catch (error) {
-      if (error.photos) {
-        message.error('Photos is required');
+    } else {
+      try {
+        const submiBody = {
+          ...values,
+          photos: photos,
+        };
+        console.log(photos);
+        console.log('photos:', photos);
+        const actionResult = await dispatch(
+          vendorCreateSingleService(submiBody)
+        );
+        const response = unwrapResult(actionResult);
+        if (response) {
+          message.success('Service added successfully');
+          form.resetFields();
+          dispatch(getListSingleService());
+          handleOk();
+        }
+      } catch (error) {
+        if (error.photos) {
+          message.error('Photos is required');
+        }
       }
-      console.log(error);
     }
   };
 
@@ -172,7 +195,6 @@ export const VendorModal = ({
   };
 
   const handleRemoveImage = (value) => {
-    console.log(value);
     setPhotos(
       photos
         .filter((photo) => photo.url !== value.url)
@@ -185,7 +207,6 @@ export const VendorModal = ({
     );
   };
 
-  console.log(photos);
   return (
     <Modal
       title='Infor Kol'

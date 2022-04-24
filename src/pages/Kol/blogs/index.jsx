@@ -12,7 +12,6 @@ import styles from './index.module.scss';
 export const KolBlogs = () => {
   const [isModalEditVisible, setIsModalEditVisible] = useState();
   const allBlogByPerson = useSelector((state) => state.vendor.allBlogByPerson);
-  console.log('allBlogByPerson:', allBlogByPerson);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,7 +28,6 @@ export const KolBlogs = () => {
   }, []);
 
   const handleOpenModal = () => {
-    console.log('cancel');
     setIsModalEditVisible(true);
   };
 
@@ -38,7 +36,6 @@ export const KolBlogs = () => {
   };
 
   const handleCancelModal = () => {
-    console.log('cancel');
     setIsModalEditVisible(false);
   };
   return (
