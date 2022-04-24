@@ -1,0 +1,67 @@
+@import '../../../../scss/mixin.scss';
+
+.checklist__items {
+  margin-bottom: 10px;
+  display: flex;
+  // @include borderShadown;
+  padding: 10px;
+  align-items: center;
+}
+
+.is__checked {
+  color: #cacaca !important;
+}
+
+.icon {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.icon__check {
+  color: #389e0d;
+}
+
+.icon__delete {
+  color: #e74e43;
+  margin-left: 10px;
+}
+
+.icon__save {
+  color: #389e0d;
+}
+
+.content {
+  width: 75vw;
+  margin-left: 10px;
+}
+
+.day {
+  min-width: 120px;
+  font-weight: bold;
+}
+
+.input {
+  width: 97%;
+}
+
+.visible__input {
+  outline: none;
+  border: none;
+  &:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+  }
+}
+
+.time__picker {
+  margin-right: 20px;
+}
+
+.control {
+  min-width: 100px;
+}
+
+.hidden {
+  display: none;
+}

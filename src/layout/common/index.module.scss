@@ -23,7 +23,7 @@
 .body {
   flex: 1;
   height: 100%;
-  width: 75%;
+  width: 100%;
   background-color: #f7f6eb;
 }
 
@@ -49,4 +49,7 @@
     font-size: 18px;
     font-weight: bold;
   }
+}
+.footer{
+  width: 100%;
 }

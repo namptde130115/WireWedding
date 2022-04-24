@@ -1,0 +1,27 @@
+.signUp__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.button:hover {
+  background-color: #19b5bc;
+  color: #fff;
+  transform: translate(0px, -10px);
+}
+
+.button {
+  transition: 0.5s;
+}
+
+.input__antd {
+  height: 40px;
+  width: 100%;
+}
+
+.signUp {
+  width: 100%;
+}
+
+.signUp__container {
+  width: 80%;
+}

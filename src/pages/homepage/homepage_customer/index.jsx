@@ -1,8 +1,8 @@
-import { HomeCustomerLayout } from "../../../layout/homepage_customer/index.jsx";
-import { HomepageContent } from "../../../components/HomepageContent/index.jsx";
-import { Row, Col, Card } from "antd";
-import clsx from "clsx";
-import styles from "./index.module.scss";
+import { HomeCustomerLayout } from '../../../layout/homepage_customer/index.jsx';
+import { HomepageContent } from '../../../components/HomepageContent/index.jsx';
+import { Row, Col, Card } from 'antd';
+import clsx from 'clsx';
+import styles from './index.module.scss';
 
 export const HomePage_customer = () => {
   return (
@@ -14,7 +14,7 @@ export const HomePage_customer = () => {
           <Col span={8}>
             <Card bordered={false} className={styles.detail} hoverable>
               <div>
-                <h1>H &amp; M </h1>
+                <h1 style={{ marginBottom: 0 }}>H &amp; M </h1>
                 <p>I'm attending a wedding on</p>
                 <div>
                   <span>07-</span>
@@ -28,17 +28,17 @@ export const HomePage_customer = () => {
             <Card bordered={false} className={styles.detail} hoverable>
               <div>
                 <img
-                  className="svgIcon svgIcon__notebook homeToolsLoggedTile__icon"
-                  src="https://cdn1.weddingwire.com/assets/svg/original/illustration/notebook.svg"
+                  className='svgIcon svgIcon__notebook homeToolsLoggedTile__icon'
+                  src='https://cdn1.weddingwire.com/assets/svg/original/illustration/notebook.svg'
                 />
                 <div>
                   <p>
                     <strong>0</strong> out of 21
                   </p>
                   <a
-                    href="https://www.weddingwire.com/tools/Vendors"
-                    className="app-tool-cards-tile-link"
-                    title="Services hired"
+                    href='https://www.weddingwire.com/tools/Vendors'
+                    className='app-tool-cards-tile-link'
+                    title='Services hired'
                   >
                     Services hired
                   </a>
@@ -50,17 +50,17 @@ export const HomePage_customer = () => {
             <Card bordered={false} className={styles.detail} hoverable>
               <div>
                 <img
-                  className="svgIcon svgIcon__to_do homeToolsLoggedTile__icon"
-                  src="https://cdn1.weddingwire.com/assets/svg/original/illustration/to_do.svg"
+                  className='svgIcon svgIcon__to_do homeToolsLoggedTile__icon'
+                  src='https://cdn1.weddingwire.com/assets/svg/original/illustration/to_do.svg'
                 />
                 <div>
                   <p>
                     <strong>0</strong> out of 81
                   </p>
                   <a
-                    href="https://www.weddingwire.com/tools/Checklist"
-                    className="app-tool-cards-tile-link"
-                    title="Tasks completed"
+                    href='https://www.weddingwire.com/tools/Checklist'
+                    className='app-tool-cards-tile-link'
+                    title='Tasks completed'
                   >
                     Tasks completed
                   </a>
@@ -72,17 +72,17 @@ export const HomePage_customer = () => {
             <Card bordered={false} className={styles.detail} hoverable>
               <div>
                 <img
-                  className="svgIcon svgIcon__calculator homeToolsLoggedTile__icon"
-                  src="https://cdn1.weddingwire.com/assets/svg/original/illustration/calculator.svg"
+                  className='svgIcon svgIcon__calculator homeToolsLoggedTile__icon'
+                  src='https://cdn1.weddingwire.com/assets/svg/original/illustration/calculator.svg'
                 />
                 <div>
                   <p>
                     <strong>$0</strong>
                   </p>
                   <a
-                    href="https://www.weddingwire.com/tools/Budget"
-                    className="app-tool-cards-tile-link"
-                    title="Budget spent"
+                    href='https://www.weddingwire.com/tools/Budget'
+                    className='app-tool-cards-tile-link'
+                    title='Budget spent'
                   >
                     Budget spent
                   </a>

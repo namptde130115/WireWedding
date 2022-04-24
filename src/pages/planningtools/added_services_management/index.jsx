@@ -1,231 +1,137 @@
-import React, { useState, useEffect } from 'react';
-import styles from './index.module.scss';
-import { Layout, Card, Col, Row, Space, Button } from 'antd';
-import { CameraOutlined, CheckCircleOutlined } from '@ant-design/icons';
-import { PlanningToolsHeader } from '../../../layout/planningtools-header';
-import { Footer } from '../../../layout/footer';
-import clsx from 'clsx';
+import React, { useState, useEffect } from "react";
+import styles from "./index.module.scss";
+import { ButtonCustom } from "../../../components/ButtonCustom/index.jsx";
+import clsx from "clsx";
+import { CardInfor } from "../../../components/CardInfor";
+import { useDispatch, useSelector } from "react-redux";
+import { unwrapResult } from "@reduxjs/toolkit";
+import {
+  deleteServiceFromList,
+  getMyService,
+} from "../../../redux/customerSlice.js";
+import { message } from "antd";
+import { useNavigate } from "react-router-dom";
 
-export const Added_Service_Manage = () => {
+export const MyService = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const myService = useSelector((state) => state.customer?.allMyService);
+  console.log("myService: ", myService);
+  useEffect(() => {
+    const getAllMyService = async () => {
+      try {
+        const actionResult = await dispatch(getMyService());
+        const response = await unwrapResult(actionResult);
+        if (response) {
+          console.log(response);
+        }
+      } catch (error) {}
+    };
+    getAllMyService();
+  }, []);
 
+  const handleRemoveFromMyList = async (id) => {
+    try {
+      const actionResult = await dispatch(deleteServiceFromList(id));
+      const response = await unwrapResult(actionResult);
+      if (response) {
+        console.log(response);
+        dispatch(getMyService());
+        message.success("Removed");
+      }
+    } catch (error) {}
+  };
+  const arrMyService = myService
+    .map((e) => e["id"])
+    .map((e, i, final) => final.indexOf(e) === i && i)
+    .filter((obj) => myService[obj])
+    .map((e) => myService[e]);
 
-    return (
-        <Layout>
-            <PlanningToolsHeader />
-            <div className={clsx(styles.body)}>
-
-                {/* Your Progress */}
-                <div className={clsx(styles.services)}>
-                    <p className={clsx(styles.your_service_text)}>Your Added Services</p>
-                   <div>
-                        
-                        <Space size={0} className={clsx(styles.button_group)}>
-                            <Button className={clsx(styles.added_button)}>Added 0</Button>
-                            <Button className={clsx(styles.hired_button)}>Hired 0</Button> 
-                        </Space>
-                        <Button className={clsx(styles.add_button)}>+ Add More</Button>
-                    </div>
-                        
-                             
-                    <div className={clsx(styles.services_list)}>
-                        {/* Row 1 */}
-                        <Row gutter={16} className={clsx(styles.services_list_inner)}>
-                            <Col span={5} className={clsx(styles.col_line)}>
-                                <Card bordered={false} className={clsx(styles.detail)} hoverable>
-                                    <div>
-                                        <h1>
-                                            H             &amp; M       </h1>
-                                        <p>I'm attending a wedding on</p>
-                                        <div>
-                                            <span>07-</span>
-                                            <span>07-</span>
-                                            <span>2022</span>
-                                        </div>
-                                    </div>
-                                </Card>
-                            </Col>
-                            <Col span={5} className={clsx(styles.col_line)}>
-                                <Card bordered={false} className={styles.detail} hoverable>
-                                    <div>
-                                        <img class="svgIcon svgIcon__notebook homeToolsLoggedTile__icon" src="https://cdn1.weddingwire.com/assets/svg/original/illustration/notebook.svg" />
-                                        <div>
-                                            <p><strong>0</strong> out of 21</p>
-                                            <a href="https://www.weddingwire.com/tools/Vendors" class="app-tool-cards-tile-link" title="Services hired">Services hired</a>
-                                        </div>
-                                    </div>
-                                </Card>
-                            </Col>
-                            <Col span={5} className={clsx(styles.col_line)}>
-                                <Card bordered={false} className={styles.detail} hoverable>
-                                    <div>
-                                        <img class="svgIcon svgIcon__to_do homeToolsLoggedTile__icon" src="https://cdn1.weddingwire.com/assets/svg/original/illustration/to_do.svg" />
-                                        <div>
-                                            <p><strong>0</strong> out of 81</p>
-                                            <a href="https://www.weddingwire.com/tools/Checklist" class="app-tool-cards-tile-link" title="Tasks completed">Tasks completed</a>
-                                        </div>
-                                    </div>
-                                </Card>
-                            </Col>
-                            <Col span={5} className={clsx(styles.col_line)}>
-                                <Card bordered={false} className={styles.detail} hoverable>
-                                    <div>
-                                        <img class="svgIcon svgIcon__calculator homeToolsLoggedTile__icon" src="https://cdn1.weddingwire.com/assets/svg/original/illustration/calculator.svg" />
-                                        <div>
-                                            <p><strong>$0</strong></p>
-                                            <a href="https://www.weddingwire.com/tools/Budget" class="app-tool-cards-tile-link" title="Budget spent">Budget spent</a>
-                                        </div>
-                                    </div>
-                                </Card>
-                            </Col>
-
-                            <Col span={5} className={clsx(styles.col_line)}>
-                                <Card bordered={false} className={styles.detail} hoverable>
-                                    <div>
-                                        <h1>
-                                            H             &amp; M       </h1>
-                                        <p>I'm attending a wedding on</p>
-                                        <div>
-                                            <span>07-</span>
-                                            <span>07-</span>
-                                            <span>2022</span>
-                                        </div>
-                                    </div>
-                                </Card>
-                            </Col>
-                            <Col span={5} className={clsx(styles.col_line)}>
-                                <Card bordered={false} className={styles.detail} hoverable>
-                                    <div>
-                                        <img class="svgIcon svgIcon__notebook homeToolsLoggedTile__icon" src="https://cdn1.weddingwire.com/assets/svg/original/illustration/notebook.svg" />
-                                        <div>
-                                            <p><strong>0</strong> out of 21</p>
-                                            <a href="https://www.weddingwire.com/tools/Vendors" class="app-tool-cards-tile-link" title="Services hired">Services hired</a>
-                                        </div>
-                                    </div>
-                                </Card>
-                            </Col>
-                            <Col span={5} className={clsx(styles.col_line)}>
-                                <Card bordered={false} className={styles.detail} hoverable>
-                                    <div>
-                                        <img class="svgIcon svgIcon__to_do homeToolsLoggedTile__icon" src="https://cdn1.weddingwire.com/assets/svg/original/illustration/to_do.svg" />
-                                        <div>
-                                            <p><strong>0</strong> out of 81</p>
-                                            <a href="https://www.weddingwire.com/tools/Checklist" class="app-tool-cards-tile-link" title="Tasks completed">Tasks completed</a>
-                                        </div>
-                                    </div>
-                                </Card>
-                            </Col>
-                            <Col span={5} className={clsx(styles.col_line)}>
-                                <Card bordered={false} className={styles.detail} hoverable>
-                                    <div>
-                                        <img class="svgIcon svgIcon__calculator homeToolsLoggedTile__icon" src="https://cdn1.weddingwire.com/assets/svg/original/illustration/calculator.svg" />
-                                        <div>
-                                            <p><strong>$0</strong></p>
-                                            <a href="https://www.weddingwire.com/tools/Budget" class="app-tool-cards-tile-link" title="Budget spent">Budget spent</a>
-                                        </div>
-                                    </div>
-                                </Card>
-                            </Col>
-
-                            <Col span={5} className={clsx(styles.col_line)}>
-                                <Card bordered={false} className={styles.detail} hoverable>
-                                    <div>
-                                        <h1>
-                                            H             &amp; M       </h1>
-                                        <p>I'm attending a wedding on</p>
-                                        <div>
-                                            <span>07-</span>
-                                            <span>07-</span>
-                                            <span>2022</span>
-                                        </div>
-                                    </div>
-                                </Card>
-                            </Col>
-                            <Col span={5} className={clsx(styles.col_line)}>
-                                <Card bordered={false} className={styles.detail} hoverable>
-                                    <div>
-                                        <img class="svgIcon svgIcon__notebook homeToolsLoggedTile__icon" src="https://cdn1.weddingwire.com/assets/svg/original/illustration/notebook.svg" />
-                                        <div>
-                                            <p><strong>0</strong> out of 21</p>
-                                            <a href="https://www.weddingwire.com/tools/Vendors" class="app-tool-cards-tile-link" title="Services hired">Services hired</a>
-                                        </div>
-                                    </div>
-                                </Card>
-                            </Col>
-                            <Col span={5} className={clsx(styles.col_line)}>
-                                <Card bordered={false} className={styles.detail} hoverable>
-                                    <div>
-                                        <img class="svgIcon svgIcon__to_do homeToolsLoggedTile__icon" src="https://cdn1.weddingwire.com/assets/svg/original/illustration/to_do.svg" />
-                                        <div>
-                                            <p><strong>0</strong> out of 81</p>
-                                            <a href="https://www.weddingwire.com/tools/Checklist" class="app-tool-cards-tile-link" title="Tasks completed">Tasks completed</a>
-                                        </div>
-                                    </div>
-                                </Card>
-                            </Col>
-                            <Col span={5} className={clsx(styles.col_line)}>
-                                <Card bordered={false} className={styles.detail} hoverable>
-                                    <div>
-                                        <img class="svgIcon svgIcon__calculator homeToolsLoggedTile__icon" src="https://cdn1.weddingwire.com/assets/svg/original/illustration/calculator.svg" />
-                                        <div>
-                                            <p><strong>$0</strong></p>
-                                            <a href="https://www.weddingwire.com/tools/Budget" class="app-tool-cards-tile-link" title="Budget spent">Budget spent</a>
-                                        </div>
-                                    </div>
-                                </Card>
-                            </Col>
-
-                            <Col span={5} className={clsx(styles.col_line)}>
-                                <Card bordered={false} className={styles.detail} hoverable>
-                                    <div>
-                                        <h1>
-                                            H             &amp; M       </h1>
-                                        <p>I'm attending a wedding on</p>
-                                        <div>
-                                            <span>07-</span>
-                                            <span>07-</span>
-                                            <span>2022</span>
-                                        </div>
-                                    </div>
-                                </Card>
-                            </Col>
-                            <Col span={5} className={clsx(styles.col_line)}>
-                                <Card bordered={false} className={styles.detail} hoverable>
-                                    <div>
-                                        <img class="svgIcon svgIcon__notebook homeToolsLoggedTile__icon" src="https://cdn1.weddingwire.com/assets/svg/original/illustration/notebook.svg" />
-                                        <div>
-                                            <p><strong>0</strong> out of 21</p>
-                                            <a href="https://www.weddingwire.com/tools/Vendors" class="app-tool-cards-tile-link" title="Services hired">Services hired</a>
-                                        </div>
-                                    </div>
-                                </Card>
-                            </Col>
-                            <Col span={5} className={clsx(styles.col_line)}>
-                                <Card bordered={false} className={styles.detail} hoverable>
-                                    <div>
-                                        <img class="svgIcon svgIcon__to_do homeToolsLoggedTile__icon" src="https://cdn1.weddingwire.com/assets/svg/original/illustration/to_do.svg" />
-                                        <div>
-                                            <p><strong>0</strong> out of 81</p>
-                                            <a href="https://www.weddingwire.com/tools/Checklist" class="app-tool-cards-tile-link" title="Tasks completed">Tasks completed</a>
-                                        </div>
-                                    </div>
-                                </Card>
-                            </Col>
-                            <Col span={5} className={clsx(styles.col_line)}>
-                                <Card bordered={false} className={styles.detail} hoverable>
-                                    <div>
-                                        <img class="svgIcon svgIcon__calculator homeToolsLoggedTile__icon" src="https://cdn1.weddingwire.com/assets/svg/original/illustration/calculator.svg" />
-                                        <div>
-                                            <p><strong>$0</strong></p>
-                                            <a href="https://www.weddingwire.com/tools/Budget" class="app-tool-cards-tile-link" title="Budget spent">Budget spent</a>
-                                        </div>
-                                    </div>
-                                </Card>
-                            </Col>
-                        </Row>
-                    </div>
-                </div>
-            </div>
-            <Footer />
-        </Layout>
-    )
-}
+  const handleNavigatePayment = () => navigate("/payment/payment-confirm");
+  return (
+    <div className={clsx(styles.body)}>
+      {/* Your Progress */}
+      <div className={clsx(styles.services)}>
+        <p className={clsx(styles.your_service_text)}>Added Services</p>
+        <div className={clsx(styles.btnHireAll)}>
+          <ButtonCustom
+            type="primary"
+            text="Hire All"
+            onClick={handleNavigatePayment}
+          />
+        </div>
+        {/* <div className={clsx(styles.services_list)}>
+          <ServiceBox data={{ name: 'Studio' }} handleOpenModal={openModal} />
+          <ServiceBox data={{ name: 'Dress & Attire' }} />
+          <ServiceBox data={{ name: 'Jewelry' }} />
+          <ServiceBox data={{ name: 'Transportation' }} />
+          <ServiceBox data={{ name: 'Musicians & Bands' }} />
+          <ServiceBox data={{ name: 'Venues' }} />
+          <ServiceBox data={{ name: 'Cakes' }} />
+          <ServiceBox data={{ name: 'Makeup' }} />
+          <ServiceBox data={{ name: 'Lighting & Decor' }} />
+        </div> */}
+        <div className={clsx(styles.services_list)}>
+          {arrMyService?.map((item) => (
+            <CardInfor
+              key={item.id}
+              showRate="5"
+              imgUrl={item?.photos[0]?.url}
+              avatar="https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Icon%2Ficon_location.png?alt=media&token=29af5c96-9413-41aa-9b3b-67d2eba337af"
+              title={item.serviceName}
+              location={item.vendorAddress}
+              price={
+                item.price.toLocaleString(undefined, {
+                  maximumFractionDigits: 2,
+                }) + " VND"
+              }
+              textButton="Remove"
+              handleAdd={() => handleRemoveFromMyList(item.id)}
+            />
+          ))}
+        </div>
+      </div>
+      {/* <Modal
+        title='Infor Kol'
+        visible={isModalEditVisible}
+        onCancel={handleCancelModal}
+        maskClosable={false}
+        width={1000}
+      >
+        <CardInfor
+          textButton={'+ Add'}
+          key={1}
+          className={'vendor__service__card'}
+          // handleAdd={() => openModalEdit(servive.id)}
+          title={'take photo'}
+          location={'tho quang'}
+          imgUrl={
+            'https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Slider_images%2Fslider_01.PNG?alt=media&token=9e33e61a-e1d3-4bc8-a446-835bf609c994'
+          }
+        />
+        <CardInfor
+          textButton={'+ Add'}
+          key={1}
+          className={'vendor__service__card'}
+          // handleAdd={() => openModalEdit(servive.id)}
+          title={'take photo'}
+          location={'tho quang'}
+          imgUrl={
+            'https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Slider_images%2Fslider_01.PNG?alt=media&token=9e33e61a-e1d3-4bc8-a446-835bf609c994'
+          }
+        />
+        <CardInfor
+          textButton={'+ Add'}
+          key={1}
+          className={'vendor__service__card'}
+          // handleAdd={() => openModalEdit(servive.id)}
+          title={'take photo'}
+          location={'tho quang'}
+          imgUrl={
+            'https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Slider_images%2Fslider_01.PNG?alt=media&token=9e33e61a-e1d3-4bc8-a446-835bf609c994'
+          }
+        />
+      </Modal> */}
+    </div>
+  );
+};

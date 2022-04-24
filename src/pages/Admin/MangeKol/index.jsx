@@ -1,19 +1,16 @@
 import './index.scss';
-import { Table, Tag, Space, Modal, Select } from 'antd';
+import { Table, Tag, Space, Modal, Select, message, Switch } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { getAllKols, updateVendor } from '../../../redux/adminSlice';
+import { getAllKols, updateKol } from '../../../redux/adminSlice';
 import { unwrapResult } from '@reduxjs/toolkit';
-
-const { Option } = Select;
 
 export const ManageKolTable = () => {
   const dataKols = useSelector((state) => state.admin.kols);
   const [isLoading, setIsLoading] = useState(true);
   const [currentVendor, setCurrentVendor] = useState({});
+  const [switchLoading, setSwitchLoading] = useState(false);
   const [currentStatus, setCurrentStatus] = useState();
-
-  // console.log(dataVendors);
 
   const [isModalVisible, setIsModalVisible] = useState(false);
   const dispatch = useDispatch();
@@ -31,42 +28,39 @@ export const ManageKolTable = () => {
   }, []);
 
   const showModal = (record) => {
-    console.log(record);
     setCurrentVendor(record);
     setIsModalVisible(true);
   };
 
   const handleOk = async () => {
-    const body = {
-      id: currentVendor.id,
-      status: { status: currentStatus },
-    };
-    console.log(body);
-    try {
-      const actionResult = await dispatch(updateVendor(body));
-      const response = unwrapResult(actionResult);
-      if (response) {
-        dispatch(getAllKols());
-        setIsModalVisible(false);
-      }
-    } catch (error) {}
+    setIsModalVisible(false);
   };
 
   const handleCancel = () => {
     setIsModalVisible(false);
   };
 
-  function handleChange(value) {
-    console.log(`selected `, parseInt(value));
-    setCurrentStatus(parseInt(value));
-  }
+  const onChange = async (checked) => {
+    setSwitchLoading(true);
+    try {
+      const actionResult = await dispatch(updateKol(currentVendor.id));
+      const response = unwrapResult(actionResult);
+      if (response) {
+        message.success('Update Successfully');
+        dispatch(getAllKols());
+        setSwitchLoading(false);
+        setIsModalVisible(false);
+      }
+    } catch (error) {
+      message.error('Update Failed');
+    }
+  };
 
   const columns = [
     {
       title: 'User Name',
       dataIndex: 'username',
       key: 'username',
-      render: (text) => <a>{text}</a>,
     },
     {
       title: 'Address',
@@ -80,7 +74,7 @@ export const ManageKolTable = () => {
       render: (status, index) => (
         <>
           <Tag color={handleColor(status)} key={index}>
-            {status === 0 ? 'Deactive' : 'Active'}
+            {status ? 'Active' : 'Deactive'}
           </Tag>
         </>
       ),
@@ -99,39 +93,48 @@ export const ManageKolTable = () => {
   ];
 
   const handleColor = (status) => {
-    if (status === 0) {
-      return 'red';
-    } else {
+    if (status) {
       return 'green';
+    } else {
+      return 'red';
     }
   };
+
+  const arr = [{ key: '1', value: 'Active' }, { key: '2', value: 'Deactive' }];
+  arr.map((item) =>  {return })
 
   return (
     <>
       <Table
         columns={columns}
-        dataSource={dataKols}
+        dataSource={dataKols?.kolResponses}
         rowKey='id'
         loading={isLoading}
+        pagination={false}
+        scroll={{ y: 'calc(100vh - 180px)' }}
       />
-      <Modal
-        title='Infor Kol'
-        visible={isModalVisible}
-        onOk={handleOk}
-        onCancel={handleCancel}
-      >
-        <p>{currentVendor.username}</p>
-        <p>{currentVendor.address}</p>
-        <p>Some contents...</p>
-        <Select
-          defaultValue={currentVendor?.status?.toString()}
-          style={{ width: 120 }}
-          onChange={handleChange}
+      {isModalVisible && (
+        <Modal
+          title='Infor Kol'
+          visible={isModalVisible}
+          onOk={handleOk}
+          onCancel={handleCancel}
+          footer={null}
         >
-          <Option value='0'>Deactive</Option>
-          <Option value='1'>Active</Option>
-        </Select>
-      </Modal>
+          <p>User Name: {currentVendor.username}</p>
+          <p>Full Name: {currentVendor.fullName}</p>
+          <p>Address: {currentVendor.address}</p>
+          <p>Phone: {currentVendor.phone}</p>
+          <p>Desciption: </p>
+          <p>Some contents...</p>
+          <p style={{ display: 'inline' }}>Status: </p>
+          <Switch
+            onChange={onChange}
+            loading={switchLoading}
+            defaultChecked={currentVendor.status}
+          />
+        </Modal>
+      )}
     </>
   );
 };

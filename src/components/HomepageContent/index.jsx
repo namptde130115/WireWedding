@@ -3,8 +3,11 @@ import { Feedback_Contact } from "../../components/Feedback_Contact/index.jsx";
 import clsx from "clsx";
 import styles from "./index.module.scss";
 import { imageUrl } from "../../assets/images-url/index.js";
+import { useNavigate } from "react-router-dom";
 
 export const HomepageContent = ({}) => {
+  const navigate = useNavigate();
+  const handleSeeAll = () => navigate("/services");
   return (
     <div className={styles.container}>
       <div className={clsx(styles.h1)}>
@@ -19,9 +22,9 @@ export const HomepageContent = ({}) => {
           <div className={clsx(styles.news_text, styles.text_right)}>
             <p className={clsx(styles.title)}>Wedding Works</p>
             <p className={clsx(styles.content)}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Rutrum
-              quisque non tellus orci ac auctor augue mauris augue.
+              We are proud to deliver our services to many couples. Let's take a
+              look at the beautiful set-up and unforgettable moments that we
+              have created for them.
             </p>
           </div>
           <img src={imageUrl.news_img3} />
@@ -30,11 +33,11 @@ export const HomepageContent = ({}) => {
       <div className={clsx(styles.news_container)}>
         <div className={clsx(styles.news_child)}>
           <div className={clsx(styles.news_text, styles.text_left)}>
-            <p className={clsx(styles.title)}>Wedding Works</p>
+            <p className={clsx(styles.title)}>Styling & Decor Works</p>
             <p className={clsx(styles.content)}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Rutrum
-              quisque non tellus orci ac auctor augue mauris augue.
+              We find so much joy and satisfaction in creating beautiful things.
+              From styling to themed events to proposals, we are thrilled to
+              utilize our creativity and create memorable moments.
             </p>
           </div>
           <img src={imageUrl.news_img4} />
@@ -70,6 +73,7 @@ export const HomepageContent = ({}) => {
             imgUrl="https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Service%2Fstudio_02.PNG?alt=media&token=6210bb76-9d1f-4377-a14a-915145cf0796"
           />
         </div>
+        <p onClick={handleSeeAll}>See all {">"}</p>
       </div>
       <Feedback_Contact />
     </div>

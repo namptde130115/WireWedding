@@ -1,13 +1,11 @@
 import React from 'react';
 import { LoginLayout } from '../../layout/login/index';
 import styles from './index.module.scss';
-import { Form, Input, Button, Select } from 'antd';
+import { Form, Input, Button, Select, message } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { unwrapResult } from '@reduxjs/toolkit';
-import { signUp } from '../../redux/userSlice';
 import { vendorSignUp } from '../../redux/vendorSlice';
-import { message } from 'antd';
 
 const { Option } = Select;
 export const VendorSignUp = () => {
@@ -16,22 +14,24 @@ export const VendorSignUp = () => {
 
   const loading = useSelector((state) => state.user.registerLoading);
   const onFinish = async (values) => {
-    console.log(values.categoryId.value);
     const dataSubmit = {
       ...values,
       categoryId: parseInt(values.categoryId),
     };
-    console.log('Success:', dataSubmit);
     try {
       const actionResult = await dispatch(vendorSignUp(dataSubmit));
       const response = unwrapResult(actionResult);
       if (response) {
         message.success('register success');
-        console.log('response', response);
+        navigate('/sign-in');
       }
     } catch (error) {
-      console.log('error', error);
-      
+      console.log(error);
+      if (error.username) {
+        message.error(error.username);
+      } else if (error.message) {
+        message.error(error.message);
+      }
     }
   };
 
@@ -117,7 +117,7 @@ export const VendorSignUp = () => {
             </Form.Item>
             <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
               <Button type='primary' htmlType='submit'>
-                Submit
+                Sign Up
               </Button>
             </Form.Item>
           </Form>

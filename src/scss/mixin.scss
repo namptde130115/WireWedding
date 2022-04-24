@@ -1,4 +1,13 @@
+@import url("http://fonts.googleapis.com/css?family=Dancing+Script");
+
 @mixin borderShadown {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
+}
+@mixin titleFont {
+  font-family: Dancing Script;
+  color: var(--color-tittle);
+  text-align: center;
+  font-size: 4.5vw;
+  margin-bottom: 25px;
 }

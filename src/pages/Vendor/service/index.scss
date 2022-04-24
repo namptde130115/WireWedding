@@ -1,0 +1,32 @@
+.vendor-service-search {
+  .ant-btn-icon-only {
+    height: 32px !important;
+  }
+}
+
+.vendor__service__card {
+  height: 280px;
+  width: 220px !important;
+  // flex:1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, max-content));
+  .ant-card-cover {
+    width: 100% !important;
+  }
+}
+
+.vendor__service__container {
+  padding: 10px 0px;
+  // overflow-y: scroll;
+  height: calc(100vh - 150px);
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 15px;
+  row-gap: 15px;
+}
+
+.vendor__service__header {
+  display: flex;
+  column-gap: 25px;
+}

@@ -1,6 +1,7 @@
 .menunav{
   justify-content: center;
   white-space: nowrap;
+  background: var(--color-body);
 }
 
 .menuitem{
@@ -19,7 +20,7 @@
 }
 
 .nav_icon{
-  font-size: 220% !important;
+  font-size: 150% !important;
   color: var(--color-button);
   justify-content: center;
   display: flex !important;

@@ -9,15 +9,14 @@
   color: #a97037;
 }
 .carousel {
-  width: 80%;
-  margin: 0 auto;
+  // width: 80%;
+  // margin: 0 auto;
   margin-bottom: 20px;
 }
 .ideas_blog_button {
   margin-bottom: 20px;
-  display: flex;
-  justify-content: center;
-  // align-items: center;
+  text-align: right;
+  color: var(--color-base-1);
   > button {
     width: 8vw;
     height: 2.8vw;

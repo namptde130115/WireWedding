@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap');
 .card_blog {
   position: relative;
   // width: 40%;
@@ -15,7 +15,8 @@
 }
 .blog_content {
   position: absolute;
-  margin-top: 70%;
+  margin-top: 21vw;
+  height: 200px;
   text-align: center;
   width: 80%;
   z-index: 1;
@@ -24,11 +25,21 @@
   border-radius: 15px;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
   padding: 10px;
-  font-family: "Lora", serif;
+  font-family: 'Lora', serif;
   font-style: italic;
-  font-size: 1.2vw;
+  font-size: 1vw;
+  overflow: hidden;
 }
 .blog_tittle {
-  font-size: 2.7vw;
+  font-size: 20px;
   margin-bottom: 0;
+  font-weight: bold;
+}
+
+.blog_content_inner {
+  overflow: hidden;
+  display: block;
+  text-overflow: ellipsis;
+  height: 178px;
+  max-height: 178px;
 }

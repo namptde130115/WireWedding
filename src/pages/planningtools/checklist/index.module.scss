@@ -1,0 +1,57 @@
+@import '../../../scss/mixin.scss';
+
+.new__todos {
+  display: flex;
+  margin-bottom: 20px;
+  width: 95%;
+  > label {
+    min-width: 80px !important;
+  }
+  > input {
+    max-width: 70%;
+  }
+}
+
+.progress {
+  display: flex;
+  column-gap: 10px;
+  width: 95%;
+  > span {
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
+
+.your_service_text {
+  @include titleFont;
+  margin: 20px 0;
+}
+
+.time__picker {
+  width: 150px;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+.progress {
+  margin-bottom: 20px;
+}
+
+.checklist__container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  > .checklist {
+    background-color: var(--color-body);
+    padding: 15px;
+    width: 75%;
+    margin: 0 auto;
+    margin-top: 10px;
+    // max-width: 1000px;
+  }
+}
+
+.btn__add {
+  margin-left: 10px;
+}

@@ -5,6 +5,9 @@ const initialState = {
   loading: false,
   registerLoading: false,
   userInfor: {},
+  services: [],
+  allBlogByPerson: [],
+  allBlog: [],
 };
 
 export const vendorSignUp = createAsyncThunk(
@@ -22,7 +25,186 @@ export const vendorSignUp = createAsyncThunk(
   }
 );
 
-export const userSlice = createSlice({
+export const vendorCreateSingleService = createAsyncThunk(
+  'vendor/signUp',
+  async (params, { rejectWithValue }) => {
+    try {
+      const response = await vendorApi.createSingleService(params);
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+export const updateSingleService = createAsyncThunk(
+  'vendor/updateSingleService',
+  async (params, { rejectWithValue }) => {
+    try {
+      const response = await vendorApi.updateSingleService(params);
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+export const editSingleService = createAsyncThunk(
+  'vendor/signUp',
+  async (params, { rejectWithValue }) => {
+    try {
+      const response = await vendorApi.editSingleService(params);
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+export const getListSingleService = createAsyncThunk(
+  'vendor/getMyService',
+  async (params, { rejectWithValue }) => {
+    try {
+      const response = await vendorApi.getListSingleService(params);
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+export const createBlog = createAsyncThunk(
+  'vendor/createBlog',
+  async (params, { rejectWithValue }) => {
+    try {
+      const response = await vendorApi.createBlog(params);
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+export const getAllBogsByPerson = createAsyncThunk(
+  'vendor/getAllBogsByPerson',
+  async (params, { rejectWithValue }) => {
+    try {
+      const response = await vendorApi.getAllByPerson();
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+export const editBlog = createAsyncThunk(
+  'vendor/editBlog',
+  async (params, { rejectWithValue }) => {
+    try {
+      const response = await vendorApi.editBlog(params);
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response);
+    }
+  }
+);
+
+export const deleteBlog = createAsyncThunk(
+  'vendor/deleteBlog',
+  async (params, { rejectWithValue }) => {
+    try {
+      const response = await vendorApi.deleteBlog(params);
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response);
+    }
+  }
+);
+
+export const getAllBlog = createAsyncThunk(
+  'vendor/getAllBlog',
+  async (params, { rejectWithValue }) => {
+    try {
+      const response = await vendorApi.getAllBlog();
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response);
+    }
+  }
+);
+
+export const getDetailBlog = createAsyncThunk(
+  'vendor/getDetailBlog',
+  async (params, { rejectWithValue }) => {
+    try {
+      const response = await vendorApi.getDetailBlog(params);
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response);
+    }
+  }
+);
+
+export const getInforVendor = createAsyncThunk(
+  'vendor/getInforVendor',
+  async (params, { rejectWithValue }) => {
+    try {
+      const response = await vendorApi.getInforVendor(params);
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response);
+    }
+  }
+);
+
+export const updateInforVendor = createAsyncThunk(
+  'vendor/updateInforVendor',
+  async (params, { rejectWithValue }) => {
+    try {
+      const response = await vendorApi.updateInforVendor(params);
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response);
+    }
+  }
+);
+export const vendorSlice = createSlice({
   name: 'user',
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
@@ -38,8 +220,71 @@ export const userSlice = createSlice({
       })
       .addCase(vendorSignUp.fulfilled, (state, { payload }) => {
         state.loading = false;
+      })
+      .addCase(getListSingleService.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getListSingleService.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        state.services = payload;
+      })
+      .addCase(createBlog.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(createBlog.fulfilled, (state, { payload }) => {
+        state.loading = false;
+      })
+      .addCase(getAllBogsByPerson.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getAllBogsByPerson.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        state.allBlogByPerson = payload;
+      })
+      .addCase(editBlog.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(editBlog.fulfilled, (state, { payload }) => {
+        state.loading = false;
+      })
+      .addCase(deleteBlog.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(deleteBlog.fulfilled, (state, { payload }) => {
+        state.loading = false;
+      })
+      .addCase(getAllBlog.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getAllBlog.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        state.allBlog = payload;
+      })
+      .addCase(getDetailBlog.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getDetailBlog.fulfilled, (state, { payload }) => {
+        state.loading = false;
+      })
+      .addCase(getInforVendor.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getInforVendor.fulfilled, (state, { payload }) => {
+        state.loading = false;
+      })
+      .addCase(updateInforVendor.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(updateInforVendor.fulfilled, (state, { payload }) => {
+        state.loading = false;
+      })
+      .addCase(updateSingleService.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(updateSingleService.fulfilled, (state, { payload }) => {
+        state.loading = false;
       });
   },
 });
 
-export default userSlice.reducer;
+export default vendorSlice.reducer;

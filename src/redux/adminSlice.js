@@ -53,6 +53,21 @@ export const updateVendor = createAsyncThunk(
   }
 );
 
+export const updateKol = createAsyncThunk(
+  'admin/updateKolStatus',
+  async (params, { rejectWithValue }) => {
+    try {
+      const response = await adminApi.updateStatus(params);
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
 export const userSlice = createSlice({
   name: 'user',
   initialState,

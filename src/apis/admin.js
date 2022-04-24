@@ -2,16 +2,16 @@ import AxiosClient from './axiosClient';
 
 const adminApi = {
   getAllVendors: (payload) => {
-    const url = '/account/vendors';
+    const url = '/admin/vendors?pageSize=100';
     return AxiosClient.get(url);
   },
   getAllKols: (payload) => {
-    const url = '/account/kols';
+    const url = '/admin/kols?pageSize=100';
     return AxiosClient.get(url);
   },
-  updateStatus: (body) => {
-    const url = `/account/status/${body.id}`;
-    return AxiosClient.put(url, body.status);
+  updateStatus: (id) => {
+    const url = `/admin/status/${id}`;
+    return AxiosClient.put(url);
   },
 };
 
