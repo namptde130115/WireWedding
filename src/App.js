@@ -111,7 +111,7 @@ function App() {
         <Route path='/ideas' element={<HomePage_ideas />} />
 
         <Route path='/payment/payment-confirm' element={<PaymentConfirm />} />
-        <Route path='/payment/payment-return' element={<PaymentReturn />} />
+        <Route path='/payment-result' element={<PaymentReturn />} />
         <Route path='/payment/payment-details' element={<PaymentDetails />} />
         <Route
           path='/manageservice/create-servicePack'

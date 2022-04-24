@@ -4,7 +4,12 @@ import { CommonLayout } from "../../../layout/common/index.jsx";
 import { imageUrl } from "../../../assets/images-url/index.js";
 import { Table, Tag, Space } from "antd";
 import { ButtonCustom } from "../../../components/ButtonCustom/index.jsx";
+import { Header } from "../../../layout/header";
+import { useNavigate } from "react-router-dom";
 
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const packId = urlParams.get("idPack");
 const columns = [
   {
     title: "Name",
@@ -18,65 +23,74 @@ const columns = [
     key: "value",
     width: "45%",
   },
-  // {
-  //   title: "Description",
-  //   dataIndex: "description",
-  //   key: "description",
-  //   width: "30%",
-  // },
 ];
+// let payDate = new Date(parseInt(urlParams.get("vnp_PayDate")));
+let payDate = urlParams.get("vnp_PayDate");
 
 const data = [
   {
     key: "1",
     name: "Transaction Time",
-    value: "2022-04-04 11:16:17",
-    // description: "Thông tin mô tả từ website merchant",
+    // value: `${payDate.getDate()}/${payDate.getMonth()+1}/${payDate.getFullYear()} ${payDate.getHours()}:${payDate.getMinutes()}`,
+    value:
+      payDate?.substring(0, 4) +
+      "/" +
+      payDate?.substring(4, 6) +
+      "/" +
+      payDate?.substring(6, 8) +
+      " " +
+      payDate?.substring(8, 10) +
+      ":" +
+      payDate?.substring(10, 12) +
+      ":" +
+      payDate?.substring(12, 14),
   },
   {
     key: "2",
     name: "Transaction Info",
-    value: "Abc gui tien service 1",
-    // description: "Thông tin mô tả từ website merchant",
+    value: urlParams.get("vnp_OrderInfo"),
   },
   {
     key: "3",
     name: "Amount",
-    value: "100000",
-    // description: "London No. 1 Lake Park",
+    value: urlParams.get("vnp_Amount"),
   },
   {
     key: "4",
     name: "Message",
-    value: "Giao dich duoc thuc hien thanh cong",
-    // description: "Thông báo từ cổng thanh toán",
+    value: "Thank you for your order",
   },
   {
     key: "5",
     name: "Transaction Number",
-    value: "13710622",
-    // description: "Mã GD trên cổng thanh toán",
+    value: urlParams.get("vnp_TransactionNo"),
   },
   {
     key: "6",
     name: "Bank",
-    value: "NCB",
-    // description: "Ngân hàng GD",
+    value: urlParams.get("vnp_BankCode"),
   },
 ];
 
 export const PaymentReturn = () => {
+  const navigate = useNavigate();
+  const handleBack = () => navigate("/planning-tools");
   return (
-    // <CommonLayout>
-    <div className={clsx(styles.paymentReturn_container)}>
-      <div className={clsx(styles.h1)}>Thank you for your order!</div>
-      <div className={clsx(styles.returnedTable)}>
-        <Table pagination={false} columns={columns} dataSource={data} />
-      </div>
-      <div className={clsx(styles.btnBack)}>
-        <ButtonCustom type="primary" text="Back to Planning Tools" />
+    <div>
+      <Header />
+      <div className={clsx(styles.paymentReturn_container)}>
+        <div className={clsx(styles.h1)}>Thank you for your order!</div>
+        <div className={clsx(styles.returnedTable)}>
+          <Table pagination={false} columns={columns} dataSource={data} />
+        </div>
+        <div className={clsx(styles.btnBack)}>
+          <ButtonCustom
+            type="primary"
+            text="Back to Planning Tools"
+            onClick={handleBack}
+          />
+        </div>
       </div>
     </div>
-    // </CommonLayout>
   );
 };
