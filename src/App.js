@@ -34,6 +34,8 @@ import { CheckListItem } from './pages/planningtools/checklist/check-list-item';
 // import { AddService } from './pages/add-service';
 import { SignInVendor } from './pages/vendorsignin';
 import { PlanningTools } from './pages/planningtools/planningtools_home';
+import { ForgotPassword } from './pages/forgot_password'
+import { ResetPassword } from './pages/reset_password'
 
 function App() {
   const isAuthenticated = true;
@@ -108,6 +110,8 @@ function App() {
         <Route path='/' element={<HomePage />} />
         <Route path='/sign-in' element={<SignIn />} />
         <Route path='/sign-up' element={<SignUp />} />
+        <Route path='/forgot-password' element={<ForgotPassword />} />
+        <Route path='/reset-password' element={<ResetPassword />} />
         <Route path='/ideas' element={<HomePage_ideas />} />
 
         <Route path='/payment/payment-confirm' element={<PaymentConfirm />} />
