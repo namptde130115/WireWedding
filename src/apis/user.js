@@ -9,14 +9,29 @@ const userApi = {
     const url = '/vendor/register';
     return AxiosClient.post(url, payload);
   },
-  getAllSingleService: () => {
-    const url = '/single-service';
+  // Single Service
+  getAllSingleService: (pageNo) => {
+    const url = `single-service/`;
+    return AxiosClient.get(url, {
+      params: { pageNo: pageNo },
+    });
+  },
+  getAllServicesByCategory: (id) => {
+    const url = `/single-service/category/${id}`;
     return AxiosClient.get(url);
   },
+
+  // Service Pack
   getAllServicePack: () => {
     const url = '/service-pack';
     return AxiosClient.get(url);
   },
+
+  getDetailPack: (id) => {
+    const url = `/service-pack/${id}`;
+    return AxiosClient.get(url);
+  },
+
 };
 
 export default userApi;

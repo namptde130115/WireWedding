@@ -49,7 +49,7 @@ export const getAllSingleService = createAsyncThunk(
   'user/getAllSingleService',
   async (params, { rejectWithValue }) => {
     try {
-      const response = await userApi.getAllSingleService();
+      const response = await userApi.getAllSingleService(params);
       return response.data;
     } catch (err) {
       if (!err.response) {
@@ -59,11 +59,39 @@ export const getAllSingleService = createAsyncThunk(
     }
   }
 );
+export const getAllServicesByCategory = createAsyncThunk(
+  'user/getAllServicesByCategory',
+  async (params, { rejectWithValue }) => {
+    try {
+      const response = await userApi.getAllServicesByCategory(params);
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
 export const getAllServicePack = createAsyncThunk(
   'user/getAllServicePack',
   async (params, { rejectWithValue }) => {
     try {
-      const response = await userApi.getAllServicePack();
+      const response = await userApi.getAllServicePack(params);
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response);
+    }
+  }
+);
+export const getDetailPack = createAsyncThunk(
+  'user/getDetailPack',
+  async (params, { rejectWithValue }) => {
+    try {
+      const response = await userApi.getDetailPack(params);
       return response.data;
     } catch (err) {
       if (!err.response) {
@@ -106,14 +134,34 @@ export const userSlice = createSlice({
         console.log(payload);
         state.allSingleService = payload.singleServicePostResponses;
       })
+
+      .addCase(getAllServicesByCategory.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getAllServicesByCategory.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        state.allSingleService = payload;
+        console.log(payload);
+      })
+      .addCase(getAllServicesByCategory.rejected, (state) => {
+        state.allSingleService = [];
+      })
+
       .addCase(getAllServicePack.pending, (state) => {
         state.loading = true;
       })
       .addCase(getAllServicePack.fulfilled, (state, { payload }) => {
         state.loading = false;
         console.log(payload);
-        state.allServicePack = payload;
-      });;
+        state.allServicePack = payload.packagePostResponses;
+      })
+      .addCase(getDetailPack.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getDetailPack.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        console.log(payload);
+      });
   },
 });
 

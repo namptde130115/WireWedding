@@ -5,6 +5,7 @@ import { Rate } from "antd";
 import styles from "./index.module.scss";
 
 export const ServicePackDetail = () => {
+
   return (
     <div className={styles.container}>
       <div className={styles.info}>

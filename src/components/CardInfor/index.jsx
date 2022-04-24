@@ -8,6 +8,7 @@ import { ButtonCustom } from "../../components/ButtonCustom/index.jsx";
 const { Meta } = Card;
 export const CardInfor = ({
   imgUrl,
+  avatar,
   title,
   location,
   price,
@@ -30,10 +31,7 @@ export const CardInfor = ({
           <div className={clsx(styles.card_bottom)}>
             <div className={clsx(styles.card_price)}>{price} </div>
             <div className={clsx(styles.card_location)}>
-              <img
-                className={clsx(styles.icons_location)}
-                src="https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Icon%2Ficon_location.png?alt=media&token=29af5c96-9413-41aa-9b3b-67d2eba337af"
-              />
+              <img className={clsx(styles.icons_location)} src={avatar} />
               {location}
               <ButtonCustom
                 type="primary"
