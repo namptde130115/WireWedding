@@ -13,7 +13,7 @@ export const PlanningTools = () => {
     <CommonLayout>
       <PlanningToolsHeader />
       <Routes>
-        <Route index element={<Budget />} />
+        <Route index element={<MyService />} />
         <Route path='/overall' element={<Overall />} />
         <Route path='/budget' element={<Budget />} />
         <Route path='/my-servicelist' element={<MyService />} />

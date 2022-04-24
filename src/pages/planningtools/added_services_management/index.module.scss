@@ -1,4 +1,4 @@
-@import "../../../scss/mixin.scss";
+@import '../../../scss/mixin.scss';
 
 .body {
   width: 85%;
@@ -29,8 +29,8 @@
 }
 // Your Services css
 @font-face {
-  font-family: "AlexBrush";
-  src: url("../../../fonts/alexbrush/AlexBrush-Regular.ttf") format("truetype");
+  font-family: 'AlexBrush';
+  src: url('../../../fonts/alexbrush/AlexBrush-Regular.ttf') format('truetype');
 }
 
 .your_service_text {
@@ -52,7 +52,7 @@
   padding-bottom: 3vw;
   > div > div:first-child {
     padding-bottom: 0;
-    width: 240px;
+    width: 220px;
     height: 180px;
   }
 }

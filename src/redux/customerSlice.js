@@ -103,6 +103,15 @@ export const getAllGroup = createAsyncThunk(
   async (params, { rejectWithValue }) => {
     try {
       const response = await customerApi.getAllGroup();
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response);
+    }
+  }
+);
 export const getMyService = createAsyncThunk(
   'customer/getMyService',
   async (params, { rejectWithValue }) => {
@@ -147,6 +156,7 @@ export const updateGroupName = createAsyncThunk(
     }
   }
 );
+
 export const addServiceToList = createAsyncThunk(
   'customer/addServiceToList',
   async (params, { rejectWithValue }) => {
@@ -173,7 +183,9 @@ export const updateGuest = createAsyncThunk(
         throw err;
       }
       return rejectWithValue(err.response.data);
-    }})
+    }
+  }
+);
 
 export const deleteServiceFromList = createAsyncThunk(
   'customer/deleteServiceFromList',
@@ -195,15 +207,16 @@ export const updateGuestList = createAsyncThunk(
   async (body, { rejectWithValue }) => {
     try {
       const response = await customerApi.updateGuestList(body);
-
-      return response.data; 
+      return response.data;
     } catch (err) {
       if (!err.response) {
         throw err;
       }
       return rejectWithValue(err.response.data);
-    }})
-      
+    }
+  }
+);
+
 export const createPayment = createAsyncThunk(
   'customer/createPayment',
   async (params, { rejectWithValue }) => {
@@ -237,7 +250,6 @@ export const customerSlice = createSlice({
         state.loading = false;
         state.allTask = payload.checkListTaskResponseList;
       })
-
       .addCase(addCheckListTask.pending, (state) => {
         state.loading = true;
       })
@@ -281,7 +293,6 @@ export const customerSlice = createSlice({
       .addCase(updateGroupName.fulfilled, (state, { payload }) => {
         state.loading = false;
       })
-
       .addCase(getMyService.pending, (state) => {
         state.loading = true;
       })
@@ -307,7 +318,7 @@ export const customerSlice = createSlice({
       })
       .addCase(createPayment.fulfilled, (state, { payload }) => {
         state.loading = false;
-      })
+      });
   },
 });
 

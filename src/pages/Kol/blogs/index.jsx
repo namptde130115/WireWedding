@@ -46,23 +46,25 @@ export const KolBlogs = () => {
         </Button>
         <HomePageMyBlogs data={allBlogByPerson} />
       </div>
-      <Modal
-        title='Blogs'
-        visible={isModalEditVisible}
-        onCancel={handleCancelModal}
-        maskClosable={false}
-        width={1000}
-        footer={null}
-        // okButtonProps={{ form: 'category-editor-form', htmlType: 'submit' }}
-      >
-        <div className={clsx(styles.edit_container)}>
-          <div className={clsx(styles.info)}>
-            <div className={clsx(styles.textinfo)}>
-              <HomePageCreateBlog closeModal={handleCloseModal} />
+      {isModalEditVisible && (
+        <Modal
+          title='Blogs'
+          visible={isModalEditVisible}
+          onCancel={handleCancelModal}
+          maskClosable={false}
+          width={1000}
+          footer={null}
+          // okButtonProps={{ form: 'category-editor-form', htmlType: 'submit' }}
+        >
+          <div className={clsx(styles.edit_container)}>
+            <div className={clsx(styles.info)}>
+              <div className={clsx(styles.textinfo)}>
+                <HomePageCreateBlog closeModal={handleCloseModal} />
+              </div>
             </div>
           </div>
-        </div>
-      </Modal>
+        </Modal>
+      )}
     </div>
   );
 };

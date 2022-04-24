@@ -26,7 +26,7 @@ export const KolLayout = ({ title, children }) => {
 
   const logout = () => {
     localStorage.clear();
-    navigation('/sign-in');
+    navigation('/');
   };
   return (
     <div className={clsx(styles.profile__container)}>

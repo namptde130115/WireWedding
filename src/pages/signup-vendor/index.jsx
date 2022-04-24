@@ -23,9 +23,15 @@ export const VendorSignUp = () => {
       const response = unwrapResult(actionResult);
       if (response) {
         message.success('register success');
+        navigate('/sign-in');
       }
     } catch (error) {
-      message.error(error.username);
+      console.log(error);
+      if (error.username) {
+        message.error(error.username);
+      } else if (error.message) {
+        message.error(error.message);
+      }
     }
   };
 

@@ -84,5 +84,40 @@
   }
 }
 
-.form__group__container {
+.social_login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  white-space: nowrap;
+  > div {
+    display: flex;
+    justify-content: center;
+    height: 45px;
+  }
+  > span {
+    display: flex;
+    justify-content: center;
+    height: 45px;
+  }
+  > .btnGoogle {
+    margin: 5px;
+    width: 165px;
+    height: 35px;
+    border-radius: 4px;
+    border: 0px transparent;
+    text-align: center;
+    > div {
+      margin-right: 0px !important;
+      background: none !important;
+    }
+  }
+}
+
+.btnGoogle:hover {
+  opacity: 0.6;
+}
+
+.title_option_login {
+  display: flex;
+  justify-content: center;
 }

@@ -64,11 +64,15 @@ export const CheckList = () => {
         <div className={styles.progress}>
           <span>Progress: </span>
           <Progress
-            percent={Math.round(
-              (checkList.filter((item) => item.status === true).length /
-                checkList.length) *
-                100
-            )}
+            percent={
+              Array.isArray(checkList)
+                ? Math.round(
+                    (checkList?.filter((item) => item.status === true).length /
+                      checkList.length) *
+                      100
+                  )
+                : 0
+            }
             className={clsx(styles.progress)}
           />
         </div>
