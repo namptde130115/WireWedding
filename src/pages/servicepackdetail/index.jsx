@@ -6,6 +6,7 @@ import styles from './index.module.scss';
 import { Header } from '../../layout/header/index.jsx';
 
 export const ServicePackDetail = () => {
+
   return (
     <div>
       <div className={styles.header}>

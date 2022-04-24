@@ -49,7 +49,7 @@ export const HomePage_ideas = () => {
         ))}
       </div>
       <div className={clsx(styles.paging)}></div>
-      <MyBlog />
+      {/* <MyBlog /> */}
       {/* <Feedback_Contact /> */}
     </HomeLayout>
   );

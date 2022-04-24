@@ -1,78 +1,32 @@
-import { Menu, Dropdown, Button } from 'antd';
-const categories = [
-  {
-    id: 1,
-    name: 'Studio',
-  },
-  {
-    id: 2,
-    name: 'Invitations',
-  },
-  {
-    id: 3,
-    name: 'Dress & Attire',
-  },
-  {
-    id: 4,
-    name: 'Jewelry',
-  },
-  {
-    id: 5,
-    name: 'Transportation',
-  },
-  {
-    id: 6,
-    name: 'Makeup',
-  },
-  {
-    id: 7,
-    name: 'Musicians & Bands',
-  },
-  {
-    id: 8,
-    name: 'Venues',
-  },
-  {
-    id: 9,
-    name: 'Cakes',
-  },
-  {
-    id: 10,
-    name: 'Lighting & Decor',
-  },
-  {
-    id: 11,
-    name: 'Officiants',
-  },
-  {
-    id: 12,
-    name: 'Travel Agents',
-  },
-  {
-    id: 13,
-    name: 'Event Agents',
-  },
-];
-const menu = (
-  <Menu>
-    {categories.map((category, index) => (
-      <Menu.Item key={index}>
-        <a
-          target='_blank'
-          rel='noopener noreferrer'
-          href='https://www.antgroup.com'
-        >
-          {category.name}
-        </a>
-      </Menu.Item>
-    ))}
-  </Menu>
-);
+import { Select } from 'antd';
+const { Option } = Select;
+export const Category = ({ selectName, categories, handleSelect }) => {
+  // const handleFilterCategory = (key) => {
+  //   console.log(key);
+  //   handleSelect(key);
+  // };
+  // const menu = (
+  //   <Menu onClick={(e) => handleFilterCategory(e.key)}>
+  //     {categories.map((category) => (
+  //       <Menu.Item key={category.id}>{category.name}</Menu.Item>
+  //     ))}
+  //   </Menu>
+  // );
+  // return (
+  //   <Dropdown overlay={menu} placement="bottomLeft" arrow>
+  //     <Button>aaaa</Button>
+  //   </Dropdown>
+  // );
 
-export const Category = (data) => {
   return (
-    <Dropdown overlay={menu} placement='bottomLeft' arrow>
-      <Button>Categories</Button>
-    </Dropdown>
+    <Select
+      defaultValue={selectName}
+      onChange={handleSelect}
+      style={{ width: 200 }}
+    >
+      {categories.map((category) => (
+        <Option key={category.id}>{category.name}</Option>
+      ))}
+    </Select>
   );
 };
