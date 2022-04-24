@@ -1,0 +1,55 @@
+.createPack_details {
+  width: 400px;
+  font-family: 'Lora', serif;
+  background: #48413a;
+  padding: 0 20px;
+  height: calc(100vh - 79px);
+  position: sticky;
+  top: 0;
+}
+
+.form_updatePack {
+  display: flex;
+  flex-direction: column;
+}
+
+.pack_name {
+  height: 50px;
+  color: #fff;
+  margin: 20px 0;
+  > label {
+    margin-bottom: 10px;
+    display: block;
+  }
+}
+
+.pack_amount {
+  display: flex;
+  height: 20px;
+  color: #fff;
+  margin: 20px 0;
+  justify-content: space-between;
+}
+
+.pack_description {
+  > .title {
+    color: #fff;
+    margin: 0 0 10px 0;
+  }
+}
+
+.pack_theme {
+  > .title {
+    color: #fff;
+    margin: 0 0 10px 0;
+  }
+}
+
+.button_container {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px 0;
+  > button:first-child {
+    margin-right: 20px;
+  }
+}

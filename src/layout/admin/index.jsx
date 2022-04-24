@@ -6,6 +6,7 @@ import {
   UserOutlined,
   HeartOutlined,
   PayCircleOutlined,
+  LogoutOutlined,
 } from '@ant-design/icons';
 
 import clsx from 'clsx';
@@ -17,6 +18,11 @@ export const AdminLayout = ({ title, children }) => {
   let currentUrl = window.location.pathname.split('/')[2];
   const [current, setCurrent] = useState(currentUrl);
   let navigation = useNavigate();
+
+  const logout = () => {
+    localStorage.clear();
+    navigation('/sign-in');
+  };
 
   const handleClickMenu = (e) => {
     console.log('click ', e.key);
@@ -47,6 +53,10 @@ export const AdminLayout = ({ title, children }) => {
               Kol
             </Menu.Item>
           </Menu>
+          <div className={clsx(styles.logout)} onClick={logout}>
+            <LogoutOutlined />
+            Logout
+          </div>
         </div>
       </div>
       <div className={clsx(styles.profile__content)}>

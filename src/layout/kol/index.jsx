@@ -1,12 +1,18 @@
 import { Menu } from 'antd';
 
 //icons
-import { UserOutlined, HeartOutlined, FormOutlined } from '@ant-design/icons';
+import {
+  UserOutlined,
+  HeartOutlined,
+  FormOutlined,
+  LogoutOutlined,
+} from '@ant-design/icons';
 
 import clsx from 'clsx';
 import styles from './index.module.scss';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Button } from 'bootstrap';
 
 export const KolLayout = ({ title, children }) => {
   let currentUrl = window.location.pathname.split('/')[2];
@@ -17,6 +23,11 @@ export const KolLayout = ({ title, children }) => {
     console.log('click ', e.key);
     setCurrent(e.key);
     navigation(e.key);
+  };
+
+  const logout = () => {
+    localStorage.clear();
+    navigation('/sign-in');
   };
   return (
     <div className={clsx(styles.profile__container)}>
@@ -33,8 +44,8 @@ export const KolLayout = ({ title, children }) => {
             selectedKeys={[current]}
             className={clsx(styles.profile__menu__main)}
           >
-            <Menu.Item key='service-pack' icon={<UserOutlined />}>
-              Service Pack
+            <Menu.Item key='myservive-pack' icon={<UserOutlined />}>
+              My Service Pack
             </Menu.Item>
             <Menu.Item key='infor' icon={<HeartOutlined />}>
               Infor
@@ -43,6 +54,10 @@ export const KolLayout = ({ title, children }) => {
               Blogs
             </Menu.Item>
           </Menu>
+          <div className={clsx(styles.logout)} onClick={logout}>
+            <LogoutOutlined />
+            Logout
+          </div>
         </div>
       </div>
       <div className={clsx(styles.profile__content)}>

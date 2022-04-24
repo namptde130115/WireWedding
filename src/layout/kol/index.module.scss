@@ -109,3 +109,20 @@ $logosize: 50px;
   flex: 1;
   overflow-y: scroll;
 }
+
+.logout {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 20px;
+  align-items: center;
+  font-size: 20px;
+  padding: 10px 5px;
+  > span {
+    margin: 0 20px 0 0;
+  }
+  &:hover {
+    background: var(--color-base-2) !important;
+    border-radius: 5px;
+  }
+  cursor: pointer;
+}

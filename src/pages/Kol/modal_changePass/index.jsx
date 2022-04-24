@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { vendorCreateSingleService } from '../../../redux/vendorSlice';
 import { unwrapResult } from '@reduxjs/toolkit';
+import { updatePassword } from '../../../redux/kolSlice';
 
 export const VendorChangePassModal = ({
   isModalEditVisible,
@@ -15,27 +16,16 @@ export const VendorChangePassModal = ({
   const [form] = Form.useForm();
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   const handle
-  //   if (editMode) {
-  //     form.setFieldsValue({})
-  //   }
-  // }, [editMode]);
-
   const onFinish = async (values) => {
     try {
       console.log('success: ', values);
-      const submiBody = {
-        ...values,
-        photos: [
-          {
-            url: 'https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Slider_images%2Fslider_01.PNG?alt=media&token=9e33e61a-e1d3-4bc8-a446-835bf609c994',
-            caption:
-              'Get married in Norway - the land of the fjords, vikings, trolls and the Northern lights!',
-          },
-        ],
-      };
-      const actionResult = await dispatch(vendorCreateSingleService(submiBody));
+
+      const actionResult = await dispatch(
+        updatePassword({
+          oldPassword: values.oldPassword,
+          newPassword: values.newPassword,
+        })
+      );
       const response = unwrapResult(actionResult);
       if (response) {
         message.success('Service added successfully');
@@ -43,9 +33,6 @@ export const VendorChangePassModal = ({
         handleOk();
       }
     } catch (error) {
-      if (error.photos) {
-        message.error('Photos is required');
-      }
       console.log(error);
     }
   };
