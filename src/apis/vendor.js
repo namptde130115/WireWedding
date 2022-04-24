@@ -9,8 +9,8 @@ const vendorApi = {
     const url = '/single-service';
     return AxiosClient.post(url, payload);
   },
-  getListSingleService: (payload) => {
-    const url = `/single-service/vendor/${payload}`;
+  getListSingleService: () => {
+    const url = `/single-service/vendor`;
     return AxiosClient.get(url);
   },
   editSingleService: (payload) => {
@@ -40,6 +40,14 @@ const vendorApi = {
   getDetailBlog: (id) => {
     const url = `/blog/detail/${id}`;
     return AxiosClient.get(url);
+  },
+  getInforVendor: () => {
+    const url = `vendor`;
+    return AxiosClient.get(url);
+  },
+  updateInforVendor: (payload) => {
+    const url = `vendor`;
+    return AxiosClient.put(url, payload);
   },
 };
 

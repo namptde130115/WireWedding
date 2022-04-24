@@ -22,7 +22,7 @@ export const VendorSevice = () => {
   useEffect(() => {
     const getSingleService = async () => {
       try {
-        const result = await dispatch(getListSingleService(3));
+        const result = await dispatch(getListSingleService());
         const response = result.unwrapResult();
         if (response) {
           console.log('response', response);
@@ -65,12 +65,12 @@ export const VendorSevice = () => {
   return (
     <div>
       <div className={'vendor__service__header'}>
-        <Search
+        {/* <Search
           placeholder='input search text'
           onSearch={onSearch}
           style={{ width: 250 }}
           className={'vendor-service-search'}
-        />
+        /> */}
         <Button type='primary' onClick={openModalCreate}>
           Create
         </Button>
@@ -83,8 +83,13 @@ export const VendorSevice = () => {
             className={'vendor__service__card'}
             handleAdd={() => openModalEdit(servive.id)}
             title={servive.serviceName}
-            location={servive.price}
+            location={servive.vendorAddress}
             imgUrl={servive?.photos.length === 0 ? '' : servive?.photos[0].url}
+            price={
+              servive.price.toLocaleString(undefined, {
+                maximumFractionDigits: 2,
+              }) + ' VND'
+            }
           />
         ))}
       </div>

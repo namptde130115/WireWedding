@@ -26,57 +26,6 @@
   }
 }
 
-.pack_name {
-  width: 70%;
-  margin: auto;
-}
-.pack_name {
-  > input {
-    margin: 1vw 0;
-    border-bottom: 1px solid #d9d9d9;
-    border-radius: 0;
-    font-size: 3vw;
-    font-family: Dancing Script;
-    height: 6vw;
-    color: #cf8842;
-    text-align: center;
-    &:hover {
-      border-bottom: 1px solid #d9d9d9;
-    }
-    &:focus {
-      border-bottom: 1px solid #d9d9d9;
-    }
-    &::placeholder {
-      font-size: 3vw;
-      line-height: 3;
-      font-family: Dancing Script;
-    }
-  }
-}
-.createPack_details {
-  width: 40%;
-  font-family: 'Lora', serif;
-  background: #48413a;
-  position: sticky;
-  top: 0;
-  height: calc(100vh - 79px);
-  > div:not(:first-child) {
-    margin: 2vw 2vw;
-  }
-}
-.pack_amount {
-  display: flex;
-}
-.title {
-  color: #fff;
-  font-size: 1.3vw;
-  float: left;
-  margin-right: 10px;
-}
-.input_description > textarea {
-  min-height: 8vw;
-  margin: 0.5vw 0;
-}
 .amount {
   color: #fff;
   font-size: 1.4vw;

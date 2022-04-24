@@ -1,7 +1,12 @@
 import { Menu } from 'antd';
 
 //icons
-import { UserOutlined, HeartOutlined, FormOutlined } from '@ant-design/icons';
+import {
+  UserOutlined,
+  HeartOutlined,
+  FormOutlined,
+  LogoutOutlined,
+} from '@ant-design/icons';
 
 import clsx from 'clsx';
 import styles from './index.module.scss';
@@ -17,6 +22,11 @@ export const VendorLayout = ({ title, children }) => {
     console.log('click ', e.key);
     setCurrent(e.key);
     navigation(e.key);
+  };
+
+  const logout = () => {
+    localStorage.clear();
+    navigation('/sign-in');
   };
   return (
     <div className={clsx(styles.profile__container)}>
@@ -43,6 +53,10 @@ export const VendorLayout = ({ title, children }) => {
               Blogs
             </Menu.Item>
           </Menu>
+          <div className={clsx(styles.logout)} onClick={logout}>
+            <LogoutOutlined />
+            Logout
+          </div>
         </div>
       </div>
       <div className={clsx(styles.profile__content)}>

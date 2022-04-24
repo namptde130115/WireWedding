@@ -1,8 +1,8 @@
 @import '../../../../scss/mixin.scss';
 
 .checklist__items {
-  margin-bottom: 10px;
   display: flex;
+  flex: 1;
   // @include borderShadown;
   padding: 10px;
   align-items: center;
@@ -31,7 +31,8 @@
 }
 
 .content {
-  width: 75vw;
+  // width: 100%;
+  flex: 1;
   margin-left: 10px;
 }
 

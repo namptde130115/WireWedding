@@ -12,12 +12,15 @@ import { unwrapResult } from '@reduxjs/toolkit';
 import {
   addServiceIntoPack,
   createPackageCategory,
+  getAllPackByKol,
+  getAllServiceByPackIdByCatagory,
   getAllServicesByCategory,
+  getServicePackById,
+  removeServiceFromPack,
 } from '../../../redux/kolSlice';
 import { getAllPackCatagory } from '../../../redux/kolSlice';
 import { CardInforPack } from './CardInfor';
-
-const { TextArea } = Input;
+import { PackInfor } from './InforPack';
 
 const categories = [
   {
@@ -74,9 +77,12 @@ const categories = [
   },
 ];
 
-export const CreateServicePack = () => {
+export const EditServicePack = () => {
   const dataServices = useSelector((state) => state.kol?.kolServices);
-  const packageCategory = useSelector((state) => state.kol?.packageCategory);
+
+  const packServicesByCatagory = useSelector(
+    (state) => state.kol?.packServicesByCatagory
+  );
   const [titleService, setTitleService] = useState('');
   const [textArea, setTextArea] = useState();
   const [selectValue, setSelectValue] = useState();
@@ -87,37 +93,67 @@ export const CreateServicePack = () => {
     (state) => state.kol?.currentServicesByPack
   );
 
-  const dispatch = useDispatch();
-
   const [isVisible, setIsVisible] = useState();
   const [isDetailVisible, setIsDetailVisible] = useState();
 
-  const onChange = (e) => {
-    setTextArea(e.target.value);
-    console.log('Change:', e.target.value);
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const packId = urlParams.get('idPack');
+  console.log(packId);
+
+  const dispatch = useDispatch();
+
+  const handleOpenDetail = async (e, catagoryId) => {
+    e.stopPropagation();
+    console.log('dddddddddddddddddddddddd');
+    const body = {
+      categoryId: catagoryId,
+      packId,
+    };
+    try {
+      const actionResult = await dispatch(
+        getAllServiceByPackIdByCatagory(body)
+      );
+      const response = unwrapResult(actionResult);
+      if (response) {
+        setIsDetailVisible(true);
+      }
+    } catch (error) {}
   };
 
-  const onSelectThemeChange = (value) => {
-    console.log(value);
-    setSelectValue(value);
+  const handleRemoveFromPack = async (categoryId) => {
+    const body = {
+      packId,
+      categoryId: categoryId,
+    };
+    try {
+      const actionResult = await dispatch(removeServiceFromPack(body));
+      const response = unwrapResult(actionResult);
+      if (response) {
+        message.success('Remove success');
+        setIsDetailVisible(false);
+      }
+    } catch (error) {}
   };
 
   useEffect(() => {
-    const getPackCategory = async () => {
+    const getServicePackageById = async () => {
       try {
-        const actionResult = await dispatch(getAllPackCatagory());
+        const actionResult = await dispatch(getServicePackById(packId));
         const response = unwrapResult(actionResult);
         if (response) {
+          message.success('Get service package success');
         }
       } catch (error) {}
     };
-    getPackCategory();
+    getServicePackageById();
   }, []);
 
   const openModal = async (e, id, name) => {
     e.stopPropagation();
     setIsVisible(true);
     setCurrentCategory(name);
+
     try {
       console.log('aaaaaaaaaa');
       const actionResult = await dispatch(getAllServicesByCategory(id));
@@ -127,9 +163,7 @@ export const CreateServicePack = () => {
       }
     } catch (error) {}
   };
-  const handleOpenDetail = () => {
-    setIsDetailVisible(true);
-  };
+
   const handleCancel = () => {
     setIsVisible(false);
   };
@@ -137,13 +171,9 @@ export const CreateServicePack = () => {
     setIsDetailVisible(false);
   };
 
-  const onTitleChange = (e) => {
-    setTitleService(e.target.value);
-  };
-
   const handleAddIntoPack = async (idService) => {
     const body = {
-      idPack: 10011,
+      idPack: packId,
       idService: idService,
     };
     try {
@@ -151,10 +181,10 @@ export const CreateServicePack = () => {
       const response = unwrapResult(actionResult);
       if (response) {
         message.success('Add service into pack success');
+        setIsVisible(false);
       }
     } catch (error) {
       message.error(error.message);
-      console.log(error.message);
     }
   };
 
@@ -176,59 +206,10 @@ export const CreateServicePack = () => {
 
   return (
     <div className={clsx(styles.createPack_container)}>
-      <div className={clsx(styles.createPack_details)}>
-        <div className={clsx(styles.pack_name)}>
-          <Input
-            placeholder='Service pack name'
-            bordered={false}
-            value={titleService}
-            onChange={onTitleChange}
-          />
-        </div>
-        <div className={clsx(styles.pack_amount)}>
-          <p className={clsx(styles.title)}>Total price: </p>
-          <p className={clsx(styles.amount)}>1000000</p>
-        </div>
-        <div className={clsx(styles.pack_description)}>
-          <p className={clsx(styles.title)}>Description</p>
-          <div className={clsx(styles.input_description)}>
-            <TextArea
-              placeholder='Description here'
-              onChange={onChange}
-              autoSize
-            />
-          </div>
-        </div>
-        <div className={clsx(styles.pack_theme)}>
-          <p className={clsx(styles.title)}>Choose theme</p>
-          <Select
-            onChange={onSelectThemeChange}
-            placeholder='theme'
-            style={{ width: '65%' }}
-            allowClear
-          >
-            {packageCategory &&
-              packageCategory.length > 0 &&
-              packageCategory.map((category) => (
-                <Select.Option value={category.id} key={category.id}>
-                  {category.name}
-                </Select.Option>
-              ))}
-          </Select>
-        </div>
-        <div className={clsx(styles.button_container)}>
-          <ButtonCustom
-            type='primary'
-            text='Save'
-            onClick={handleCreateServicePack}
-          />
-          <ButtonCustom type='ghost' text='Cancel' />
-        </div>
-      </div>
-
+      <PackInfor />
       <div className={clsx(styles.createPack_serviceBox)}>
         {categories.map((category, index) => (
-          <div onClick={handleOpenDetail} key={index}>
+          <div key={index} onClick={(e) => handleOpenDetail(e, category.id)}>
             <ServiceBox
               data={category}
               handleOpenModal={(e) => openModal(e, category.id, category.name)}
@@ -236,40 +217,60 @@ export const CreateServicePack = () => {
           </div>
         ))}
       </div>
-      <Modal
-        className='add_category_child'
-        visible={isVisible}
-        onCancel={handleCancel}
-        footer={null}
-        width={1000}
-        title={currentCategory}
-        maskClosable={false}
-      >
-        <div className={clsx(styles.service)}>
-          {dataServices &&
-            dataServices?.map((service) => (
-              <div key={service.id}>
-                <CardInforPack
-                  title={service.serviceName}
-                  location={service.serviceName}
-                  imgUrl={service.photos[0].url}
-                  textButton='+ Add'
-                  handleAdd={() => handleAddIntoPack(service.id)}
-                />
-              </div>
-            ))}
-        </div>
-      </Modal>
-      <Modal
-        className='view_category_child'
-        title='Detail'
-        visible={isDetailVisible}
-        onCancel={handleDetailCancel}
-        footer={null}
-        width={700}
-      >
-        <div className={clsx(styles.category_child)}></div>
-      </Modal>
+      {isVisible && (
+        <Modal
+          className='add_category_child'
+          visible={isVisible}
+          onCancel={handleCancel}
+          footer={null}
+          width={1000}
+          title={currentCategory}
+          maskClosable={false}
+        >
+          <div className={clsx(styles.service)}>
+            {dataServices &&
+              dataServices?.map((service) => (
+                <div key={service.id}>
+                  <CardInforPack
+                    title={service.serviceName}
+                    location={service.serviceName}
+                    imgUrl={service.photos[0].url}
+                    textButton={'+ Add'}
+                    handleAdd={() => handleAddIntoPack(service.id)}
+                  />
+                </div>
+              ))}
+          </div>
+        </Modal>
+      )}
+      {isDetailVisible && (
+        <Modal
+          className='view_category_child'
+          title='Detail'
+          visible={isDetailVisible}
+          onCancel={handleDetailCancel}
+          footer={null}
+          width={700}
+        >
+          <div className={clsx(styles.category_child)}>
+            <div className={clsx(styles.service)}>
+              {Array.isArray(packServicesByCatagory) &&
+                packServicesByCatagory?.map((service) => (
+                  <div key={service.id}>
+                    <CardInforPack
+                      title={service.serviceName}
+                      location={service.serviceName}
+                      imgUrl={service.photos[0].url}
+                      textButton={'Remove'}
+                      handleAdd={() => handleRemoveFromPack(service.id)}
+                    />
+                  </div>
+                ))}
+            </div>
+          </div>
+        </Modal>
+      )}
+      {}
     </div>
   );
 };

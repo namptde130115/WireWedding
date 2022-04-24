@@ -13,14 +13,18 @@ import { useState } from 'react';
 import { Input } from 'antd';
 import {
   deleteCheckList,
+  deleteGroup,
   editContentCheckList,
   editStatusChecklist,
+  getAllGroup,
   getCheckList,
+  updateGroupName,
+  updateGuestList,
 } from '../../../../redux/customerSlice';
 import { useDispatch } from 'react-redux';
 import { unwrapResult } from '@reduxjs/toolkit';
 
-export const CheckListItem = ({
+export const GroupItem = ({
   idCheck,
   isShowCheck,
   title,
@@ -39,22 +43,20 @@ export const CheckListItem = ({
     setIsEdit(e.target.value);
   };
 
-  const handleSaveChecklist = async (e) => {
+  const handleSaveGoupName = async (e) => {
     e.stopPropagation();
     const body = {
       id: idCheck,
       data: {
         name: isEdit,
-        deadline: deadline,
-        description: 'huy dep trai',
       },
     };
 
     try {
-      const actionResult = await dispatch(editContentCheckList(body));
+      const actionResult = await dispatch(updateGuestList(body));
       const response = unwrapResult(actionResult);
       if (response) {
-        dispatch(getCheckList());
+        dispatch(getAllGroup());
         setIsVisible(true);
       }
     } catch (error) {
@@ -71,25 +73,14 @@ export const CheckListItem = ({
     setDeadline(dateString);
   };
 
-  const handleUnChecked = async () => {
+  const handleDeleteGroup = async () => {
+    console.log('delete group');
     try {
-      const actionResult = await dispatch(editStatusChecklist(idCheck));
+      const actionResult = await dispatch(deleteGroup(idCheck));
       const response = unwrapResult(actionResult);
       if (response) {
-        dispatch(getCheckList());
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleDeleteChecklist = async () => {
-    try {
-      const actionResult = await dispatch(deleteCheckList(idCheck));
-      const response = unwrapResult(actionResult);
-      if (response) {
-        message.success('Delete checklist success');
-        dispatch(getCheckList());
+        message.success('Delete group success');
+        dispatch(getAllGroup());
       }
     } catch (error) {
       console.log(error);
@@ -99,7 +90,6 @@ export const CheckListItem = ({
   return (
     <div className={clsx(styles.checklist__items)}>
       <CheckSquareOutlined
-        onClick={handleUnChecked}
         className={clsx(
           {
             [styles.is__checked]: !isShowCheck,
@@ -139,12 +129,12 @@ export const CheckListItem = ({
         ) : (
           <SaveOutlined
             className={clsx(styles.icon, styles.icon__save)}
-            onClick={handleSaveChecklist}
+            onClick={handleSaveGoupName}
           />
         )}
         <DeleteOutlined
           className={clsx(styles.icon__delete, styles.icon)}
-          onClick={handleDeleteChecklist}
+          onClick={handleDeleteGroup}
         />
       </div>
     </div>

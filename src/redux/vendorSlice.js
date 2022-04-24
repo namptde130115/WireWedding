@@ -160,6 +160,35 @@ export const getDetailBlog = createAsyncThunk(
   }
 );
 
+export const getInforVendor = createAsyncThunk(
+  'vendor/getInforVendor',
+  async (params, { rejectWithValue }) => {
+    try {
+      const response = await vendorApi.getInforVendor(params);
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response);
+    }
+  }
+);
+
+export const updateInforVendor = createAsyncThunk(
+  'vendor/updateInforVendor',
+  async (params, { rejectWithValue }) => {
+    try {
+      const response = await vendorApi.updateInforVendor(params);
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response);
+    }
+  }
+);
 export const vendorSlice = createSlice({
   name: 'user',
   initialState,
@@ -221,7 +250,18 @@ export const vendorSlice = createSlice({
       })
       .addCase(getDetailBlog.fulfilled, (state, { payload }) => {
         state.loading = false;
-        console.log(payload);
+      })
+      .addCase(getInforVendor.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getInforVendor.fulfilled, (state, { payload }) => {
+        state.loading = false;
+      })
+      .addCase(updateInforVendor.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(updateInforVendor.fulfilled, (state, { payload }) => {
+        state.loading = false;
       });
   },
 });
