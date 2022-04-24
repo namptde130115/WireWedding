@@ -6,6 +6,7 @@ const initialState = {
   registerLoading: false,
   allTask: [],
   allGroup: [],
+  allMyService: [],
 };
 
 export const getCheckList = createAsyncThunk(
@@ -102,6 +103,11 @@ export const getAllGroup = createAsyncThunk(
   async (params, { rejectWithValue }) => {
     try {
       const response = await customerApi.getAllGroup();
+export const getMyService = createAsyncThunk(
+  'customer/getMyService',
+  async (params, { rejectWithValue }) => {
+    try {
+      const response = await customerApi.getMyService();
       return response.data;
     } catch (err) {
       if (!err.response) {
@@ -141,12 +147,39 @@ export const updateGroupName = createAsyncThunk(
     }
   }
 );
+export const addServiceToList = createAsyncThunk(
+  'customer/addServiceToList',
+  async (params, { rejectWithValue }) => {
+    try {
+      const response = await customerApi.addServiceToList(params);
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
 
 export const updateGuest = createAsyncThunk(
   'customer/updateGuest',
   async (body, { rejectWithValue }) => {
     try {
       const response = await customerApi.updateGuest(body);
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response.data);
+    }})
+
+export const deleteServiceFromList = createAsyncThunk(
+  'customer/deleteServiceFromList',
+  async (params, { rejectWithValue }) => {
+    try {
+      const response = await customerApi.deleteServiceFromList(params);
       return response.data;
     } catch (err) {
       if (!err.response) {
@@ -162,6 +195,20 @@ export const updateGuestList = createAsyncThunk(
   async (body, { rejectWithValue }) => {
     try {
       const response = await customerApi.updateGuestList(body);
+
+      return response.data; 
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response.data);
+    }})
+      
+export const createPayment = createAsyncThunk(
+  'customer/createPayment',
+  async (params, { rejectWithValue }) => {
+    try {
+      const response = await customerApi.createPayment(params);
       return response.data;
     } catch (err) {
       if (!err.response) {
@@ -191,6 +238,7 @@ export const customerSlice = createSlice({
         console.log(payload);
         state.allTask = payload.checkListTaskResponseList;
       })
+
       .addCase(addCheckListTask.pending, (state) => {
         state.loading = true;
       })
@@ -233,7 +281,34 @@ export const customerSlice = createSlice({
       })
       .addCase(updateGroupName.fulfilled, (state, { payload }) => {
         state.loading = false;
-      });
+      })
+
+      .addCase(getMyService.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getMyService.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        console.log(payload);
+        state.allMyService = payload;
+      })
+      .addCase(addServiceToList.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(addServiceToList.fulfilled, (state, { payload }) => {
+        state.loading = false;
+      })
+      .addCase(deleteServiceFromList.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(deleteServiceFromList.fulfilled, (state, { payload }) => {
+        state.loading = false;
+      })
+      .addCase(createPayment.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(createPayment.fulfilled, (state, { payload }) => {
+        state.loading = false;
+      })
   },
 });
 

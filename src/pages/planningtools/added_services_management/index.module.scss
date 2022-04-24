@@ -1,7 +1,7 @@
 @import "../../../scss/mixin.scss";
 
 .body {
-  width: 90%;
+  width: 85%;
   background-color: var(--color-body);
   padding: 15px;
   margin: 0 auto;
@@ -29,29 +29,32 @@
 }
 // Your Services css
 @font-face {
-  font-family: 'AlexBrush';
-  src: url('../../../fonts/alexbrush/AlexBrush-Regular.ttf') format('truetype');
+  font-family: "AlexBrush";
+  src: url("../../../fonts/alexbrush/AlexBrush-Regular.ttf") format("truetype");
 }
 
 .your_service_text {
   @include titleFont;
   margin-bottom: 5px;
 }
-.btnHireAll{
+.btnHireAll {
   display: flex;
-  justify-content: end;  
+  justify-content: end;
+  margin-right: 15px;
 }
 .services_list {
-  display: flex;
-  justify-content: flex-start;
-  text-align: center;
+  margin-top: 10px;
   flex: 1;
-  background: var(--color-body);
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(275px, max-content));
-  grid-gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, max-content));
+  grid-gap: 45px;
   justify-content: center;
-  padding: 2vw 0;
+  padding-bottom: 3vw;
+  > div > div:first-child {
+    padding-bottom: 0;
+    width: 240px;
+    height: 180px;
+  }
 }
 
 .services_list_inner {

@@ -49,6 +49,22 @@ const customerApi = {
     const url = `guest/list/${body.id}`;
     return AxiosClient.put(url, body.data);
   },
+  getMyService: () => {
+    const url = '/my-service';
+    return AxiosClient.get(url);
+  },
+  addServiceToList: (id) => {
+    const url = `/single-service/customer/${id}`;
+    return AxiosClient.post(url);
+  },
+  deleteServiceFromList: (id) => {
+    const url = `/my-service/${id}`;
+    return AxiosClient.delete(url);
+  },
+  createPayment: (body) => {
+    const url = '/create-payment';
+    return AxiosClient.post(url, body);
+  },
 };
 
 export default customerApi;
