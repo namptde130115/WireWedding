@@ -8,15 +8,22 @@ import clsx from "clsx";
 import { SearchBar } from "../../components/Search/index.jsx";
 import { imageUrl } from "../../assets/images-url/index.js";
 import { useEffect, useState } from "react";
-import { getAllServicePack } from "../../redux/userSlice.js";
+import {
+  getAllServicePack,
+  getDetailPack,
+  getFilterPackByParams,
+} from "../../redux/userSlice.js";
 import { useDispatch, useSelector } from "react-redux";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { useNavigate } from "react-router-dom";
 import { ServicePackDetail } from "../servicepackdetail/index.jsx";
-import { Modal } from "antd";
+import { message, Input } from "antd";
+import { addPackToList, getMyService } from "../../redux/customerSlice.js";
+const { Search } = Input;
 
 export const ServicePack = () => {
   const [isModalVisible, setIsModalVisible] = useState();
+  const [onSearchValue, setOnSearchValue] = useState();
 
   const themes = [
     {
@@ -108,6 +115,21 @@ export const ServicePack = () => {
     getAllService();
   }, []);
 
+  useEffect(() => {
+    const getSearchService = async () => {
+      try {
+        const actionResult = await dispatch(
+          getFilterPackByParams({ keyword: onSearchValue })
+        );
+        const response = await unwrapResult(actionResult);
+        if (response) {
+          console.log(response);
+        }
+      } catch (error) {}
+    };
+    getSearchService();
+  }, [onSearchValue]);
+
   const navigate = useNavigate();
   // const handleShowDetail = (id) => {
   //   navigate(`service-pack/${id}`);
@@ -138,11 +160,31 @@ export const ServicePack = () => {
   //     }
   //   } catch (error) {}
   // };
+  const handleAddPackServiceToList = async (id) => {
+    try {
+      const actionResult = await dispatch(addPackToList(id));
+      const response = unwrapResult(actionResult);
+      if (response) {
+        // dispatch(addPackToList(id));
+        dispatch(getMyService());
+        console.log(response);
+        message.success("Added pack success!");
+        navigate("/planning-tools/my-servicelist");
+      }
+    } catch (error) {}
+  };
+  const handleGetDetailPack = (id) => {
+    navigate(`/service-pack-detail?idPack=${id}`);
+  };
+
+  const onSearch = (value) => {
+    setOnSearchValue(value);
+  };
   return (
     <CommonLayout>
       <div className={styles.utility}>
         <div className={clsx(styles.search)}>
-          <SearchBar />
+          <Search onSearch={onSearch} />
         </div>
         <Category
           selectName="Theme"
@@ -166,27 +208,11 @@ export const ServicePack = () => {
               }) + " VND"
             }
             textButton="+ Add"
-            onClick={handleOpenModal}
+            handleAdd={() => handleAddPackServiceToList(item.id)}
+            onClick={() => handleGetDetailPack(item.id)}
           />
         ))}
       </div>
-      <Modal
-        title="Service"
-        visible={isModalVisible}
-        onCancel={handleCancelModal}
-        width={1000}
-        footer={null}
-        // okButtonProps={{ form: 'category-editor-form', htmlType: 'submit' }}
-      >
-        <div className={clsx(styles.edit_container)}>
-          <div className={clsx(styles.info)}>
-            <div className={clsx(styles.textinfo)}>
-              <ServicePackDetail closeModal={handleCloseModal} />
-            </div>
-          </div>
-          {/* <p>aaaaaaaaaaaaaaaaaaaa</p> */}
-        </div>
-      </Modal>
     </CommonLayout>
   );
 };

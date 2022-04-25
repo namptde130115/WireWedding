@@ -231,7 +231,20 @@ export const createPayment = createAsyncThunk(
     }
   }
 );
-
+export const addPackToList = createAsyncThunk(
+  'customer/addPackToList',
+  async (params, { rejectWithValue }) => {
+    try {
+      const response = await customerApi.addPackToList(params);
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
 export const customerSlice = createSlice({
   name: 'customer',
   initialState,
@@ -318,7 +331,13 @@ export const customerSlice = createSlice({
       })
       .addCase(createPayment.fulfilled, (state, { payload }) => {
         state.loading = false;
-      });
+      })
+      .addCase(addPackToList.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(addPackToList.fulfilled, (state, { payload }) => {
+        state.loading = false;
+      })
   },
 });
 

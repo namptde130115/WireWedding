@@ -65,6 +65,10 @@ const customerApi = {
     const url = '/create-payment';
     return AxiosClient.post(url, body);
   },
+  addPackToList: (id) => {
+    const url = `/service-pack/customer/${id}`;
+    return AxiosClient.post(url);
+  },
 };
 
 export default customerApi;

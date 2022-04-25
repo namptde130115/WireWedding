@@ -26,12 +26,16 @@ const userApi = {
     const url = '/service-pack';
     return AxiosClient.get(url);
   },
-  // getAllPackByTheme: (id) => {
-  //   const url = `/single-service/category/${id}`;
-  //   return AxiosClient.get(url);
-  // },
+  getFilterPackByParams: ({keyword,theme}) => {
+    const url = `/service-pack/filter`;
+    return AxiosClient.get(url, {params: { keyword, theme}});
+  },
   getDetailPack: (id) => {
     const url = `/service-pack/${id}`;
+    return AxiosClient.get(url);
+  },
+  getAllServicesInPack: (id) => {
+    const url = `/service-pack/${id}/single-services`;
     return AxiosClient.get(url);
   },
   signUpCustomer: (body) => {
