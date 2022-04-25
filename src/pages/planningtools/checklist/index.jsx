@@ -37,7 +37,6 @@ export const CheckList = () => {
     const body = {
       name: title,
       deadline: dueDate,
-      description: 'huy dep trai',
     };
     try {
       const actionResult = await dispatch(addCheckListTask(body));
