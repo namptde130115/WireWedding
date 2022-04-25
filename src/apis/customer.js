@@ -72,7 +72,11 @@ const customerApi = {
   getSingleServiceById: (id) => {
     const url = `/single-service/${id}`;
     return AxiosClient.get(url);
-  }
+  },
+  addPackToList: (id) => {
+    const url = `/service-pack/customer/${id}`;
+    return AxiosClient.post(url);
+  },
 };
 
 export default customerApi;

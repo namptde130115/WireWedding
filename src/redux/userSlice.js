@@ -1,5 +1,5 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import userApi from '../apis/user';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import userApi from "../apis/user";
 
 const initialState = {
   loading: false,
@@ -7,19 +7,21 @@ const initialState = {
   userInfor: {},
   allSingleService: [],
   allServicePack: [],
+  packDetail: {},
+  allSingleInPack: {},
 };
 
 export const signIn = createAsyncThunk(
-  'user/signIn',
+  "user/signIn",
   async (params, { rejectWithValue }) => {
     let response;
     try {
       response = await userApi.login(params);
       const { token, role, username } = response.data;
-      localStorage.setItem('isAuthenticated', true);
-      localStorage.setItem('token', token);
-      localStorage.setItem('userName', username);
-      localStorage.setItem('role', role);
+      localStorage.setItem("isAuthenticated", true);
+      localStorage.setItem("token", token);
+      localStorage.setItem("userName", username);
+      localStorage.setItem("role", role);
     } catch (err) {
       if (!err.response) {
         throw err;
@@ -31,7 +33,7 @@ export const signIn = createAsyncThunk(
 );
 
 export const signUp = createAsyncThunk(
-  'user/signUp',
+  "user/signUp",
   async (params, { rejectWithValue }) => {
     let response;
     try {
@@ -46,7 +48,7 @@ export const signUp = createAsyncThunk(
   }
 );
 export const getAllSingleService = createAsyncThunk(
-  'user/getAllSingleService',
+  "user/getAllSingleService",
   async (params, { rejectWithValue }) => {
     try {
       const response = await userApi.getAllSingleService(params);
@@ -60,7 +62,7 @@ export const getAllSingleService = createAsyncThunk(
   }
 );
 export const getAllServicesByCategory = createAsyncThunk(
-  'user/getAllServicesByCategory',
+  "user/getAllServicesByCategory",
   async (params, { rejectWithValue }) => {
     try {
       const response = await userApi.getAllServicesByCategory(params);
@@ -74,7 +76,7 @@ export const getAllServicesByCategory = createAsyncThunk(
   }
 );
 export const getAllServicePack = createAsyncThunk(
-  'user/getAllServicePack',
+  "user/getAllServicePack",
   async (params, { rejectWithValue }) => {
     try {
       const response = await userApi.getAllServicePack(params);
@@ -88,7 +90,7 @@ export const getAllServicePack = createAsyncThunk(
   }
 );
 export const getDetailPack = createAsyncThunk(
-  'user/getDetailPack',
+  "user/getDetailPack",
   async (params, { rejectWithValue }) => {
     try {
       const response = await userApi.getDetailPack(params);
@@ -101,9 +103,22 @@ export const getDetailPack = createAsyncThunk(
     }
   }
 );
-
+export const getAllServicesInPack = createAsyncThunk(
+  "user/getAllServicesInPack",
+  async (params, { rejectWithValue }) => {
+    try {
+      const response = await userApi.getAllServicesInPack(params);
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
 export const signUpCustomer = createAsyncThunk(
-  'user/signUpCustomer',
+  "user/signUpCustomer",
   async (params, { rejectWithValue }) => {
     try {
       const response = await userApi.signUpCustomer(params);
@@ -117,7 +132,7 @@ export const signUpCustomer = createAsyncThunk(
   }
 );
 export const faceBookSignIn = createAsyncThunk(
-  'user/faceBookSignIn',
+  "user/faceBookSignIn",
   async (params, { rejectWithValue }) => {
     let response;
     try {
@@ -129,14 +144,14 @@ export const faceBookSignIn = createAsyncThunk(
           return res;
         });
       const { email, name } = datafb;
-      console.log('response', datafb);
+      console.log("response", datafb);
       response = await userApi.facebooklogin(datafb);
 
       const { token, role, username } = response.data;
-      localStorage.setItem('isAuthenticated', true);
-      localStorage.setItem('token', token);
-      localStorage.setItem('userName', username);
-      localStorage.setItem('role', role);
+      localStorage.setItem("isAuthenticated", true);
+      localStorage.setItem("token", token);
+      localStorage.setItem("userName", username);
+      localStorage.setItem("role", role);
     } catch (err) {
       if (!err.response) {
         throw err;
@@ -145,9 +160,23 @@ export const faceBookSignIn = createAsyncThunk(
     }
   }
 );
-
+// getFilterPackByParams
+export const getFilterPackByParams = createAsyncThunk(
+  "user/getFilterPackByParams",
+  async (params, { rejectWithValue }) => {
+    try {
+      const response = await userApi.getFilterPackByParams(params);
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response);
+    }
+  }
+);
 export const googleSignIn = createAsyncThunk(
-  'user/googleSignIn',
+  "user/googleSignIn",
   async (params, { rejectWithValue }) => {
     let response;
     try {
@@ -158,10 +187,10 @@ export const googleSignIn = createAsyncThunk(
       response = await userApi.googleLogin({ email, name });
 
       const { token, role, username } = response.data;
-      localStorage.setItem('isAuthenticated', true);
-      localStorage.setItem('token', token);
-      localStorage.setItem('userName', username);
-      localStorage.setItem('role', role);
+      localStorage.setItem("isAuthenticated", true);
+      localStorage.setItem("token", token);
+      localStorage.setItem("userName", username);
+      localStorage.setItem("role", role);
     } catch (err) {
       if (!err.response) {
         throw err;
@@ -171,7 +200,7 @@ export const googleSignIn = createAsyncThunk(
   }
 );
 export const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
@@ -231,11 +260,32 @@ export const userSlice = createSlice({
       .addCase(getDetailPack.fulfilled, (state, { payload }) => {
         state.loading = false;
         console.log(payload);
+        state.packDetail = payload;
       })
+
+      .addCase(getAllServicesInPack.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getAllServicesInPack.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        state.allSingleInPack = payload;
+        console.log(payload);
+      })
+      .addCase(getAllServicesInPack.rejected, (state) => {
+        state.allSingleInPack = [];
+      })
+
       .addCase(signUpCustomer.pending, (state) => {
         state.loading = true;
       })
       .addCase(signUpCustomer.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        console.log(payload);
+      })
+      .addCase(getFilterPackByParams.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getFilterPackByParams.fulfilled, (state, { payload }) => {
         state.loading = false;
         console.log(payload);
       });

@@ -1,12 +1,56 @@
-import { ButtonCustom } from '../../components/ButtonCustom/index.jsx';
-import { Feedback } from '../../components/Feedback/index.jsx';
-import { CardInfor } from '../../components/CardInfor/index.jsx';
-import { Button, Rate } from 'antd';
-import styles from './index.module.scss';
-import { Header } from '../../layout/header/index.jsx';
+import { ButtonCustom } from "../../components/ButtonCustom/index.jsx";
+import { Feedback } from "../../components/Feedback/index.jsx";
+import { CardInfor } from "../../components/CardInfor/index.jsx";
+import { Button, Rate } from "antd";
+import styles from "./index.module.scss";
+import { Header } from "../../layout/header/index.jsx";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllServicesInPack, getDetailPack } from "../../redux/userSlice.js";
+import { unwrapResult } from "@reduxjs/toolkit";
+import { useNavigate } from "react-router-dom";
 
 export const ServicePackDetail = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const idPack = urlParams.get("idPack");
+  const packDetails = useSelector((state) => state.user.packDetail);
+
+  useEffect(() => {
+    const getAllDetailPack = async () => {
+      try {
+        const actionResult = await dispatch(getDetailPack(idPack));
+        const response = await unwrapResult(actionResult);
+        if (response) {
+          console.log(response);
+        }
+      } catch (error) {}
+    };
+    getAllDetailPack();
+  }, []);
+
+  const singleInPack = useSelector((state) => state.user.allSingleInPack);
+  console.log("singleInPack", singleInPack);
+
+  useEffect(() => {
+    const getServicesInPack = async () => {
+      try {
+        const actionResult = await dispatch(getAllServicesInPack(idPack));
+        const response = await unwrapResult(actionResult);
+        if (response) {
+          console.log(response);
+        }
+      } catch (error) {}
+    };
+    getServicesInPack();
+  }, []);
+
+  const handleNavigateDetail = (id) => {
+    navigate(`/service-detail?ServiceId=${id}`);
+  };
   return (
     <div>
       <div className={styles.header}>
@@ -15,84 +59,53 @@ export const ServicePackDetail = () => {
       <div className={styles.container}>
         <div className={styles.info}>
           <div className={styles.imageinfo}>
-            <img
-              className={styles.image}
-              src='https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Service%2Fdecoration_01.PNG?alt=media&token=cf7bdb9c-16cc-40ef-a90d-1395334ecee3'
-            />
+            <img className={styles.image} src={packDetails?.photo?.url} />
           </div>
           <div className={styles.textinfo}>
-            <div className={styles.title}>dam cuoi starter pack</div>
+            <div className={styles.title}>{packDetails?.name}</div>
             <div>
-              <img
-                className={styles.icons_location}
-                src='https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Icon%2Ficon_location.png?alt=media&token=29af5c96-9413-41aa-9b3b-67d2eba337af'
-              />
-              o dau con lau moi noi
+              {packDetails?.kolMiniResponse?.url && (
+                <img
+                  className={styles.icons_location}
+                  src={packDetails?.kolMiniResponse?.url}
+                />
+              )}
+              {packDetails?.kolMiniResponse?.fullName}
             </div>
-            <div>120.000 VND</div>
             <div>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-              scelerisque pretium dui vel gravida. Vestibulum viverra porta
-              magna, ut pellentesque augue interdum nec. Integer suscipit purus
-              ac porttitor gravida. Proin id urna nibh. Integer in maximus
-              magna. Nam pulvinar magna et lectus sagittis, et dapibus dolor
-              laoreet.
+              {packDetails?.price?.toLocaleString(undefined, {
+                maximumFractionDigits: 2,
+              }) + " VND"}
             </div>
+            <div>{packDetails?.description}</div>
           </div>
           <div className={styles.rateinfo}>
             <Rate className={styles.rating} disabled defaultValue={4} />
-            <Button type='primary'>Add</Button>
+            {/* <Button type="primary">Add</Button> */}
           </div>
         </div>
 
         <div className={styles.packinfo}>Pack Content</div>
         <div className={styles.feature}>
-          <CardInfor
-            imgUrl='https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Service%2Fstudio_01.PNG?alt=media&token=1d0cfe71-8e3a-48ad-860e-6e0f0e816368'
-            title='Lake Wedding'
-            price='8.000.000 VND'
-            location='Da Nang'
-          />
-          <CardInfor
-            imgUrl='https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Service%2Finvitation_01.PNG?alt=media&token=5b6e8277-7a08-44a0-b7ec-eef5228fb148'
-            title='Basic Invitation'
-            price='2.000.000 VND'
-            location='Da Nang'
-          />
-          <CardInfor
-            imgUrl='https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Service%2Finvitation_02.PNG?alt=media&token=ac8644c1-1d3d-4241-a975-256c44b44803'
-            title='Luxury Invitation'
-            price='1.400.000 VND'
-            location='Da Nang'
-          />
-          <CardInfor
-            imgUrl='https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Service%2Fstudio_02.PNG?alt=media&token=6210bb76-9d1f-4377-a14a-915145cf0796'
-            title='Night Wedding'
-            price='5.000.000 VND'
-            location='Da Nang'
-          />
-          <CardInfor
-            imgUrl='https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Service%2Fvenue_01.PNG?alt=media&token=338354e8-7aaa-4f99-a39e-3102d8255274'
-            title='Beach Decoration'
-            price='4.000.000 VND'
-            location='Da Nang'
-          />
-          <CardInfor
-            imgUrl='https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Service%2Fvenue_02.PNG?alt=media&token=7397fe57-e9fa-459d-bcee-5a2522bd6cb9'
-            title='ao quan'
-            location='Da Nang'
-          />
-          <CardInfor
-            imgUrl='https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Service%2Fvenue_01.PNG?alt=media&token=338354e8-7aaa-4f99-a39e-3102d8255274'
-            title='Beach Decoration'
-            price='4.000.000 VND'
-            location='Da Nang'
-          />
-          <CardInfor
-            imgUrl='https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Service%2Fdecoration_01.PNG?alt=media&token=cf7bdb9c-16cc-40ef-a90d-1395334ecee3'
-            title='tri trang'
-            location='Da Nang'
-          />
+          {Array.isArray(singleInPack) &&
+            singleInPack?.map((item) => (
+              <CardInfor
+                onClick={() => handleNavigateDetail(item.id)}
+                key={item.id}
+                showRate="5"
+                title={item?.name}
+                imgUrl={Array.isArray(item?.photos) && item?.photos[0]?.url}
+                // avatar={item?.vendorAddress} ti uyen cop
+                location={item?.vendorAddress}
+                price={
+                  item?.price &&
+                  item?.price.toLocaleString(undefined, {
+                    maximumFractionDigits: 2,
+                  }) + " VND"
+                }
+                // textButton="+ Add"
+              />
+            ))}
         </div>
         {/* <div className={styles.feedback}>
         <Feedback></Feedback>
