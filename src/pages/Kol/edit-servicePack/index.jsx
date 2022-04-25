@@ -25,47 +25,47 @@ import { PackInfor } from './InforPack';
 const categories = [
   {
     id: 1,
-    name: 'Studio',
-  },
-  {
-    id: 2,
-    name: 'Invitations',
-  },
-  {
-    id: 3,
-    name: 'Dress & Attire',
-  },
-  {
-    id: 4,
-    name: 'Jewelry',
-  },
-  {
-    id: 5,
-    name: 'Transportation',
-  },
-  {
-    id: 6,
-    name: 'Makeup',
-  },
-  {
-    id: 7,
-    name: 'Musicians & Bands',
-  },
-  {
-    id: 8,
-    name: 'Venues',
-  },
-  {
-    id: 9,
     name: 'Cakes',
   },
   {
-    id: 10,
+    id: 2,
+    name: 'Transportation',
+  },
+  {
+    id: 3,
     name: 'Lighting & Decor',
   },
   {
-    id: 11,
+    id: 4,
+    name: 'Dress & Attire',
+  },
+  {
+    id: 5,
+    name: 'Event Agents',
+  },
+  {
+    id: 6,
+    name: 'Invitations',
+  },
+  {
+    id: 7,
+    name: 'Jewelry',
+  },
+  {
+    id: 8,
+    name: 'Makeup',
+  },
+  {
+    id: 9,
+    name: 'Musicians & Bands',
+  },
+  {
+    id: 10,
     name: 'Officiants',
+  },
+  {
+    id: 11,
+    name: 'Studio',
   },
   {
     id: 12,
@@ -73,7 +73,7 @@ const categories = [
   },
   {
     id: 13,
-    name: 'Event Agents',
+    name: 'Venues',
   },
 ];
 
@@ -229,9 +229,9 @@ export const EditServicePack = () => {
               dataServices?.map((service) => (
                 <div key={service.id}>
                   <CardInforPack
-                    title={service.serviceName}
-                    location={service.serviceName}
-                    imgUrl={service.photos[0].url}
+                    title={service?.serviceName}
+                    location={service?.vendorAddress}
+                    imgUrl={service?.photos[0]?.url || 'https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Service%2Fcake_06.PNG?alt=media&token=69dcd30c-377d-4168-88ba-3ef247981600'}
                     textButton={'+ Add'}
                     handleAdd={() => handleAddIntoPack(service.id)}
                   />

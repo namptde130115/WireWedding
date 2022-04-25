@@ -9,15 +9,22 @@
 }
 
 .imageinfo {
-  flex-grow: 1;
+  // flex-grow: 1;
+  width: 200px;
+  .image {
+    object-fit: cover;
+    border-radius: 15px;
+    width: 200px;
+    height: 200px;
+  }
 }
 
 .textinfo {
-  flex-grow: 2;
+  width: 100%;
 }
 
 .rateinfo {
-  width: 400px;
+  width: 300px;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -44,11 +51,6 @@
   gap: 10px;
   padding-top: 20px;
   padding-bottom: 20px;
-}
-
-.image {
-  border-radius: 15px;
-  width: 150px;
 }
 
 .thumbnail {
@@ -87,5 +89,10 @@
 }
 
 .description {
-  max-width: 1500px;
+  width: 100%;
+}
+
+.price {
+  font-size: 20px;
+  color: var(--color-base-1);
 }

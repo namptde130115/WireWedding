@@ -53,25 +53,21 @@ export const HomepageContent = ({}) => {
         <div className={clsx(styles.h2)}>Hot services</div>
         <div className={clsx(styles.hotServices_child)}>
           <CardInfor
-            title="Service 1"
-            location="Location 1"
+            title="Saconcept"
             imgUrl="https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Service%2Fstudio_02.PNG?alt=media&token=6210bb76-9d1f-4377-a14a-915145cf0796"
           />
           <CardInfor
-            title="Service 1"
-            location="Location 1"
+            title="Arrule Concept"
             imgUrl="https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Service%2Fdecoration_02.PNG?alt=media&token=2da2f946-43c1-4689-b5ea-036375b02b26"
           />
           <CardInfor
-            title="Service 1"
-            location="Location 1"
+            title="Conceptual"
             imgUrl="https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Service%2Fdecoration_01.PNG?alt=media&token=cf7bdb9c-16cc-40ef-a90d-1395334ecee3"
           />
-          <CardInfor
-            title="Service 1"
-            location="Location 1"
+          {/* <CardInfor
+            title="GatoEto"
             imgUrl="https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Service%2Fstudio_02.PNG?alt=media&token=6210bb76-9d1f-4377-a14a-915145cf0796"
-          />
+          /> */}
         </div>
         <p onClick={handleSeeAll}>See all {">"}</p>
       </div>

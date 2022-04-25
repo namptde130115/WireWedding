@@ -18,25 +18,25 @@ export const ServiceDetail = () => {
 
   console.log(serviceId)
 
-  const singleServiceById = useSelector((state)=> state.customer.singleServiceById)
+  const singleServiceById = useSelector((state) => state.customer.singleServiceById)
 
   console.log(singleServiceById)
 
 
-  useEffect(()=> {
+  useEffect(() => {
     const getServiceById = async () => {
       try {
         const actionResult = await dispatch(getSingleServiceById(serviceId));
         const respone = unwrapResult(actionResult);
         if (respone) {
-  
+
         }
       } catch (error) {
-        
+
       }
     }
     getServiceById()
-  },[])
+  }, [])
   return (
     <div>
       <div className={styles.header}>
@@ -47,7 +47,7 @@ export const ServiceDetail = () => {
           <div className={styles.imageinfo}>
             <img
               className={styles.image}
-              src='https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Service%2Fdecoration_01.PNG?alt=media&token=cf7bdb9c-16cc-40ef-a90d-1395334ecee3'
+              src={Array.isArray(singleServiceById.photos) && singleServiceById?.photos[0]?.url}
             />
           </div>
           <div className={styles.textinfo}>
@@ -59,7 +59,12 @@ export const ServiceDetail = () => {
               />
               {singleServiceById?.vendorAddress}
             </div>
-            <div>{singleServiceById?.price}</div>
+            <div className={styles.price}>
+              {singleServiceById?.price?.toLocaleString(undefined, {
+                maximumFractionDigits: 2,
+              }) + " VND"
+              }
+            </div>
             <div className={styles.description}>
               {singleServiceById?.description}
             </div>
@@ -69,11 +74,11 @@ export const ServiceDetail = () => {
           </div>
         </div>
         <div className={styles.feature}>
-        {singleServiceById?.photos?.map((photo, index)=> (
-          <div className={styles.img__container} key={index}>
-            <img className={styles.thumbnail} src={photo?.url}/>
-          </div>
-         ))}
+          {Array.isArray(singleServiceById?.photos) && singleServiceById?.photos?.map((photo, index) => (
+            <div className={styles.img__container} key={index}>
+              <img className={styles.thumbnail} src={photo?.url} />
+            </div>
+          ))}
         </div>
         {/* <div className={styles.feedback}>
           <Feedback></Feedback>

@@ -36,7 +36,7 @@ export const CardInfor = ({
             <div className={clsx(styles.card_price)}>{price} </div>
             <div className={clsx(styles.card_location)}>
               <img className={clsx(styles.icons_location)} src={avatar} />
-              {location}
+              <p>{location}</p>
               <ButtonCustom
                 type='ghost'
                 text={textButtonRemove}
