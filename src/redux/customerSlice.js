@@ -7,6 +7,7 @@ const initialState = {
   allTask: [],
   allGroup: [],
   allMyService: [],
+  singleServiceById: {}
 };
 
 export const getCheckList = createAsyncThunk(
@@ -248,6 +249,22 @@ export const deleteGuest = createAsyncThunk(
   }
 )
 
+// getSingleServiceById
+export const getSingleServiceById = createAsyncThunk(
+  'customer/getSingleServiceById',
+  async (params, { rejectWithValue }) => {
+    try {
+      const response = await customerApi.getSingleServiceById(params);
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response.data);
+    }
+  }
+)
+
 export const customerSlice = createSlice({
   name: 'customer',
   initialState,
@@ -340,6 +357,13 @@ export const customerSlice = createSlice({
       })
       .addCase(deleteGuest.fulfilled, (state, { payload }) => {
         state.loading = false;
+      })
+      .addCase(getSingleServiceById.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getSingleServiceById.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        state.singleServiceById = payload;
       })
       ;
   },

@@ -5,8 +5,38 @@ import { Button, Rate } from 'antd';
 import styles from './index.module.scss';
 import { Footer } from '../../layout/footer/index.jsx';
 import { Header } from '../../layout/header/index.jsx';
+import { useEffect } from 'react';
+import { unwrapResult } from '@reduxjs/toolkit';
+import { useDispatch, useSelector } from 'react-redux';
+import { getSingleServiceById } from '../../redux/customerSlice.js';
 
 export const ServiceDetail = () => {
+  const dispatch = useDispatch();
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const serviceId = urlParams.get('serviceId');
+
+  console.log(serviceId)
+
+  const singleServiceById = useSelector((state)=> state.customer.singleServiceById)
+
+  console.log(singleServiceById)
+
+
+  useEffect(()=> {
+    const getServiceById = async () => {
+      try {
+        const actionResult = await dispatch(getSingleServiceById(serviceId));
+        const respone = unwrapResult(actionResult);
+        if (respone) {
+  
+        }
+      } catch (error) {
+        
+      }
+    }
+    getServiceById()
+  },[])
   return (
     <div>
       <div className={styles.header}>
@@ -21,42 +51,27 @@ export const ServiceDetail = () => {
             />
           </div>
           <div className={styles.textinfo}>
-            <div className={styles.title}>ABC</div>
+            <div className={styles.title}>{singleServiceById?.serviceName}</div>
             <div>
               <img
                 className={styles.icons_location}
                 src='https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Icon%2Ficon_location.png?alt=media&token=29af5c96-9413-41aa-9b3b-67d2eba337af'
               />
-              Da Nang
+              {singleServiceById?.vendorAddress}
             </div>
-            <div>120.000 VND</div>
+            <div>{singleServiceById?.price}</div>
             <div>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-              scelerisque pretium dui vel gravida. Vestibulum viverra porta
-              magna, ut pellentesque augue interdum nec. Integer suscipit purus
-              ac porttitor gravida. Proin id urna nibh. Integer in maximus
-              magna. Nam pulvinar magna et lectus sagittis, et dapibus dolor
-              laoreet.
+              {singleServiceById?.description}
             </div>
           </div>
           <div className={styles.rateinfo}>
             <Rate disabled defaultValue={4} />
-            <Button type='primary'>Add</Button>
           </div>
         </div>
         <div className={styles.feature}>
-          <img
-            className={styles.thumbnail}
-            src='https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Service%2Fdecoration_01.PNG?alt=media&token=cf7bdb9c-16cc-40ef-a90d-1395334ecee3'
-          />
-          <img
-            className={styles.thumbnail}
-            src='https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Service%2Fdecoration_01.PNG?alt=media&token=cf7bdb9c-16cc-40ef-a90d-1395334ecee3'
-          />
-          <img
-            className={styles.thumbnail}
-            src='https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Service%2Fdecoration_01.PNG?alt=media&token=cf7bdb9c-16cc-40ef-a90d-1395334ecee3'
-          />
+        {singleServiceById?.photos?.map((photo, index)=> (
+           <img key={index} className={styles.thumbnail} src={photo?.url}/>
+         ))}
         </div>
         {/* <div className={styles.feedback}>
           <Feedback></Feedback>

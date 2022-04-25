@@ -68,6 +68,10 @@ const customerApi = {
   deleteGuest: (id) => {
     const url = `/guest/${id}`;
     return AxiosClient.delete(url);
+  },
+  getSingleServiceById: (id) => {
+    const url = `/single-service/${id}`;
+    return AxiosClient.get(url);
   }
 };
 
