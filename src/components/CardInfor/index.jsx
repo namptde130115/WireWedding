@@ -14,12 +14,14 @@ export const CardInfor = ({
   price,
   disabled,
   handleAdd,
+  onClick,
   className,
   textButton,
   showRate,
 }) => {
   return (
     <Card
+      onClick={onClick}
       className={clsx(styles.card, className)}
       hoverable
       cover={<img className={clsx(styles.image)} alt="example" src={imgUrl} />}

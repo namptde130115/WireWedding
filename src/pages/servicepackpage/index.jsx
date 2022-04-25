@@ -126,14 +126,30 @@ export const ServicePack = () => {
     console.log("cancel");
     setIsModalVisible(false);
   };
+  const [currentTheme, setCurrentTheme] = useState();
 
+  // const handleSelectTheme = async (key) => {
+  //   setCurrentTheme(key);
+  //   try {
+  //     console.log("aaaaaaaaaa");
+  //     const actionResult = await dispatch(getAllServicesByTheme(key));
+  //     const response = unwrapResult(actionResult);
+  //     if (response) {
+  //       console.log(response);
+  //     }
+  //   } catch (error) {}
+  // };
   return (
     <CommonLayout>
       <div className={styles.utility}>
         <div className={clsx(styles.search)}>
           <SearchBar />
         </div>
-        <Category selectName="Theme" categories={themes} />
+        <Category
+          selectName="Theme"
+          categories={themes}
+          // handleSelect={handleSelectTheme}
+        />
         {/* <PriceRange /> */}
       </div>
       <div className={styles.card}>
@@ -141,7 +157,7 @@ export const ServicePack = () => {
           <CardInfor
             key={item.id}
             showRate={item.rate}
-            imgUrl={item?.photos}
+            imgUrl={item?.photo?.url}
             avatar={item.kolMiniResponse.url}
             title={item.name}
             location={item.kolMiniResponse.fullName}
@@ -164,12 +180,12 @@ export const ServicePack = () => {
         // okButtonProps={{ form: 'category-editor-form', htmlType: 'submit' }}
       >
         <div className={clsx(styles.edit_container)}>
-          {/* <div className={clsx(styles.info)}>
+          <div className={clsx(styles.info)}>
             <div className={clsx(styles.textinfo)}>
               <ServicePackDetail closeModal={handleCloseModal} />
             </div>
-          </div> */}
-          <p>aaaaaaaaaaaaaaaaaaaa</p>
+          </div>
+          {/* <p>aaaaaaaaaaaaaaaaaaaa</p> */}
         </div>
       </Modal>
     </CommonLayout>

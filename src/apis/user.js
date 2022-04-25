@@ -26,7 +26,10 @@ const userApi = {
     const url = '/service-pack';
     return AxiosClient.get(url);
   },
-
+  // getAllPackByTheme: (id) => {
+  //   const url = `/single-service/category/${id}`;
+  //   return AxiosClient.get(url);
+  // },
   getDetailPack: (id) => {
     const url = `/service-pack/${id}`;
     return AxiosClient.get(url);
