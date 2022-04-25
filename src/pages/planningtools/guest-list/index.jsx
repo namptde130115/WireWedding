@@ -9,7 +9,7 @@ import { Button, Input, message } from 'antd';
 import { AddGroupModal } from './addGoup-modal';
 import { CheckListItem } from '../checklist/check-list-item';
 import { useDispatch, useSelector } from 'react-redux';
-import { createGroup, getAllGroup } from '../../../redux/customerSlice';
+import { createGroup, deleteGuest, getAllGroup } from '../../../redux/customerSlice';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { GroupItem, GuestItem } from './guest-item';
 
@@ -57,8 +57,18 @@ export const GuestList = () => {
     }
   };
 
-  const handleDeleteGuest = () => {
-    console.log('aaaaa');
+  const handleDeleteGuest = async (id) => {
+    try {
+      const actionResult = await dispatch(deleteGuest(id));
+      const response = unwrapResult(actionResult);
+      if (response) {
+        message.success('Delete group success');
+        setGroupName('');
+        dispatch(getAllGroup());
+      }
+    } catch (error) {
+      message.error('Some thing wrong, try again');
+    }
   };
 
   const handleGetGroupName = (e) => {
@@ -129,7 +139,7 @@ export const GuestList = () => {
                     />
                     <DeleteOutlined
                       className={clsx(styles.icon__delete, styles.icon)}
-                      onClick={handleDeleteGuest}
+                      onClick={()=>handleDeleteGuest(guest.id)}
                     />
                   </div>
                 </div>

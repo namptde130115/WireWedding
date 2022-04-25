@@ -20,15 +20,16 @@ export const CardInfor = ({
   showRate,
   textButtonRemove,
   handleRemove,
+  handleClick,
 }) => {
   return (
     <Card
-      onClick={onClick}
+      onClick={handleClick}
       className={clsx(styles.card, className)}
       hoverable
       cover={<img className={clsx(styles.image)} alt='example' src={imgUrl} />}
     >
-      {showRate && <Rate disabled defaultValue={5} />}
+      {<Rate disabled defaultValue={5} />}
       <Meta
         title={title}
         description={
@@ -36,12 +37,14 @@ export const CardInfor = ({
             <div className={clsx(styles.card_price)}>{price} </div>
             <div className={clsx(styles.card_location)}>
               <img className={clsx(styles.icons_location)} src={avatar} />
-              {location}
-              <ButtonCustom
-                type='ghost'
-                text={textButtonRemove}
-                onClick={handleRemove}
-              />
+              <p>{location}</p>
+              {textButtonRemove && (
+                <ButtonCustom
+                  type='ghost'
+                  text={textButtonRemove}
+                  onClick={handleRemove}
+                />
+              )}
               <ButtonCustom
                 type='primary'
                 text={textButton}

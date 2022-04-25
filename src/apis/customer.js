@@ -65,6 +65,14 @@ const customerApi = {
     const url = '/create-payment';
     return AxiosClient.post(url, body);
   },
+  deleteGuest: (id) => {
+    const url = `/guest/${id}`;
+    return AxiosClient.delete(url);
+  },
+  getSingleServiceById: (id) => {
+    const url = `/single-service/${id}`;
+    return AxiosClient.get(url);
+  }
 };
 
 export default customerApi;

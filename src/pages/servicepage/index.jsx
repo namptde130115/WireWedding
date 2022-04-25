@@ -84,7 +84,7 @@ export const Service = () => {
         if (response) {
           console.log(response);
         }
-      } catch (error) {}
+      } catch (error) { }
     };
     getAllService();
   }, []);
@@ -99,7 +99,7 @@ export const Service = () => {
       if (response) {
         console.log(response);
       }
-    } catch (error) {}
+    } catch (error) { }
   };
 
   const handleAddServiceToList = async (id) => {
@@ -112,8 +112,12 @@ export const Service = () => {
         message.success("Added success!");
         navigate('/planning-tools/my-servicelist');
       }
-    } catch (error) {}
+    } catch (error) { }
   };
+
+  const handleRedictDetail = (id) => {
+    navigate(`/service-detail?serviceId=${id}`)
+  }
   return (
     <CommonLayout>
       <div className={clsx(styles.utility)}>
@@ -131,6 +135,7 @@ export const Service = () => {
         <div className={clsx(styles.card)}>
           {allService?.map((item) => (
             <CardInfor
+              handleClick={() => handleRedictDetail(item.id)}
               key={item.id}
               showRate="5"
               imgUrl={item?.photos[0]?.url}
@@ -145,6 +150,8 @@ export const Service = () => {
               textButton="+ Add"
               handleAdd={() => handleAddServiceToList(item.id)}
             />
+
+
           ))}
         </div>
       </div>

@@ -28,6 +28,7 @@ export const VendorProfile = () => {
             description: response.description,
             companyName: response.company,
             representative: response.fullName,
+            categoryId: response.categoryId.toString(),
           });
         }
       } catch (error) {}
@@ -54,21 +55,23 @@ export const VendorProfile = () => {
       phone: values.phone,
       address: values.address,
       username: values.username,
-      categoryId: 1,
+      categoryId: values.categoryId,
     };
     try {
       const actionResult = dispatch(updateInforVendor(body));
       const response = unwrapResult(actionResult);
-      if (response === undefined) {
+      if (response) {
         message.success('update infor kol success');
       }
-    } catch (error) {}
+    } catch (error) {
+      message.error(error.message);
+    }
   };
   return (
     <div>
       <Form
         name='basic'
-        labelCol={{ span: 2 }}
+        labelCol={{ span: 3 }}
         wrapperCol={{ span: 16 }}
         onFinish={onFinish}
         autoComplete='off'

@@ -108,3 +108,9 @@
 .ant-table-wrapper {
   width: 99%;
 }
+
+.ant-card-meta-detail > div:not(:last-child) {
+  max-width: 200px;
+  display: flex;
+  flex-wrap: wrap;
+}

@@ -56,7 +56,7 @@ export const KolProfile = () => {
         message.success('update infor kol success');
       }
     } catch (error) {
-      message.error('update infor kol fail');
+      message.error(error.message);
     }
   };
   return (
