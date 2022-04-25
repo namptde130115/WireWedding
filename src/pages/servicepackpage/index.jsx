@@ -110,7 +110,7 @@ export const ServicePack = () => {
         if (response) {
           console.log(response);
         }
-      } catch (error) {}
+      } catch (error) { }
     };
     getAllService();
   }, []);
@@ -125,7 +125,7 @@ export const ServicePack = () => {
         if (response) {
           console.log(response);
         }
-      } catch (error) {}
+      } catch (error) { }
     };
     getSearchService();
   }, [onSearchValue]);
@@ -171,7 +171,7 @@ export const ServicePack = () => {
         message.success("Added pack success!");
         navigate("/planning-tools/my-servicelist");
       }
-    } catch (error) {}
+    } catch (error) { }
   };
   const handleGetDetailPack = (id) => {
     navigate(`/service-pack-detail?idPack=${id}`);
@@ -189,7 +189,7 @@ export const ServicePack = () => {
         <Category
           selectName="Theme"
           categories={themes}
-          // handleSelect={handleSelectTheme}
+        // handleSelect={handleSelectTheme}
         />
         {/* <PriceRange /> */}
       </div>
@@ -209,7 +209,7 @@ export const ServicePack = () => {
             }
             textButton="+ Add"
             handleAdd={() => handleAddPackServiceToList(item.id)}
-            onClick={() => handleGetDetailPack(item.id)}
+            handleClick={() => handleGetDetailPack(item.id)}
           />
         ))}
       </div>

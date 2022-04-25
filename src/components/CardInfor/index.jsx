@@ -14,7 +14,6 @@ export const CardInfor = ({
   price,
   disabled,
   handleAdd,
-  onClick,
   className,
   textButton,
   showRate,
