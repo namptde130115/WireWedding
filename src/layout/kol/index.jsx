@@ -2,10 +2,9 @@ import { Menu } from 'antd';
 
 //icons
 import {
-  BellOutlined,
   UserOutlined,
   HeartOutlined,
-  PayCircleOutlined,
+  FormOutlined,
   LogoutOutlined,
 } from '@ant-design/icons';
 
@@ -13,21 +12,22 @@ import clsx from 'clsx';
 import styles from './index.module.scss';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Button } from 'bootstrap';
 
-export const AdminLayout = ({ title, children }) => {
+export const KolLayout = ({ title, children }) => {
   let currentUrl = window.location.pathname.split('/')[2];
   const [current, setCurrent] = useState(currentUrl);
   let navigation = useNavigate();
-
-  const logout = () => {
-    localStorage.clear();
-    navigation('/sign-in');
-  };
 
   const handleClickMenu = (e) => {
     console.log('click ', e.key);
     setCurrent(e.key);
     navigation(e.key);
+  };
+
+  const logout = () => {
+    localStorage.clear();
+    navigation('/sign-in');
   };
   return (
     <div className={clsx(styles.profile__container)}>
@@ -41,16 +41,17 @@ export const AdminLayout = ({ title, children }) => {
           <Menu
             onClick={handleClickMenu}
             style={{ width: 228 }}
-            // defaultSelectedKeys={['infor']}
-            // defaultOpenKeys={['infor']}
             selectedKeys={[current]}
             className={clsx(styles.profile__menu__main)}
           >
-            <Menu.Item key='vendor' icon={<UserOutlined />}>
-              Vendor
+            <Menu.Item key='myservive-pack' icon={<UserOutlined />}>
+              My Service Pack
             </Menu.Item>
-            <Menu.Item key='kol' icon={<HeartOutlined />}>
-              Kol
+            <Menu.Item key='infor' icon={<HeartOutlined />}>
+              Infor
+            </Menu.Item>
+            <Menu.Item key='blogs' icon={<FormOutlined />}>
+              Blogs
             </Menu.Item>
           </Menu>
           <div className={clsx(styles.logout)} onClick={logout}>

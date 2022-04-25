@@ -34,6 +34,7 @@ import { CheckListItem } from './pages/planningtools/checklist/check-list-item';
 // import { AddService } from './pages/add-service';
 import { SignInVendor } from './pages/vendorsignin';
 import { PlanningTools } from './pages/planningtools/planningtools_home';
+import { KolPage } from './pages/Kol';
 
 function App() {
   const isAuthenticated = true;
@@ -98,6 +99,16 @@ function App() {
               isAuthenticated={isAuthenticated}
               roles={['customer', 'kol', 'vendor']}
               components={<VendorPage />}
+            />
+          }
+        />
+        <Route
+          path='/kol/*'
+          element={
+            <PrivateRoute
+              isAuthenticated={isAuthenticated}
+              roles={['customer', 'kol', 'vendor']}
+              components={<KolPage />}
             />
           }
         />

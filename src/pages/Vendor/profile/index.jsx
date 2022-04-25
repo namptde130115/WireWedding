@@ -1,50 +1,39 @@
-import { Form, Input, Button, Select, message, Upload } from 'antd';
+import { Form, Input, Button, Select, message } from 'antd';
 import styles from './index.module.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { VendorChangePassModal } from '../modal_changePass';
+import { useDispatch } from 'react-redux';
+import { unwrapResult } from '@reduxjs/toolkit';
+import { getInforVendor, updateInforVendor } from '../../../redux/vendorSlice';
 
 const { Option } = Select;
 
 export const VendorProfile = () => {
   const [isModalEditVisible, setIsModalEditVisible] = useState(false);
+  const [form] = Form.useForm();
+  const dispatch = useDispatch();
 
-  const [imageUrl, setImageUrl] = useState(
-    'https://vcdn-thethao.vnecdn.net/2022/04/08/ronaldo-2-20000991-jpeg-164938-7316-3087-1649389677.jpg'
-  );
-  const [loading, setLoading] = useState();
-
-  const beforeUpload = (file) => {
-    const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
-    if (!isJpgOrPng) {
-      message.error('You can only upload JPG/PNG file!');
-    }
-    const isLt2M = file.size / 1024 / 1024 < 2;
-    if (!isLt2M) {
-      message.error('Image must smaller than 2MB!');
-    }
-    return isJpgOrPng && isLt2M;
-  };
-
-  const getBase64 = (img, callback) => {
-    const reader = new FileReader();
-    reader.addEventListener('load', () => callback(reader.result));
-    reader.readAsDataURL(img);
-  };
-
-  const handleChange = (info) => {
-    if (info.file.status === 'uploading') {
-      setLoading(true);
-      return;
-    }
-    if (info.file.status === 'done') {
-      // Get this url from response in real world.
-      getBase64(info.file.originFileObj, (imageUrl) => {
-        setImageUrl(imageUrl);
-        setLoading(false);
-      });
-    }
-  };
+  useEffect(() => {
+    const getInfor = async () => {
+      try {
+        const actionResult = await dispatch(getInforVendor());
+        const response = unwrapResult(actionResult);
+        if (response) {
+          form.setFieldsValue({
+            username: response.username,
+            fullName: response.fullName,
+            phone: response.phone,
+            address: response.address,
+            description: response.description,
+            companyName: response.company,
+            representative: response.fullName,
+          });
+        }
+      } catch (error) {}
+    };
+    getInfor();
+  }, []);
 
   const handleOk = () => {
     setIsModalEditVisible(false);
@@ -58,41 +47,32 @@ export const VendorProfile = () => {
     setIsModalEditVisible(true);
   };
 
-  const uploadButton = (
-    <div>
-      {loading ? <LoadingOutlined /> : <PlusOutlined />}
-      <div style={{ marginTop: 8 }}>Upload</div>
-    </div>
-  );
   const onFinish = (values) => {
-    console.log('Success:', values);
+    const body = {
+      companyName: values.companyName,
+      representative: values.representative,
+      phone: values.phone,
+      address: values.address,
+      username: values.username,
+      categoryId: 1,
+    };
+    try {
+      const actionResult = dispatch(updateInforVendor(body));
+      const response = unwrapResult(actionResult);
+      if (response === undefined) {
+        message.success('update infor kol success');
+      }
+    } catch (error) {}
   };
   return (
     <div>
-      <Upload
-        name='avatar'
-        listType='picture-card'
-        className='avatar-uploader'
-        showUploadList={false}
-        action='https://www.mocky.io/v2/5cc8019d300000980a055e76'
-        beforeUpload={beforeUpload}
-        onChange={handleChange}
-      >
-        {imageUrl ? (
-          <img src={imageUrl} alt='avatar' style={{ width: '100%' }} />
-        ) : (
-          uploadButton
-        )}
-      </Upload>
       <Form
         name='basic'
         labelCol={{ span: 2 }}
         wrapperCol={{ span: 16 }}
         onFinish={onFinish}
         autoComplete='off'
-        initialValues={{
-          categoryId: '1',
-        }}
+        form={form}
       >
         <Form.Item
           label='Company Name'
@@ -115,12 +95,8 @@ export const VendorProfile = () => {
         >
           <Input className={styles.input__antd} />
         </Form.Item>
-        <Form.Item
-          label='User Name'
-          name='username'
-          rules={[{ required: true, message: 'Please input your user name!' }]}
-        >
-          <Input className={styles.input__antd} />
+        <Form.Item label='User Name' name='username'>
+          <Input className={styles.input__antd} disabled />
         </Form.Item>
         <Form.Item
           label='Phone'
@@ -137,7 +113,7 @@ export const VendorProfile = () => {
           <Input className={styles.input__antd} />
         </Form.Item>
         <Form.Item label='Category' name='categoryId'>
-          <Select style={{ width: 120 }}>
+          <Select style={{ width: 120 }} disabled>
             <Option value='1'>Studio</Option>
             <Option value='2'>Invitations</Option>
             <Option value='3'>{`Dress & Attire`}</Option>

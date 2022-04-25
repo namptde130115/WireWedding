@@ -1,15 +1,14 @@
 import './index.scss';
-import { Table, Tag, Space, Modal, Select, message } from 'antd';
+import { Table, Tag, Space, Modal, Select, message, Switch } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { getAllVendors, updateVendor } from '../../../redux/adminSlice';
 import { unwrapResult } from '@reduxjs/toolkit';
 
-const { Option } = Select;
-
 export const ManageVendorTable = () => {
   const dataVendors = useSelector((state) => state.admin.vendors);
   const [isLoading, setIsLoading] = useState(true);
+  const [switchLoading, setSwitchLoading] = useState(false);
   const [currentVendor, setCurrentVendor] = useState({});
   const [currentStatus, setCurrentStatus] = useState();
 
@@ -29,11 +28,9 @@ export const ManageVendorTable = () => {
   }, []);
 
   const showModal = (record) => {
-    console.log(record);
     setCurrentVendor(record);
     setIsModalVisible(true);
   };
-  console.log(currentVendor);
 
   const handleOk = async () => {
     setIsModalVisible(false);
@@ -41,21 +38,6 @@ export const ManageVendorTable = () => {
 
   const handleCancel = () => {
     setIsModalVisible(false);
-  };
-
-  const handleChange = async (value) => {
-    console.log(`selected `, value);
-    try {
-      const actionResult = await dispatch(updateVendor(currentVendor.id));
-      const response = unwrapResult(actionResult);
-      if (response) {
-        message.success('Update Successfully');
-        dispatch(getAllVendors());
-        setIsModalVisible(false);
-      }
-    } catch (error) {
-      message.error('Update Failed');
-    }
   };
 
   const columns = [
@@ -76,7 +58,7 @@ export const ManageVendorTable = () => {
       render: (status, index) => (
         <>
           <Tag color={handleColor(status)} key={index}>
-            {status === 0 ? 'Deactive' : 'Active'}
+            {status ? 'Active' : 'Deactive'}
           </Tag>
         </>
       ),
@@ -95,10 +77,27 @@ export const ManageVendorTable = () => {
   ];
 
   const handleColor = (status) => {
-    if (status === 0) {
-      return 'red';
-    } else {
+    if (status) {
       return 'green';
+    } else {
+      return 'red';
+    }
+  };
+
+  const onChange = async (checked) => {
+    console.log(`switch to ${checked}`);
+    setSwitchLoading(true);
+    try {
+      const actionResult = await dispatch(updateVendor(currentVendor.id));
+      const response = unwrapResult(actionResult);
+      if (response) {
+        message.success('Update Successfully');
+        dispatch(getAllVendors());
+        setSwitchLoading(false);
+        setIsModalVisible(false);
+      }
+    } catch (error) {
+      message.error('Update Failed');
     }
   };
 
@@ -110,29 +109,31 @@ export const ManageVendorTable = () => {
         rowKey='id'
         loading={isLoading}
         pagination={false}
+        scroll={{ y: 'calc(100vh - 180px)' }}
+        // width={'100%'}
       />
-      <Modal
-        title='Infor Kol'
-        visible={isModalVisible}
-        onOk={handleOk}
-        onCancel={handleCancel}
-      >
-        <p>UserName: {currentVendor.username}</p>
-        <p>Full Name: {currentVendor.fullName}</p>
-        <p>Address: {currentVendor.address}</p>
-        <p>Company: {currentVendor.company}</p>
-        <p>Phone: {currentVendor.phone}</p>
-        <p>Desciption: </p>
-        <p style={{ display: 'inline' }}>Status: </p>
-        <Select
-          defaultValue={currentVendor?.status}
-          style={{ width: 120 }}
-          onChange={handleChange}
+      {isModalVisible && (
+        <Modal
+          title='Infor Kol'
+          visible={isModalVisible}
+          onOk={handleOk}
+          onCancel={handleCancel}
+          footer={null}
         >
-          <Option value={false}>Deactive</Option>
-          <Option value={true}>Active</Option>
-        </Select>
-      </Modal>
+          <p>UserName: {currentVendor.username}</p>
+          <p>Full Name: {currentVendor.fullName}</p>
+          <p>Address: {currentVendor.address}</p>
+          <p>Company: {currentVendor.company}</p>
+          <p>Phone: {currentVendor.phone}</p>
+          <p>Desciption: </p>
+          <p style={{ display: 'inline' }}>Status: </p>
+          <Switch
+            onChange={onChange}
+            defaultChecked={currentVendor.status}
+            loading={switchLoading}
+          />
+        </Modal>
+      )}
     </>
   );
 };

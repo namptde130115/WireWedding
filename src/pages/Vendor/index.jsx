@@ -6,7 +6,7 @@ import { VendorBlogs } from './blogs';
 
 export const VendorPage = () => {
   return (
-    <VendorLayout title='Kol'>
+    <VendorLayout title='Vendor'>
       <Routes>
         <Route index element={<VendorSevice />} />
         <Route path='/service' element={<VendorSevice />} />
