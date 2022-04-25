@@ -94,11 +94,9 @@ export const CreateServicePack = () => {
 
   const onChange = (e) => {
     setTextArea(e.target.value);
-    console.log('Change:', e.target.value);
   };
 
   const onSelectThemeChange = (value) => {
-    console.log(value);
     setSelectValue(value);
   };
 
@@ -119,7 +117,6 @@ export const CreateServicePack = () => {
     setIsVisible(true);
     setCurrentCategory(name);
     try {
-      console.log('aaaaaaaaaa');
       const actionResult = await dispatch(getAllServicesByCategory(id));
       const response = unwrapResult(actionResult);
       if (response) {
@@ -154,7 +151,6 @@ export const CreateServicePack = () => {
       }
     } catch (error) {
       message.error(error.message);
-      console.log(error.message);
     }
   };
 

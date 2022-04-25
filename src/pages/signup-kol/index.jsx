@@ -13,18 +13,14 @@ export const SignUpKol = () => {
 
   const loading = useSelector((state) => state.user.registerLoading);
   const onFinish = async (values) => {
-    console.log('Success:', values);
     try {
-      console.log('aaaaa');
       const actionResult = await dispatch(signUpKol(values));
       const response = unwrapResult(actionResult);
       if (response) {
         message.success('Register success');
         navigate('/');
-        console.log('response', response);
       }
     } catch (error) {
-      console.log(error);
       message.error(error.username);
     }
   };
@@ -33,7 +29,7 @@ export const SignUpKol = () => {
       <div className={styles.signUp__container}>
         <div>{loading}</div>
         <p className={styles.title}>Sign Up For Kols</p>
-        <div>
+        <div className={styles.signUp}>
           <Form
             name='basic'
             labelCol={{ span: 8 }}
@@ -57,15 +53,6 @@ export const SignUpKol = () => {
               ]}
             >
               <Input className={styles.input__antd} />
-            </Form.Item>
-            <Form.Item
-              label='Password'
-              name='password'
-              rules={[
-                { required: true, message: 'Please input your password!' },
-              ]}
-            >
-              <Input.Password className={styles.input__antd} />
             </Form.Item>
             <Form.Item
               label='Phone'
@@ -92,7 +79,11 @@ export const SignUpKol = () => {
                 { required: true, message: 'Please input your description!' },
               ]}
             >
-              <Input className={styles.input__antd} />
+              <Input.TextArea
+                rows={4}
+                width={'100%'}
+                className={styles.input__antd}
+              />
             </Form.Item>
 
             <Form.Item wrapperCol={{ offset: 8, span: 16 }}>

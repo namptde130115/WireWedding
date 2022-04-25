@@ -21,7 +21,6 @@ export const HomePageBlogDetail = () => {
   const dispatch = useDispatch();
   const [blogDetail, setBlogDetail] = useState();
   let idBlog = window.location.pathname.split('/')[3];
-  console.log(idBlog);
 
   useEffect(() => {
     const getDetail = async () => {
@@ -29,7 +28,6 @@ export const HomePageBlogDetail = () => {
         const actionResult = await dispatch(getDetailBlog(parseInt(idBlog)));
         const response = unwrapResult(actionResult);
         if (response) {
-          console.log(response);
           setBlogDetail(response);
         }
       } catch (error) {}
@@ -37,7 +35,6 @@ export const HomePageBlogDetail = () => {
     getDetail();
   }, []);
 
-  console.log(blogDetail);
   return (
     <CommonLayout>
       <div className={clsx(styles.h1)}>{blogDetail?.title}</div>

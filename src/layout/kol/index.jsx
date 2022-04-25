@@ -20,14 +20,13 @@ export const KolLayout = ({ title, children }) => {
   let navigation = useNavigate();
 
   const handleClickMenu = (e) => {
-    console.log('click ', e.key);
     setCurrent(e.key);
     navigation(e.key);
   };
 
   const logout = () => {
     localStorage.clear();
-    navigation('/sign-in');
+    navigation('/');
   };
   return (
     <div className={clsx(styles.profile__container)}>

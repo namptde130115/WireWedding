@@ -34,7 +34,19 @@ const userApi = {
     const url = `/service-pack/${id}`;
     return AxiosClient.get(url);
   },
+  signUpCustomer: (body) => {
+    const url = `/customer`;
+    return AxiosClient.post(url, body);
+  },
 
+  facebooklogin: (payload) => {
+    const url = '/account/facebook-login';
+    return AxiosClient.post(url, payload);
+  },
+  googleLogin: ({ email, name }) => {
+    const url = '/account/google-login';
+    return AxiosClient.post(url, { email, name });
+  },
 };
 
 export default userApi;

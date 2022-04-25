@@ -58,7 +58,6 @@ export const KolProfile = () => {
     } catch (error) {
       message.error('update infor kol fail');
     }
-    console.log('Success:', values);
   };
   return (
     <div>

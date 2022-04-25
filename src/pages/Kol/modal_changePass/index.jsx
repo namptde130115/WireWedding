@@ -18,8 +18,6 @@ export const VendorChangePassModal = ({
 
   const onFinish = async (values) => {
     try {
-      console.log('success: ', values);
-
       const actionResult = await dispatch(
         updatePassword({
           oldPassword: values.oldPassword,

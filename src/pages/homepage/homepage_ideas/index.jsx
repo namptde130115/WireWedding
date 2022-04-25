@@ -17,7 +17,6 @@ export const HomePage_ideas = () => {
   const dispatch = useDispatch();
 
   const allBlog = useSelector((state) => state.vendor.allBlog);
-  console.log('allBlog: ', allBlog);
   useEffect(() => {
     const getAllBlogForCustomer = async () => {
       try {

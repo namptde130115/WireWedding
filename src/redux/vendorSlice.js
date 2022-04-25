@@ -40,6 +40,21 @@ export const vendorCreateSingleService = createAsyncThunk(
   }
 );
 
+export const updateSingleService = createAsyncThunk(
+  'vendor/updateSingleService',
+  async (params, { rejectWithValue }) => {
+    try {
+      const response = await vendorApi.updateSingleService(params);
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
 export const editSingleService = createAsyncThunk(
   'vendor/signUp',
   async (params, { rejectWithValue }) => {
@@ -261,6 +276,12 @@ export const vendorSlice = createSlice({
         state.loading = true;
       })
       .addCase(updateInforVendor.fulfilled, (state, { payload }) => {
+        state.loading = false;
+      })
+      .addCase(updateSingleService.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(updateSingleService.fulfilled, (state, { payload }) => {
         state.loading = false;
       });
   },

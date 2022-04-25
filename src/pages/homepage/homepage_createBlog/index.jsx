@@ -28,7 +28,6 @@ export const HomePageCreateBlog = ({ currentBlog, closeModal }) => {
   const handlePostBlog = async () => {
     if (currentBlog) {
       if (editorRef.current) {
-        console.log(editorRef.current.getContent());
         const body = {
           id: currentBlog.id,
           data: {
@@ -45,12 +44,10 @@ export const HomePageCreateBlog = ({ currentBlog, closeModal }) => {
           }
         } catch (error) {
           message.error(error.data.message);
-          console.log(error);
         }
       }
     } else {
       if (editorRef.current) {
-        console.log(editorRef.current.getContent());
         const body = {
           blogTitle: title,
           blogContent: editorRef.current.getContent(),

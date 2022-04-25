@@ -39,7 +39,6 @@ export const CheckList = () => {
       deadline: dueDate,
       description: 'huy dep trai',
     };
-    console.log(body);
     try {
       const actionResult = await dispatch(addCheckListTask(body));
       const response = unwrapResult(actionResult);
@@ -55,7 +54,6 @@ export const CheckList = () => {
   };
 
   const onChange = (date, dateString) => {
-    console.log(dateString);
     setDueDate(dateString);
   };
 
@@ -66,11 +64,15 @@ export const CheckList = () => {
         <div className={styles.progress}>
           <span>Progress: </span>
           <Progress
-            percent={Math.round(
-              (checkList.filter((item) => item.status === true).length /
-                checkList.length) *
-                100
-            )}
+            percent={
+              Array.isArray(checkList)
+                ? Math.round(
+                    (checkList?.filter((item) => item.status === true).length /
+                      checkList.length) *
+                      100
+                  )
+                : 0
+            }
             className={clsx(styles.progress)}
           />
         </div>

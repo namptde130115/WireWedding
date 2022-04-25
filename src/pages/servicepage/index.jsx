@@ -76,7 +76,6 @@ export const Service = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const allService = useSelector((state) => state.user.allSingleService);
-  console.log("allSingleService: ", allService);
   useEffect(() => {
     const getAllService = async () => {
       try {

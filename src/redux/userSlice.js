@@ -101,6 +101,75 @@ export const getDetailPack = createAsyncThunk(
     }
   }
 );
+
+export const signUpCustomer = createAsyncThunk(
+  'user/signUpCustomer',
+  async (params, { rejectWithValue }) => {
+    try {
+      const response = await userApi.signUpCustomer(params);
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response);
+    }
+  }
+);
+export const faceBookSignIn = createAsyncThunk(
+  'user/faceBookSignIn',
+  async (params, { rejectWithValue }) => {
+    let response;
+    try {
+      const { accessToken, userID } = params;
+      const URL = `https://graph.facebook.com/${userID}?fields=id,name,email,picture&access_token=${accessToken}`;
+      const datafb = await fetch(URL)
+        .then((res) => res.json())
+        .then((res) => {
+          return res;
+        });
+      const { email, name } = datafb;
+      console.log('response', datafb);
+      response = await userApi.facebooklogin(datafb);
+
+      const { token, role, username } = response.data;
+      localStorage.setItem('isAuthenticated', true);
+      localStorage.setItem('token', token);
+      localStorage.setItem('userName', username);
+      localStorage.setItem('role', role);
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+export const googleSignIn = createAsyncThunk(
+  'user/googleSignIn',
+  async (params, { rejectWithValue }) => {
+    let response;
+    try {
+      const { profileObj } = params;
+      console.log(params.profileObj.name, params.profileObj.email);
+      const email = params.profileObj.email;
+      const name = params.profileObj.name;
+      response = await userApi.googleLogin({ email, name });
+
+      const { token, role, username } = response.data;
+      localStorage.setItem('isAuthenticated', true);
+      localStorage.setItem('token', token);
+      localStorage.setItem('userName', username);
+      localStorage.setItem('role', role);
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
 export const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -131,7 +200,6 @@ export const userSlice = createSlice({
       })
       .addCase(getAllSingleService.fulfilled, (state, { payload }) => {
         state.loading = false;
-        console.log(payload);
         state.allSingleService = payload.singleServicePostResponses;
       })
 
@@ -152,6 +220,8 @@ export const userSlice = createSlice({
       })
       .addCase(getAllServicePack.fulfilled, (state, { payload }) => {
         state.loading = false;
+        state.allServicePack = payload;
+
         console.log(payload);
         state.allServicePack = payload.packagePostResponses;
       })
@@ -159,6 +229,13 @@ export const userSlice = createSlice({
         state.loading = true;
       })
       .addCase(getDetailPack.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        console.log(payload);
+      })
+      .addCase(signUpCustomer.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(signUpCustomer.fulfilled, (state, { payload }) => {
         state.loading = false;
         console.log(payload);
       });

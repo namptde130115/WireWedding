@@ -5,7 +5,8 @@ import { Form, Input, Button, DatePicker } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { unwrapResult } from '@reduxjs/toolkit';
-import { signUp } from '../../redux/userSlice';
+import { signUp, signUpCustomer } from '../../redux/userSlice';
+import moment from 'moment';
 
 export const SignUp = () => {
   const dispatch = useDispatch();
@@ -13,28 +14,22 @@ export const SignUp = () => {
 
   const loading = useSelector((state) => state.user.registerLoading);
   const onFinish = async (values) => {
-    console.log('Success:', values);
+    console.log(moment(values.weddingDate).format('YYYY-MM-DD'));
     try {
-      console.log('aaaaa');
       const actionResult = await dispatch(
-        signUp({
-          companyName: 'TUART WEDDING ĐÀ NẴNG',
-          email: 'info.tuarts@gmail.com',
-          representative: 'Song Trang',
-          username: 'TuartDNSt',
-          phone: '02362616',
-          categoryId: 1,
-          anotherService: '',
-          address: '99A Núi Thành, Hải Châu, Đà Nẵng',
+        signUpCustomer({
+          ...values,
+          weddingDate: moment(values.weddingDate).format('YYYY/MM/DD'),
         })
       );
       const response = unwrapResult(actionResult);
       if (response) {
-        navigate('/');
-        console.log('response', response);
+        navigate('/sign-in');
       }
     } catch (error) {}
   };
+
+ 
   return (
     <LoginLayout>
       <div className={styles.signUp__container}>
@@ -48,8 +43,8 @@ export const SignUp = () => {
             autoComplete='off'
           >
             <Form.Item
-              label='Name'
-              name='name'
+              label='FullName'
+              name='fullName'
               rules={[{ required: true, message: 'Please input your name!' }]}
             >
               <Input className={styles.input__antd} />
@@ -90,12 +85,13 @@ export const SignUp = () => {
             </Form.Item>
             <Form.Item
               label='Day Wedding'
-              name='dayWedding'
+              name='weddingDate'
               rules={[
                 { required: true, message: 'Please input your day Wedding!' },
               ]}
             >
               <DatePicker
+                format={'YYYY/MM/DD'}
                 style={{ width: 240, height: 40 }}
                 placeholder={null}
               />

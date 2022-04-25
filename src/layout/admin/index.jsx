@@ -25,7 +25,6 @@ export const AdminLayout = ({ title, children }) => {
   };
 
   const handleClickMenu = (e) => {
-    console.log('click ', e.key);
     setCurrent(e.key);
     navigation(e.key);
   };

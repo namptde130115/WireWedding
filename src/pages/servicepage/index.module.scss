@@ -23,15 +23,17 @@
   // > div {
   //     margin:auto !important;
   // }
+  width: 80%;
+  margin: 0 auto;
   flex: 1;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, max-content));
+  grid-template-columns: repeat(auto-fit, minmax(220px, max-content));
   grid-gap: 42px;
   justify-content: center;
   padding-bottom: 3vw;
   > div > div:first-child {
     padding-bottom: 0;
-    width: 240px;
+    width: 100%;
     height: 180px;
   }
 }

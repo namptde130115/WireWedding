@@ -99,13 +99,11 @@ export const EditServicePack = () => {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const packId = urlParams.get('idPack');
-  console.log(packId);
 
   const dispatch = useDispatch();
 
   const handleOpenDetail = async (e, catagoryId) => {
     e.stopPropagation();
-    console.log('dddddddddddddddddddddddd');
     const body = {
       categoryId: catagoryId,
       packId,
@@ -155,7 +153,6 @@ export const EditServicePack = () => {
     setCurrentCategory(name);
 
     try {
-      console.log('aaaaaaaaaa');
       const actionResult = await dispatch(getAllServicesByCategory(id));
       const response = unwrapResult(actionResult);
       if (response) {

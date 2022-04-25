@@ -15,7 +15,6 @@ export const PlanningToolsHeader = () => {
   let currentUrl = window.location.pathname.split('/')[2];
   const [current, setCurrent] = useState(currentUrl);
   const handleClickMenu = (e) => {
-    console.log('click ', e.key);
     setCurrent(e.key);
     navigation(e.key);
   };

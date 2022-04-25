@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './index.module.scss';
 import clsx from 'clsx';
 import { Dropdown, Menu } from 'antd';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ButtonCustom } from '../../components/ButtonCustom/index.jsx';
 
 const { SubMenu } = Menu;
@@ -34,7 +34,9 @@ export const Header = () => {
     navigation('/sign-in');
   };
 
-  const navigateSignup = () => {};
+  const navigateSignup = () => {
+    navigation('/sign-up');
+  };
 
   const onLogoClick = () => navigation('/');
   return (
@@ -75,7 +77,8 @@ export const Header = () => {
         <div className={clsx(styles.login)}>
           <div className={clsx(styles.vendor_kol)}>
             <p>
-              Are you a <a href=''>Vendor</a> or <a href=''>KOL</a>?
+              Are you a <Link to='/vendor-signup'>Vendor</Link> or{' '}
+              <Link to='/kol-signup'>KOL</Link>?
             </p>
           </div>
 

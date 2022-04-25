@@ -31,7 +31,6 @@ export const PackInfor = () => {
         const actionResult = await dispatch(getServicePackById(packId));
         const response = unwrapResult(actionResult);
         if (response) {
-          console.log('response', response);
           form.setFieldsValue({
             packTitle: response.name,
             description: response.description,

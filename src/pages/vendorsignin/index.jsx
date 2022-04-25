@@ -12,13 +12,11 @@ export const SignInVendor = () => {
   const dispatch = useDispatch();
   let navigate = useNavigate();
   const onFinish = async (values) => {
-    console.log('Success:', values);
     try {
       const actionResult = await dispatch(signIn(values));
       const response = unwrapResult(actionResult);
       if (response) {
         navigate('/vendor/service');
-        console.log('response', response);
       }
     } catch (error) {}
   };

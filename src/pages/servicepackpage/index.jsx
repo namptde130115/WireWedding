@@ -95,7 +95,6 @@ export const ServicePack = () => {
   const dispatch = useDispatch();
 
   const allPack = useSelector((state) => state.user.allServicePack);
-  console.log("allPack: ", allPack);
   useEffect(() => {
     const getAllService = async () => {
       try {

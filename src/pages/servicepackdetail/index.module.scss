@@ -3,6 +3,7 @@
   padding: 20px;
   margin: 0 auto;
   background-color: var(--color-body);
+  border-radius: 10px;
 }
 .info {
   display: flex;
@@ -23,6 +24,13 @@
 .rateinfo {
   width: 400px;
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  > button {
+    width: 50%;
+    margin: 0 90px 0 auto;
+  }
 }
 
 .rating {
@@ -33,6 +41,7 @@
   display: flex;
   justify-content: center;
   font-size: 25px;
+  margin: 20px 0;
 }
 
 .title {
@@ -68,4 +77,10 @@
   justify-content: flex-start;
   gap: 10px;
   flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, max-content));
+  grid-gap: 30px;
+  > div > div {
+    width: 100% !important;
+  }
 }

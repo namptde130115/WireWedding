@@ -24,6 +24,8 @@ export const GuestList = () => {
   const dispatch = useDispatch();
   const allGroup = useSelector((state) => state.customer.allGroup);
 
+  console.log(allGroup);
+
   useEffect(() => {
     const getAllGuestList = async () => {
       try {
@@ -73,7 +75,6 @@ export const GuestList = () => {
   };
 
   const handleOpenModalEdit = (guest, id) => {
-    console.log('guest', guest, 'id', id);
     setCurrentGuest(guest);
     setCurrentIdGroupGuest(id);
     setIsVisibleEdit(true);
@@ -98,11 +99,7 @@ export const GuestList = () => {
           </Button>
         </div>
       </FormItem>
-      {isNoResult ? (
-        <div className={clsx(styles.nogroup_text)}>
-          Let's make your own guest list !
-        </div>
-      ) : (
+      {Array.isArray(allGroup) &&
         allGroup.map((item, index) => (
           <div className={clsx(styles.guest__container)} key={index}>
             <div className={clsx(styles.guest__group)}>
@@ -141,8 +138,7 @@ export const GuestList = () => {
               <div>No guest here</div>
             )}
           </div>
-        ))
-      )}
+        ))}
       {isVisibleEdit && (
         <EditModal
           title='Edit Guest'
@@ -157,7 +153,7 @@ export const GuestList = () => {
       <AddGroupModal
         rerenderList={() => dispatch(getAllGroup())}
         idGroup={currentId}
-        title='Add Group'
+        title='Add Guest'
         visible={isVisible}
         onOk={handleOnOk}
         onCancel={handleOnOk}

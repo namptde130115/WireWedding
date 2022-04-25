@@ -24,7 +24,6 @@ export const VendorChangePassModal = ({
 
   const onFinish = async (values) => {
     try {
-      console.log('success: ', values);
       const submiBody = {
         ...values,
         photos: [
@@ -46,7 +45,6 @@ export const VendorChangePassModal = ({
       if (error.photos) {
         message.error('Photos is required');
       }
-      console.log(error);
     }
   };
 

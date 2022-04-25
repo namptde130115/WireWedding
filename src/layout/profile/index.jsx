@@ -19,7 +19,6 @@ export const ProfileLayout = ({ title, children }) => {
   let navigation = useNavigate();
 
   const handleClickMenu = (e) => {
-    console.log('click ', e.key);
     setCurrent(e.key);
     navigation(e.key);
   };
