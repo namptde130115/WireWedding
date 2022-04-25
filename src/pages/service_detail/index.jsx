@@ -60,7 +60,7 @@ export const ServiceDetail = () => {
               {singleServiceById?.vendorAddress}
             </div>
             <div>{singleServiceById?.price}</div>
-            <div>
+            <div className={styles.description}>
               {singleServiceById?.description}
             </div>
           </div>
@@ -70,7 +70,9 @@ export const ServiceDetail = () => {
         </div>
         <div className={styles.feature}>
         {singleServiceById?.photos?.map((photo, index)=> (
-           <img key={index} className={styles.thumbnail} src={photo?.url}/>
+          <div className={styles.img__container} key={index}>
+            <img className={styles.thumbnail} src={photo?.url}/>
+          </div>
          ))}
         </div>
         {/* <div className={styles.feedback}>
