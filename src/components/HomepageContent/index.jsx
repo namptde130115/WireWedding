@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 
 export const HomepageContent = ({}) => {
   const navigate = useNavigate();
-  const handleSeeAll = () => navigate("/services");
   return (
     <div className={styles.container}>
       <div className={clsx(styles.h1)}>
@@ -69,7 +68,6 @@ export const HomepageContent = ({}) => {
             imgUrl="https://firebasestorage.googleapis.com/v0/b/gotobun-260222.appspot.com/o/Service%2Fstudio_02.PNG?alt=media&token=6210bb76-9d1f-4377-a14a-915145cf0796"
           /> */}
         </div>
-        <p onClick={handleSeeAll}>See all {">"}</p>
       </div>
       <Feedback_Contact />
     </div>

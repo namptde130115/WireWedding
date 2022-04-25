@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 export const MyBlog = ({}) => {
   const navigate = useNavigate();
   const handleCreateBlog = () => navigate("/ideas/create-blog");
-  const handleSeeAll = () => navigate("/ideas");
   return (
     <div className={clsx(styles.ideas_blog)}>
       {/* <hr /> */}
@@ -44,7 +43,6 @@ export const MyBlog = ({}) => {
           text="Create blog "
           onClick={handleCreateBlog}
         /> */}
-        <p onClick={handleSeeAll}>See all {">"}</p>
       </div>
     </div>
   );

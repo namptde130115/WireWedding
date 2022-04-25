@@ -140,7 +140,7 @@ export const ServicePack = () => {
           <CardInfor
             key={item.id}
             showRate={item.rate}
-            imgUrl={item?.photos}
+            imgUrl={item?.photo?.url}
             avatar={item.kolMiniResponse.url}
             title={item.name}
             location={item.kolMiniResponse.fullName}
